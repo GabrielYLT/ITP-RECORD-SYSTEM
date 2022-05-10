@@ -33,8 +33,8 @@ $(document).ready(function(){
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow:hidden;" >
-    <div class="sidebar" data-color="blue"  >
+<div class="wrapper" >
+    <div class="sidebar" data-color="red" style="opacity:85%">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
@@ -112,14 +112,14 @@ $(document).ready(function(){
 			<!-- row -->
             <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
                 <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col">
-                    <div class="tm-block h-100" style="background-color:#00b4ff; border-radius:10px;">
+                    <div class="tm-block h-100" style="background-color:#ff280061; border-radius:10px;">
                         <div class="row">
                             <div class="col-md-8 col-sm-12">
 								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;">Admin</h2>
 
                             </div>
-                            <div class="col-md-4 col-sm-12 text-right"style="margin-left:-1%;margin-top:auto;">
-                                <a href="accounts.php" class="btn btn-small btn-primary" >Add New Admin</a>
+                            <div class="col-md-4 col-sm-12 text-right"style="margin-left:-2%;margin-top:10px;">
+                                <a href="accounts.php" class="btn btn-small btn-info" style="opacity:85%;">Add New Admin</a>
                             </div>
 							<div>
 							<hr>
@@ -132,14 +132,13 @@ $(document).ready(function(){
                             <table class="table table-hover table-striped tm-table-striped-even mt-3">
                                 <thead>
                                     <tr class="tm-bg-gray">
-                                        <th scope="col">Admin ID</th>
-                                        <th scope="col" >Admin Name</th>
-										<th scope="col" >Admin Email</th>
-										<th scope="col">Date</th>
-                                        <th scope="col">Department</th>
-										<th scope="col">Status</th>
-                                        
-										<th scope="col">&nbsp;</th>	
+                                        <th scope="col" style="text-align:center;font-weight:bold;color:black;">Admin ID</th>
+                                        <th scope="col" style="text-align:center;font-weight:bold;color:black;">Admin Name</th>
+										<th scope="col" style="text-align:center;font-weight:bold;color:black;">Admin Email</th>
+										<th scope="col" style="text-align:center;font-weight:bold;color:black;">Date</th>
+                                        <th scope="col" style="text-align:center;font-weight:bold;color:black;">Department</th>
+										<th scope="col" style="text-align:center;font-weight:bold;color:black;">Status</th>
+
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
@@ -154,21 +153,21 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#" . $row["AID"] . "</td>" ;
-									echo "<td>" . $row["AName"]. "</td>" ; 
-									echo "<td>" . $row["AEmail"].  "</td>" ; 
-									echo "<td>" .  $row["ADate"]. "</td>" ;
-									echo "<td >". $row["Department"]. "</td>" ;
+									echo "<td style='text-align:center;color:black;'>#" . $row["AID"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;'>" . $row["AName"]. "</td>" ; 
+									echo "<td style='text-align:center;color:black;'>" . $row["AEmail"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;'>" .  $row["ADate"]. "</td>" ;
+									echo "<td style='text-align:center;color:black;'>". $row["Department"]. "</td>" ;
 									if( $row["AStatus"] =='Active'){
-									echo "<td class='align-middle text-left text-sm'> <span class='badge badge-sm bg-gradient-success'>" .  $row["AStatus"]. "</span></td>" ;
+									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" .  $row["AStatus"]. "</span></td>" ;
 									} elseif ($row["AStatus"] =='Suspend'){
-									echo "<td class='align-middle text-left text-sm'> <span class='badge badge-sm bg-gradient-warning'>" .  $row["AStatus"]. "</span></td>" ;
-									} else { echo "<td class='align-middle text-left text-sm'> <span class='badge badge-sm bg-gradient-danger'>" .  $row["AStatus"]. "</span></td>" ;
+									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-warning'>" .  $row["AStatus"]. "</span></td>" ;
+									} else { echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" .  $row["AStatus"]. "</span></td>" ;
 									}
                                     ?> 
                                     <td>
 									<div class='btn-group'> 
-									<a href="Edit.php?edit&id=<?php echo $row['AID'];?>" class="btn btn-secondary">Edit</a>
+									<a href="editProfile.php?edit&id=<?php echo $row['AID'];?>" class="btn btn-secondary">Edit</a>
 									<a href="Staff.php?del&id=<?php echo $row['AID'];?>" class="btn btn-danger" onclick="return confirmation()" >Delete</a></td>
 									</div>
                                     <?php
@@ -178,7 +177,7 @@ $(document).ready(function(){
 									} else { echo "0 results"; }
 									?>    
                                 </tbody>
-                            </table>
+                            
                         </div>
             </div>
         </div>
