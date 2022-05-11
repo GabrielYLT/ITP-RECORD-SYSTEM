@@ -3,6 +3,33 @@ include("Connection.php");
 session_start();
 error_reporting(0);
 ?>
+<?php
+								if(isset($_GET["edit"]))
+								{
+								$ad_id=$_GET['id'];
+								$result=mysqli_query($connect,"SELECT * FROM admin WHERE AID='$ad_id'");
+								$row=mysqli_fetch_assoc($result);}
+?>
+<?php	
+if(isset($_POST["sbtn"]))
+{
+ $SubName = $_POST["SubCategory"];
+ $CName = $_POST["cat"];
+
+ mysqli_query($connect,"INSERT INTO subcategory(SubName,CID)VALUES('$SubName','$CName')");
+ header("Refresh:0");
+ 
+	?>
+		<script type="text/javascript">
+		alert("Group Added Successfully!");
+		
+		</script>
+		
+	<?php 
+ }
+ 
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -144,13 +171,19 @@ $(document).ready(function(){
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="select">
-									<label for="gender">Category &nbsp; </label>
-									<select  class="form-control selectList" style="width:100%;Height:50%;" name="gender" id="gender" required>
-									<option value="">Please Select Category</option>
-									<optgroup label="Category">
-									<option value="A">A</option>
-									<option value="B">B</option>
-									<option value="C">C</option>
+									<label for="gender">Department &nbsp; </label>
+									<select  class="form-control selectList" style="width:100%;Height:50%;" name="cat" id="gender" required>
+									<option value="" disabled selected>Please Select a Category</option>
+									<optgroup label="Department">
+									<option value="1">New Year Cookies</option>
+									<option value="2">Raya Cookies</option>
+									<option value="3">Mooncakes</option>
+									<option value="4">Raw Material</option>
+									<option value="5">Packing Material</option>
+									<option value="6">General Use</option>
+									
+									
+									
 									</select>
                                 </div>
 								<hr>

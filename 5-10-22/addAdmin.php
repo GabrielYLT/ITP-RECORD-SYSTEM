@@ -46,7 +46,7 @@ if(mysqli_num_rows($select)) {
  
 }
 ?>
-?>
+
 
 <!DOCTYPE html>
 <html>
