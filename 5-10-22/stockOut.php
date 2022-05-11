@@ -34,10 +34,8 @@ $(document).ready(function(){
 	
 	<body>
 <div class="wrapper"  style="overflow-x:hidden;background:none;" >
-    
-    <div >
-	<!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+    <!-- Navbar -->
+      <div><nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle">
@@ -76,10 +74,13 @@ $(document).ready(function(){
             </ul>
           </div>
         </div>
-      </nav>
+      </nav></div>
       <!-- End Navbar -->
+	  <div style="height:10%;">
+      </div>
+    <div class="content">
 			<!-- row -->
-        <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;padding-top:12%" >
+        <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;" >
             <div class="tm-col tm-col-big" style="padding-top:1%;padding-bottom:1%;margin: auto; width: 700px;">
                 <div class="tm-block" style="background-color:#ff280061; border-radius:10px;">
                     <div class="row" style="margin: auto;">
