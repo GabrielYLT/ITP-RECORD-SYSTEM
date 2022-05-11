@@ -50,6 +50,13 @@ error_reporting(0);
 		
 	
 	<body style="overflow-x: hidden;">
+	<?php
+								if(isset($_GET["edit"]))
+								{
+								$ad_id=$_GET['id'];
+								$result=mysqli_query($connect,"SELECT * FROM admin WHERE AID='$ad_id'");
+								$row=mysqli_fetch_assoc($result);
+								}?>
 	<div class="wrapper"  >
 	  <div class="main-panel" id="main-panel">
 	       <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin:center;" >
@@ -57,29 +64,28 @@ error_reporting(0);
                 <div class="tm-block" style="background-color:#ff280061; border-radius:10px;width:auto;margin-top:5%">
                     <div class="row" style="margin: auto;">
                         <div class="col-12" >
-                            <h1 class="tm-block-title">Update Admin Account </h1>
+                            <h1 class="tm-title"><?php echo $row['AFirst'] . "&nbsp;" .$row['ALast'] . "&nbsp;" ."Account"?></h1>
                         </div>
                     </div>
+					<hr>
                     <div class="row" style="margin:auto;">
                         <div class="col-12">
                             <form name = "updatAdmin" method="post" class="tm-signup-form" >
-                                <div class="form-group">
-								<?php
-								if(isset($_GET["edit"]))
-								{
-								$ad_id=$_GET['id'];
-								$result=mysqli_query($connect,"SELECT * FROM admin WHERE AID='$ad_id'");
-								$row=mysqli_fetch_assoc($result);
-								}?>
+                                
+								
 								<?php
 if(isset($_POST["sbtn"]))
 {
+	$first_name = $_POST["fname"];
+	$last_name = $_POST["lname"];
 	$admin_name = $_POST["name"];
     $admin_email = $_POST["email"];
     $admin_phone = $_POST["phone"];
     $admin_gender = $_POST["gender"];
 	
 	mysqli_query($connect,"UPDATE admin SET AName='$admin_name',
+											AFirst='$first_name',
+											ALast='$last_name',
                                                AEmail='$admin_email',
                                                Department = '$admin_phone',
                                                AStatus = '$admin_gender'	
@@ -93,21 +99,28 @@ if(isset($_POST["sbtn"]))
 		<?php 
 	header("Refresh:0; url=admin_list.php");
 
-}
+}		
 mysqli_close($connect);
 ?>
+								<div class="form-group">
+                                    <label for="name">First Name</label>
+                                    <input value="<?php echo $row['AFirst']?>" placeholder="Enter Your Firstname Here" name="fname" type="text" class="form-control" pattern="[a-zA-Z'-'\s]*" title="Please Enter Your NRIC Name , no letter or symbols accepted !"   required>
+									 <label for="name">Last Name</label>
+                                    <input value="<?php echo $row['ALast']?>" placeholder="Enter Your Lastname Here" name="lname" type="text" class="form-control" pattern="[a-zA-Z'-'\s]*" title="Please Enter Your NRIC Name , no letter or symbols accepted !"  required>
+									<span id="errorname"></span>
+                                </div>
+								<div class="form-group">
                                     <label for="name">Username </label>
-                                    <input value="<?php echo $row['AName']?>" placeholder="Enter Your Username Here" name="name" type="text" class="form-control" pattern="[a-zA-Z'-'\s]*" title="Please Enter Your NRIC Name , no letter or symbols accepted !"  required >
+                                    <input value="<?php echo $row['AName']?>" placeholder="Enter Your Username Here" name="name" type="text" class="form-control" pattern="[a-zA-Z'-'\s]*" title="Please Enter Your NRIC Name , no letter or symbols accepted !"   readonly>
 									 
 									<span id="errorname"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Account Email </label>
-                                    <input value="<?php echo $row['AEmail']?>" placeholder="Please Enter Your Email" id="email" name="email" type="email" class="form-control validate" readonly>
+                                    <input value="<?php echo $row['AEmail']?>" placeholder="Please Enter Your Email" id="email" name="email" type="email" class="form-control validate" required >
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="select">
-                                    <br>
 									<label for="gender">Department &nbsp; </label>
 									<select  class="form-control selectList" style="width:100%;Height:50%;" name="phone" id="gender" required>
 									<option value="<?php echo $row['Department']?>"><?php echo $row['Department']?></option>
@@ -131,13 +144,14 @@ mysqli_close($connect);
                                 </div>
 								<hr>
                                 <div class="form-group">
-                                    <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                    <div>
 									
                                         <button type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Update 
                                         </button>
-										<a href="nChangPass.php?cPass&id=<?php echo $row['AID'];?>" class="btn btn-info" style="width:150px;height:auto;margin-left:70%;margin-top:-85px;">Change Password</a>
+										<a href="nChangPass.php?cPass&id=<?php echo $row['AID'];?>" class="btn btn-info" style="width:150px;height:auto;float:right;">Change Password</a>
 										
-										<a href="admin_list.php" class="btn btn-danger" style="height:suto;margin-left:175%;margin-top:-66%;">Return</a>
+										
                                     </div>
                                 </div>
                             </form>

@@ -133,9 +133,10 @@ $(document).ready(function(){
                         <div class="row">
                             <div class="row">
                             <div >
-								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;">Admin</h2>
-								<span style="float:right;width:30%;">
-                                <a href="accounts.php" class="btn btn-small btn-warning" style="opacity:65%;width:90%;margin-top:5%;margin-right:10%">Add Admin</a>
+							<hr>
+								<h2 class="tm-block-title d-inline-block" style="margin-left:2%;margin-top:2%;">View Admin List</h2>
+								<span style="float:right;width:35%;">
+                                <a href="accounts.php" class="btn btn-small btn-warning" style="opacity:65%;width:90%;margin-top:6%;">Add Admin</a>
 								</span>
 							</div>
 							<div>
@@ -171,7 +172,7 @@ $(document).ready(function(){
 
 									while($row = $result->fetch_assoc()) {
 									echo "<td style='text-align:center;color:black;'>#" . $row["AID"] . "</td>" ;
-									echo "<td style='text-align:center;color:black;'>" . $row["AName"]. "</td>" ; 
+									echo "<td style='text-align:center;color:black;'>" . $row["AFirst"]. "&nbsp;". $row["ALast"]. "</td>" ; 
 									echo "<td style='text-align:center;color:black;'>" . $row["AEmail"].  "</td>" ; 
 									echo "<td style='text-align:center;color:black;'>" .  $row["ADate"]. "</td>" ;
 									echo "<td style='text-align:center;color:black;'>". $row["Department"]. "</td>" ;
