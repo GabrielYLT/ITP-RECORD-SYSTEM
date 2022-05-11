@@ -2,6 +2,50 @@
 include("Connection.php");
 session_start();
 error_reporting(0);
+$error = "";
+$error1 ="";
+?>
+<?php
+if(isset($_POST["sbtn"]))
+{
+ $FName = $_POST["fname"];
+ $LName = $_POST["lname"];
+ $Admin_Name = $_POST["name"];
+ $Admin_Email = $_POST["email"];
+ $Admin_Password = $_POST["pass1"];
+ $Admin_PhoneNo = $_POST["dept"];
+ $AStat = "Active";
+ 
+
+if($_POST['pass'] === $_POST["pass1"]){
+$select = mysqli_query($connect, "SELECT * FROM admin WHERE AEmail = '".$_POST['email']."'");
+if(mysqli_num_rows($select)) {
+    $error="This email address is already registered";
+	?>
+		<script type="text/javascript">
+		alert("Email Already in Use!");
+		
+		</script>
+		
+	<?php 
+}else{
+	 
+	mysqli_query($connect,"INSERT INTO admin(AFirst,ALast,AName,AEmail,APassword,AStatus,Department)VALUES('$FName','$LName','$Admin_Name','$Admin_Email','$Admin_Password','$AStat','$Admin_PhoneNo')");
+ 
+	?>
+		<script type="text/javascript">
+		alert("Added Successfully!");
+		
+		</script>
+		
+	<?php 
+ }
+ }else{
+	 $error1="Password Entered Does not Match";
+ }
+ 
+}
+?>
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +100,7 @@ $(document).ready(function(){
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow:hidden;background:none;" >
+<div class="wrapper"  style="overflow-x:hidden;background:none;" >
     <div class="sidebar" data-color="red" style="opacity:85%;" >
 	
       <!--
@@ -138,49 +182,90 @@ $(document).ready(function(){
                     <div class="row" style="margin: auto;">
                         <div class="col-12">
                             <form name = "updatAdmin" method="post" class="tm-signup-form" enctype="multipart/form-data">
-                                <div class="form-group">
+							<div class="form-group">
+							<label for="name">First Name</label>
+                                    <input value="" placeholder="Enter Your Firstname Here" name="fname" type="text" class="form-control" pattern="[a-zA-Z'-'\s]*" title="Please Enter Your NRIC Name , no letter or symbols accepted !"   required>
+									 <label for="name">Last Name</label>
+                                    <input value="" placeholder="Enter Your Lastname Here" name="lname" type="text" class="form-control" pattern="[a-zA-Z'-'\s]*" title="Please Enter Your NRIC Name , no letter or symbols accepted !"  required>
+                            </div>
+								<div class="form-group">
                                     <label for="name">Username </label>
-                                    <input value="" placeholder="Enter Your Username Here" name="name" type="text" class="form-control" pattern="[a-zA-Z'-'\s]*" title="Please Enter Your NRIC Name , no letter or symbols accepted !"  required >
+                                    <input value="" placeholder="Enter Your Username Here" name="name" type="text" class="form-control" title="Please Enter Your NRIC Name , no letter or symbols accepted !"  required >
 									 
 									<span id="errorname"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Account Email </label>
                                     <input value="" placeholder="Please Enter Your Email" id="email" name="email" type="email" class="form-control validate" required>
-									<span id="erroremail"></span>	
+									<span style="color: red;"><br><?php echo $error ?> </span>	
+							
                                 </div>
 								<div class="form-group">
                                     <label for="name">Password </label>
-                                    <input value="" placeholder="Enter Your Username Here" name="name" type="text" class="form-control" pattern="[a-zA-Z'-'\s]*" title="Please Enter Your NRIC Name , no letter or symbols accepted !"  required >
+                                    <input value="" placeholder="Enter Your Username Here" name="pass" id="pass" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~=?\|<>/]).{8,}" title="Must contain at least 8 or more characters with at least one number,one uppercase letter,one lowercase letter and one special character!"  required onkeyup='check();' class="form-control validate" required>
 									 
 									<span id="errorname"></span>
                                 </div>
 								<div class="form-group">
                                     <label for="name">Confirm Password </label>
-                                    <input value="" placeholder="Enter Your Username Here" name="name" type="text" class="form-control" pattern="[a-zA-Z'-'\s]*" title="Please Enter Your NRIC Name , no letter or symbols accepted !"  required >
+                                    <input value="" placeholder="Enter Your Username Here" name="pass1" id="pass1" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~=?\|<>/]).{8,}" title="Must contain at least 8 or more characters with at least one number,one uppercase letter,one lowercase letter and one special character!"  required onkeyup='check();' class="form-control validate" required >
 									 
-									<span id="errorname"></span>
+									<div >
+										<label class="form-check-label" style="margin-left:22px;">
+										<br>
+										<input type="checkbox" class="form-check-input" onclick="myFunction()" style="width:15px;height:15px;" >Show Password
+										<script type="text/javascript">
+										function myFunction() {
+										var x = document.getElementById("pass");
+										var y = document.getElementById("pass1");
+										if (x.type === "password") {
+											x.type = "text";
+											y.type = "text";
+											
+										} else {
+											x.type = "password";
+											y.type = "password";
+										}
+										}</script>
+										</label>
+									</div>
+									<script>
+									var check = function() {
+									if(document.getElementById('pass').value == "" && document.getElementById('pass1').value == "" ){
+										document.getElementById('message').style.color = 'red';
+										document.getElementById('message').innerHTML = 'Please Enter a Password';
+									}else{
+										
+										
+									if (document.getElementById('pass').value ==
+									document.getElementById('pass1').value) {
+									document.getElementById('message').style.color = 'green';
+									document.getElementById('message').innerHTML = 'Password Match';
+									} else {
+									document.getElementById('message').style.color = 'red';
+									document.getElementById('message').innerHTML = 'Password Does Not Match';
+										}	
+									}
+									}
+									</script>
+									<br>
+									<span id="message" style="margin-left:3px"></span><span style="color: red;"><br> <?php echo $error1 ?> </span>	
+									</div>
+									<hr>
                                 </div>
 								<div class="select">
 									<label for="gender">Department &nbsp; </label>
-									<select  class="form-control selectList" style="width:100%;Height:50%;" name="gender" id="gender" required>
+									<select  class="form-control selectList" style="width:100%;Height:50%;" name="dept" id="dept" required>
 									<option value="">Select Department</option>
 									<optgroup label="Department">
-									<option value="p">P</option>
-									<option value="s">S</option>
-									<option value="a">A</option>
+									<option value="Product">Product</option>
+									<option value="General Use">General Use</option>
+									<option value="Raw Material">Raw Material</option>
+									<option value="Packing Material">Packing Material</option>
+									<option value="All Department">All Department</option>
+									
 									</select>
-                                </div>
-								<div class="select">
-                                    <br>
-									<label for="gender">Status &nbsp; </label>
-									<select  class="form-control selectList" style="width:100%;Height:50%;" name="gender" id="gender" required>
-									<option value="">Select Status</option>
-									<optgroup label="Status">
-									<option value="Active">Active</option>
-									<option value="Suspended">Suspended</option>
-									<option value="Blocked">Blocked</option>
-									</select>
+									<br>
                                 </div>
 								<hr>
                                 <div class="form-group">

@@ -128,7 +128,9 @@ mysqli_close($connect);
 									<option value="Product">Product</option>
 									<option value="General Use">General Use</option>
 									<option value="Raw Material">Raw Material</option>
+									<option value="Packing Material">Packing Material</option>
 									<option value="All Department">All Department</option>
+									
 									</select>
                                 </div>
 								<div class="select">
