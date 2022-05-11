@@ -63,17 +63,17 @@ $(document).ready(function(){
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="#" class="simple-text logo-mini">
           JMM
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="#" class="simple-text logo-normal">
           DASHBOARD
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper" >
         <ul class="nav">
-          <li class="active">
-            <a href="./dashboard.html">
+          <li>
+            <a href="#">
               <i class="now-ui-icons education_paper"></i>
               <p>Dashboard</p>
             </a>
@@ -97,7 +97,7 @@ $(document).ready(function(){
               <p>Notifications</p>
             </a>
           </li>
-		   <li>
+		   <li class="active">
             <a href="./map.html">
               <i class="now-ui-icons users_circle-08"></i>
               <p>Admin List</p>
