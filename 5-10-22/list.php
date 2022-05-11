@@ -30,11 +30,35 @@ $(document).ready(function(){
   });
 });
 </script>
+<style>
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px grey; 
+  border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #fff; 
+}
+</style>
 		</head>
 	
 	<body>
 <div class="wrapper"  style="overflow:hidden;" >
-    <div class="sidebar" data-color="blue"  >
+    <div class="sidebar" data-color="red" style="opacity:85%;" >
+	
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
@@ -46,7 +70,7 @@ $(document).ready(function(){
           DASHBOARD
         </a>
       </div>
-      <div class="sidebar-wrapper" id="sidebar-wrapper">
+      <div class="sidebar-wrapper" id="sidebar-wrapper" >
         <ul class="nav">
           <li class="active">
             <a href="./dashboard.html">
@@ -55,24 +79,17 @@ $(document).ready(function(){
             </a>
           </li>
           <li>
-            <a >
+            <a>
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <h3 class="dropdown-header" style="color:white;">Category</h6>
-			<?php
-									$conn = mysqli_connect("localhost", "root", "", "itp");
-
-									if ($conn->connect_error) {
-									die("Connection failed: " . $conn->connect_error);
-									}
-									$sql = "SELECT * FROM category";
-									$result = $conn->query($sql);
-									if ($result->num_rows > 0) {
-
-									while($row = $result->fetch_assoc()) {
-									echo "<a class='dropdown-item' style='width:70%;margin-left:13%;' href='#'><i class='now-ui-icons design_palette'></i>". $row["CName"] ."</a>";
-									}
-									}
-                                    ?> 
+              <h3 class="dropdown-header" style="color:white;">Category</h3>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>New Year Cookies</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Raya Cookies</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Mooncakes</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Packing Material</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Raw Material</a>
+			  <a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>General Use</a>
+			  
+			</a>
           </li>
           <li>
             <a href="./notifications.html">
@@ -106,13 +123,13 @@ $(document).ready(function(){
           </li>
           
         </ul>
-      </div>
+	  </div>
     </div>
     <div class="main-panel" id="main-panel">
 			<!-- row -->
             <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
                 <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col">
-                    <div class="tm-block h-100" style="background-color:#00b4ff; border-radius:10px;">
+                    <div class="tm-block h-100" style="background-color:#ff280061; border-radius:10px;">
                         <div class="row">
                             <div class="col-md-8 col-sm-12">
 								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;">List</h2>

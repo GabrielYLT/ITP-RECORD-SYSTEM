@@ -23,44 +23,38 @@ error_reporting(0);
 		<!-- https://getbootstrap.com/ -->
 		<link rel="stylesheet" href="css/tooplate.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
+<style>
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
 
-$(function() {
-  /* Rounded Dots Dark */
-  $("#content-1").mCustomScrollbar({
-    theme: "rounded-dots-dark"
-  });
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px grey; 
+  border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
 
-  /* Rounded Dark */
-  $("#content-2").mCustomScrollbar({
-    theme: "rounded-dark"
-  });
-
-  /* Inset Dark */
-  $("#content-3").mCustomScrollbar({
-    theme: "inset-3-dark"
-  });
-
-  /* 3d Dark */
-  $("#content-4").mCustomScrollbar({
-    theme: "3d-dark"
-  });
-
-  /* Dark Thin */
-  $("#content-5").mCustomScrollbar({
-    theme: "dark-thin"
-  });
-});
-</script>
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #fff; 
+}
+</style>
 		</head>
 		
 	
-	<body>
+	<body style="overflow-x: hidden;">
 	<div class="wrapper"  >
 	  <div class="main-panel" id="main-panel">
 	       <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin:center;" >
             <div class="tm-col tm-col-big" style="padding-top:1%;margin: auto; width:auto;">
-                <div class="tm-block" style="background-color:#ff280061; border-radius:10px;width:auto%;margin-top:5%">
+                <div class="tm-block" style="background-color:#ff280061; border-radius:10px;width:auto;margin-top:5%">
                     <div class="row" style="margin: auto;">
                         <div class="col-12" >
                             <h1 class="tm-block-title">Update Admin Account </h1>
@@ -167,7 +161,6 @@ mysqli_close($connect);
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper" >
-	  <div id="content-5" class="custom-scrollbar-js p-2">
         <ul class="nav">
           <li class="active">
             <a href="./dashboard.html">
@@ -220,7 +213,6 @@ mysqli_close($connect);
           </li>
           
         </ul>
-      </div>
 	  </div>
     </div>
 
