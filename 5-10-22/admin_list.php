@@ -92,31 +92,31 @@ $(document).ready(function(){
 			</a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="#">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Notifications</p>
             </a>
           </li>
 		   <li class="active">
-            <a href="./map.html">
+            <a href="#">
               <i class="now-ui-icons users_circle-08"></i>
               <p>Admin List</p>
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="#">
               <i class="now-ui-icons users_single-02"></i>
               <p>User Profile</p>
             </a>
           </li>
           <li>
-            <a href="./tables.html">
+            <a href="#">
               <i class="now-ui-icons loader_gear"></i>
               <p>Manage</p>
             </a>
           </li>
           <li>
-            <a href="./typography.html">
+            <a href="#">
               <i class="now-ui-icons media-1_button-power"></i>
               <p>Logout</p>
             </a>
