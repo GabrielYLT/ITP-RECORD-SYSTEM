@@ -56,7 +56,7 @@ $(document).ready(function(){
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow:hidden;" >
+<div class="wrapper"  style="overflow:hidden;background:none;" >
     <div class="sidebar" data-color="red" style="opacity:85%;" >
 	
       <!--
@@ -127,75 +127,46 @@ $(document).ready(function(){
     </div>
     <div class="main-panel" id="main-panel">
 			<!-- row -->
-            <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
-                <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col">
-                    <div class="tm-block h-100" style="background-color:#ff280061; border-radius:10px;">
-                        <div class="row">
-                            <div class="col-md-8 col-sm-12">
-								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;">List</h2>
-
-                            </div>
-                            <div class="col-md-4 col-sm-12 text-right"style="margin-left:-1%;margin-top:auto;">
-                                <div class="select">
-									<select  class="form-control selectList" style="width:100%;Height:50%;" name="SupCategory" id="SupCategory" required>
-									<option value="Group">Group</option>
-									<optgroup label="Group">
-									<option value="p">P</option>
-									<option value="s">S</option>
-									<option value="a">A</option>
+        <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;" >
+            <div class="tm-col tm-col-big" style="padding-top:1%;padding-bottom:1%;margin: auto; width: 700px;">
+                <div class="tm-block" style="background-color:#ff280061; border-radius:10px;">
+                    <div class="row" style="margin: auto;">
+                        <div class="col-12" >
+                            <h1 class="tm-block-title">Add New Group</h1>
+                        </div>
+                    </div>
+                    <div class="row" style="margin: auto;">
+                        <div class="col-12">
+                            <form name = "updatAdmin" method="post" class="tm-signup-form" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="email">Group Name </label>
+                                    <input value="" placeholder="Please Enter Product Name" id="name" name="SubCategory" type="text" class="form-control validate" required>
+									<span id="erroremail"></span>	
+                                </div>
+								<div class="select">
+									<label for="gender">Category &nbsp; </label>
+									<select  class="form-control selectList" style="width:100%;Height:50%;" name="gender" id="gender" required>
+									<option value="">Please Select Category</option>
+									<optgroup label="Category">
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
 									</select>
                                 </div>
-                            </div>
-							<div>
-							<hr>
+								<hr>
+                                <div class="form-group">
+                                    <div class="col-12 col-sm-6" style="float:right;">
+									
+                                        <button style="float:right;" type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Add</button>
 
-<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:30%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" name="searchname" placeholder="Search" ></h6>
-<hr>
-</div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-hover table-striped tm-table-striped-even mt-3">
-                                <thead>
-                                    <tr class="tm-bg-gray">
-                                        <th scope="col">Code</th>
-                                        <th scope="col" >Name</th>
-										<th scope="col" >Quantity</th>
-                                        
-										<th scope="col">&nbsp;</th>	
-                                    </tr>
-                                </thead>
-                                <tbody id="myTable">
-                                	<?php
-									$conn = mysqli_connect("localhost", "root", "", "itp");
-
-									if ($conn->connect_error) {
-									die("Connection failed: " . $conn->connect_error);
-									}
-									$sql = "SELECT * FROM admin";
-									$result = $conn->query($sql);
-									if ($result->num_rows > 0) {
-
-									while($row = $result->fetch_assoc()) {
-									echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#" . $row["AID"] . "</td>" ;
-									echo "<td>" . $row["AName"]. "</td>" ; 
-									echo "<td>" . $row["AEmail"].  "</td>" ; 
-                                    ?> 
-                                    <td>
-									<div class='btn-group'> 
-									<a href="details.php?details&id=<?php echo $row['AID'];?>" class="btn btn-secondary">Details</a>
-									</div>
-                                    <?php
-									echo "</tr>" ;
-									}
-									echo "</table>";
-									} else { echo "0 results"; }
-									?>    
-                                </tbody>
-                            </table>
-                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+			</div>
 		
 		
 
