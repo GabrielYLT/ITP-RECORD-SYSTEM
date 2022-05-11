@@ -24,12 +24,31 @@ error_reporting(0);
 		<link rel="stylesheet" href="css/tooplate.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
+
+$(function() {
+  /* Rounded Dots Dark */
+  $("#content-1").mCustomScrollbar({
+    theme: "rounded-dots-dark"
+  });
+
+  /* Rounded Dark */
+  $("#content-2").mCustomScrollbar({
+    theme: "rounded-dark"
+  });
+
+  /* Inset Dark */
+  $("#content-3").mCustomScrollbar({
+    theme: "inset-3-dark"
+  });
+
+  /* 3d Dark */
+  $("#content-4").mCustomScrollbar({
+    theme: "3d-dark"
+  });
+
+  /* Dark Thin */
+  $("#content-5").mCustomScrollbar({
+    theme: "dark-thin"
   });
 });
 </script>
@@ -134,8 +153,8 @@ mysqli_close($connect);
             </div>
 			</div>
 			</div>
-
-    <div class="sidebar" data-color="red" style="opacity:85%">
+    <div class="sidebar" data-color="red" style="opacity:85%;" >
+	
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
@@ -147,7 +166,8 @@ mysqli_close($connect);
           DASHBOARD
         </a>
       </div>
-      <div class="sidebar-wrapper" id="sidebar-wrapper">
+      <div class="sidebar-wrapper" id="sidebar-wrapper" >
+	  <div id="content-5" class="custom-scrollbar-js p-2">
         <ul class="nav">
           <li class="active">
             <a href="./dashboard.html">
@@ -156,24 +176,17 @@ mysqli_close($connect);
             </a>
           </li>
           <li>
-            <a >
+            <a>
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <h3 class="dropdown-header" style="color:white;">Category</h6>
-			<?php
-									$conn = mysqli_connect("localhost", "root", "", "itp");
-
-									if ($conn->connect_error) {
-									die("Connection failed: " . $conn->connect_error);
-									}
-									$sql = "SELECT * FROM category";
-									$result = $conn->query($sql);
-									if ($result->num_rows > 0) {
-
-									while($row = $result->fetch_assoc()) {
-									echo "<a class='dropdown-item' style='width:70%;margin-left:13%;' href='#'><i class='now-ui-icons design_palette'></i>". $row["CName"] ."</a>";
-									}
-									} else { echo "0 results"; }
-									?> 
+              <h3 class="dropdown-header" style="color:white;">Category</h3>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>New Year Cookies</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Raya Cookies</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Mooncakes</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Packing Material</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Raw Material</a>
+			  <a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>General Use</a>
+			  
+			</a>
           </li>
           <li>
             <a href="./notifications.html">
@@ -208,7 +221,9 @@ mysqli_close($connect);
           
         </ul>
       </div>
+	  </div>
     </div>
+
   
 		<!-- row -->
  
