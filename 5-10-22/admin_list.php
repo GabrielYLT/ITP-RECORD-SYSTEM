@@ -131,17 +131,17 @@ $(document).ready(function(){
                 <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col">
                     <div class="tm-block h-100" style="background-color:#ff280061; border-radius:10px;">
                         <div class="row">
-                            <div class="col-md-8 col-sm-12">
+                            <div class="row">
+                            <div >
 								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;">Admin</h2>
-
-                            </div>
-                            <div class="col-md-4 col-sm-12 text-right"style="margin-left:-2%;margin-top:10px;">
-                                <a href="accounts.php" class="btn btn-small btn-info" style="opacity:85%;">Add New Admin</a>
-                            </div>
+								<span style="float:right;width:30%;">
+                                <a href="accounts.php" class="btn btn-small btn-warning" style="opacity:65%;width:90%;margin-top:5%;margin-right:10%">Add Admin</a>
+								</span>
+							</div>
 							<div>
 							<hr>
 
-<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:30%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" name="searchname" placeholder="Search Admin " ></h6>
+<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:auto;height:auto;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" name="searchname" placeholder="Search Admin " ></h6>
 <hr>
 </div>
                         </div>
