@@ -3,42 +3,29 @@ include("Connection.php");
 session_start();
 error_reporting(0);
 ?>
+
 <?php
-if(!isset($_SESSION['id']))
-{
-?>
-    <script>
-    alert("Please login. Thank you!!!");
-    </script>
-    <?php
-    header("refresh:0.001;url=login.php");
-    //exit();
-}
-$Admin_id=$_SESSION['id'];
-$result=mysqli_query($connect,"SELECT * FROM admin WHERE AID='$Admin_id'");
-$row = mysqli_fetch_assoc($result);
-?>
-<?php	
 if(isset($_POST["sbtn"]))
 {
+	$productname = $_POST["pcode"];
+	$productprice = $_POST["qty"];
+	$productstock = $_POST["remark"];
+	$productStatus = "Stock In";
+	
 
- $Pcode = $_POST["pcode"];
- $PQty = $_POST["qty"];
- $SRemark = $_POST["remark"];
- $Status = "Stock In"; 
+	$sql=mysqli_query($connect,"INSERT INTO stock(PCode,Qty,AID,Remarks,Status) 
+	VALUES('$productname','$productprice','$_SESSION[id]','$productstock','$productStatus')");
 
- mysqli_query($connect,"INSERT INTO stock(PCode,Qty,AID,Remarks,Status)VALUES('$PCode','$PQty','$Admin_id','$SRemark','$Status')");
- header("Refresh:0");
- 
-	?>
+	header("refresh:0.001;url=addStock.php");
+?>
 		<script type="text/javascript">
-		alert("Stock Added Successfully!");
+		alert("Added Successfully!");
 		
 		</script>
 		
 	<?php 
- }
- 
+
+}
 ?>
 
 <!DOCTYPE html>
