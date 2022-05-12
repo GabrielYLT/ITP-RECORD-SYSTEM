@@ -180,7 +180,7 @@ label {
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#" . $row["AID"] . "</td>" ;
+									echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#" . $row["AID"] . "</td>" ;
 									echo "<td>" . $row["AName"]. "</td>" ; 
 									echo "<td>" . $row["AEmail"].  "</td>" ; 
                                     ?> 

@@ -28,7 +28,7 @@ if(isset($_GET["sendbtn"]))
 			$row=mysqli_fetch_assoc($result);
 			$_SESSION["id"]=$row["AID"];
 			
-			header("location:Test.html");
+			header("location:addStock.php");
 			
 		}
 		else	

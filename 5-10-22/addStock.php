@@ -3,6 +3,43 @@ include("Connection.php");
 session_start();
 error_reporting(0);
 ?>
+<?php
+if(!isset($_SESSION['id']))
+{
+?>
+    <script>
+    alert("Please login. Thank you!!!");
+    </script>
+    <?php
+    header("refresh:0.001;url=login.php");
+    //exit();
+}
+$Admin_id=$_SESSION['id'];
+$result=mysqli_query($connect,"SELECT * FROM admin WHERE AID='$Admin_id'");
+$row = mysqli_fetch_assoc($result);
+?>
+<?php	
+if(isset($_POST["sbtn"]))
+{
+
+ $Pcode = $_POST["pcode"];
+ $PQty = $_POST["qty"];
+ $SRemark = $_POST["remark"];
+ $Status = "Stock In"; 
+
+ mysqli_query($connect,"INSERT INTO stock(PCode,Qty,AID,Remarks,Status)VALUES('$PCode','$PQty','$Admin_id','$SRemark','$Status')");
+ header("Refresh:0");
+ 
+	?>
+		<script type="text/javascript">
+		alert("Stock Added Successfully!");
+		
+		</script>
+		
+	<?php 
+ }
+ 
+?>
 
 <!DOCTYPE html>
 <html>
@@ -29,6 +66,8 @@ $(document).ready(function(){
     });
   });
 });
+
+
 </script>
 		</head>
 	
@@ -92,29 +131,53 @@ $(document).ready(function(){
                     <div class="row" style="margin: auto;">
                         <div class="col-12">
                             <form name = "updatAdmin" method="post" class="tm-signup-form" enctype="multipart/form-data">
-								<div class="select">
+
+								<div >
 									<label for="gender">Product Code &nbsp; </label>
-									<select  class="form-control selectList" style="width:100%;Height:50%;" name="gender" id="gender" required>
-									<option value="">Please Select Category</option>
-									<optgroup label="Category">
-									<option value="A">A</option>
-									<option value="B">B</option>
-									<option value="C">C</option>
-									</select>
+									<input  type="text" class="form-control selectList" list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode" id="gender" required>
+									<datalist id="code">
+									<?php
+									$conn = mysqli_connect("localhost", "root", "", "itp");
+
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT * FROM product";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<option value='" . $row["PCode"] . "'>". $row["PCode"]."</option>";
+									}
+									} else { echo "0 results"; }
+									?>    
+									</datalist>
                                 </div>
-								<div class="form-group" style="margin-bottom:0%;">
-                                    <label for="email">Product Name </label>
-                                    <input value="" placeholder="Please Enter Product Name" id="name" name="SubCategory" type="text" class="form-control validate" required>
-									<span id="erroremail"></span>	
-                                </div>
+								
+								<div id="txtHint" style="margin-left:1%;margin-top:2%;">Product Name Will be Displayed Here...</div>
+								  <script>
+  function showCustomer(str) {
+    if (str == "") {
+      document.getElementById("txtHint").innerHTML = "";
+      return;
+    }
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+    xhttp.open("GET", "productName.php?q="+str);
+    xhttp.send();
+  }
+  </script>
+  <hr>
 								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="Qty">Quantity </label>
-                                    <input value="" placeholder="Please Enter Product Name" id="number" name="number" type="number" class="form-control validate" required>
+                                    <input value="" placeholder="Please Enter Product Name" id="number" name="qty" type="number" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="email">Remarks </label>
-                                    <textarea style="border-radius:10px;" value="" rows="4" cols="50" placeholder="Please Enter Product Name" id="email" name="email" type="email" class="form-control validate" required></textarea>
+                                    <textarea style="border-radius:10px;" value="" rows="4" cols="50" placeholder="Please Enter Product Name" id="email" name="remark" type="text" class="form-control validate"></textarea>
 									<span id="erroremail"></span>	
                                 </div>
 								<hr>

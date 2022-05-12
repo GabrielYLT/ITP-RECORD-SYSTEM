@@ -12,7 +12,7 @@ if(isset($_POST["sbtn"]))
 	$productstock = $_POST["category"];
 
 
-	$sql=mysqli_query($connect,"INSERT INTO product(PCode,Pname,CID,PImage)VALUES('$productcode','$productname','$productstock','$product_image')");
+	$sql=mysqli_query($connect,"INSERT INTO product(PCode,PName,CID,PImage)VALUES('$productcode','$productname','$productstock','$product_image')");
 
 	header("refresh:0.001;url=addProduct.php");
 	$target = 'images/' . $product_image;
