@@ -164,7 +164,7 @@ $(document).ready(function(){
                                 </div>
 								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="email">Remarks </label>
-                                    <textarea style="border-radius:10px;" value="" rows="4" cols="50" placeholder="Please Enter Product Name" id="email" name="remark" type="text" class="form-control validate"></textarea>
+                                    <textarea style="border-radius:10px;" value="" rows="4" cols="50" placeholder="Remarks" id="email" name="remark" type="text" class="form-control validate"></textarea>
 									<span id="erroremail"></span>	
                                 </div>
 								<hr>

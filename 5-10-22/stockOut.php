@@ -4,6 +4,30 @@ session_start();
 error_reporting(0);
 ?>
 
+<?php
+if(isset($_POST["sbtn"]))
+{
+	$productname = $_POST["pcode"];
+	$productprice = $_POST["qty"];
+	$productstock = $_POST["remark"];
+	$productStatus = "Stock Out";
+	
+
+	$sql=mysqli_query($connect,"INSERT INTO stock(PCode,Qty,AID,Remarks,Status) 
+	VALUES('$productname','$productprice','$_SESSION[id]','$productstock','$productStatus')");
+
+	header("refresh:0.001;url=addStock.php");
+?>
+		<script type="text/javascript">
+		alert("Added Successfully!");
+		
+		</script>
+		
+	<?php 
+
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -29,13 +53,16 @@ $(document).ready(function(){
     });
   });
 });
+
+
 </script>
 		</head>
 	
 	<body>
 <div class="wrapper"  style="overflow-x:hidden;background:none;" >
-    <!-- Navbar -->
-      <div><nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+    
+	<!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle">
@@ -74,7 +101,7 @@ $(document).ready(function(){
             </ul>
           </div>
         </div>
-      </nav></div>
+      </nav>
       <!-- End Navbar -->
 	  <div style="height:10%;">
       </div>
@@ -91,36 +118,60 @@ $(document).ready(function(){
                     <div class="row" style="margin: auto;">
                         <div class="col-12">
                             <form name = "updatAdmin" method="post" class="tm-signup-form" enctype="multipart/form-data">
-								<div class="select">
+
+								<div >
 									<label for="gender">Product Code &nbsp; </label>
-									<select  class="form-control selectList" style="width:100%;Height:50%;" name="gender" id="gender" required>
-									<option value="">Please Select Category</option>
-									<optgroup label="Category">
-									<option value="A">A</option>
-									<option value="B">B</option>
-									<option value="C">C</option>
-									</select>
+									<input  type="text" class="form-control selectList" list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode" id="gender" required>
+									<datalist id="code">
+									<?php
+									$conn = mysqli_connect("localhost", "root", "", "itp");
+
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT * FROM product";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<option value='" . $row["PCode"] . "'>". $row["PCode"]."</option>";
+									}
+									} else { echo "0 results"; }
+									?>    
+									</datalist>
                                 </div>
+								
+								<div id="txtHint" style="margin-left:1%;margin-top:2%;">Product Name Will be Displayed Here...</div>
+								  <script>
+  function showCustomer(str) {
+    if (str == "") {
+      document.getElementById("txtHint").innerHTML = "";
+      return;
+    }
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+    xhttp.open("GET", "productName.php?q="+str);
+    xhttp.send();
+  }
+  </script>
+  <hr>
 								<div class="form-group" style="margin-bottom:0%;">
-                                    <label for="email">Product Name </label>
-                                    <input value="" placeholder="Please Enter Product Name" id="name" name="SubCategory" type="text" class="form-control validate" required>
-									<span id="erroremail"></span>	
-                                </div>
-								<div class="form-group" style="margin-bottom:0%;">
-                                    <label for="email">Quantity </label>
-                                    <input value="" placeholder="Please Enter Product Quantity" id="number" name="number" type="number" class="form-control validate" required>
+                                    <label for="Qty">Quantity </label>
+                                    <input value="" placeholder="Please Enter Product Name" id="number" name="qty" type="number" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="email">Remarks </label>
-                                    <textarea style="border-radius:10px;" value="" rows="4" cols="50" placeholder="Please Enter Product Name" id="email" name="email" type="email" class="form-control validate" required></textarea>
+                                    <textarea style="border-radius:10px;" value="" rows="4" cols="50" placeholder="Remarks" id="email" name="remark" type="text" class="form-control validate"></textarea>
 									<span id="erroremail"></span>	
                                 </div>
 								<hr>
                                 <div class="form-group">
                                     <div class="col-12 col-sm-6" style="float:right;">
 									
-                                        <button style="float:right;" type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Update</button>
+                                        <button style="float:right;" type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Add</button>
 
                                     </div>
                                 </div>
