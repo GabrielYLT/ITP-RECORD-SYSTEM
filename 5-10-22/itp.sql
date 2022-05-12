@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2022 at 08:28 AM
+-- Generation Time: May 12, 2022 at 04:45 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -30,6 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `AID` int(255) NOT NULL,
   `AName` varchar(30) NOT NULL,
+  `AFirst` varchar(50) NOT NULL,
+  `ALast` varchar(50) NOT NULL,
   `AEmail` varchar(255) NOT NULL,
   `APassword` varchar(255) NOT NULL,
   `AStatus` varchar(255) NOT NULL DEFAULT 'Active',
@@ -41,8 +43,10 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`AID`, `AName`, `AEmail`, `APassword`, `AStatus`, `ADate`, `Department`) VALUES
-(1, 'Matrix', 'Matrix@gmail.com', 'Qwer@1234', 'Active', '2022-05-09', 'All Department');
+INSERT INTO `admin` (`AID`, `AName`, `AFirst`, `ALast`, `AEmail`, `APassword`, `AStatus`, `ADate`, `Department`) VALUES
+(1, 'Matrix', 'Matt', 'Tan', 'Matrix@gmail.com', 'Qwer@1234', 'Active', '2022-05-09', 'All Department'),
+(2, 'DAVID1122', 'David', 'Chan', 'DavidTeo@gmail.com', 'Qwer@1234', 'Active', '2022-05-11', 'Packing Material'),
+(3, 'Charis453', 'Charis', 'Lee', 'CharisLeeeee@gmail.com', 'Qwer@1234', 'Blocked', '2022-05-11', 'General Use');
 
 -- --------------------------------------------------------
 
@@ -61,7 +65,11 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`CID`, `CName`) VALUES
 (1, 'New Year Cookies'),
-(2, 'Raya Cookies');
+(2, 'Raya Cookies'),
+(3, 'Mooncakes'),
+(4, 'Raw Material'),
+(5, 'Packing Material'),
+(6, 'General Use');
 
 -- --------------------------------------------------------
 
@@ -70,9 +78,10 @@ INSERT INTO `category` (`CID`, `CName`) VALUES
 --
 
 CREATE TABLE `product` (
-  `PCode` int(30) NOT NULL,
+  `PCode` varchar(255) NOT NULL,
   `PName` varchar(255) NOT NULL,
-  `SID` int(30) NOT NULL
+  `CID` int(30) NOT NULL,
+  `PImage` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -83,23 +92,11 @@ CREATE TABLE `product` (
 
 CREATE TABLE `stock` (
   `SID` int(255) NOT NULL,
-  `PCode` int(255) NOT NULL,
+  `PCode` varchar(255) NOT NULL,
   `Qty` int(255) NOT NULL,
   `AID` int(255) NOT NULL,
   `DateAdded` datetime NOT NULL DEFAULT current_timestamp(),
   `Remarks` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `subcategory`
---
-
-CREATE TABLE `subcategory` (
-  `SubID` int(20) NOT NULL,
-  `SubName` varchar(255) NOT NULL,
-  `CID` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -122,22 +119,16 @@ ALTER TABLE `category`
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`PCode`);
+  ADD PRIMARY KEY (`PCode`),
+  ADD KEY `product_ibfk_1` (`CID`);
 
 --
 -- Indexes for table `stock`
 --
 ALTER TABLE `stock`
   ADD PRIMARY KEY (`SID`),
-  ADD KEY `PCode` (`PCode`),
-  ADD KEY `AID` (`AID`);
-
---
--- Indexes for table `subcategory`
---
-ALTER TABLE `subcategory`
-  ADD PRIMARY KEY (`SubID`),
-  ADD KEY `CID` (`CID`);
+  ADD KEY `AID` (`AID`),
+  ADD KEY `PCode` (`PCode`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -147,7 +138,7 @@ ALTER TABLE `subcategory`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `AID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `AID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `stock`
@@ -156,27 +147,21 @@ ALTER TABLE `stock`
   MODIFY `SID` int(255) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `subcategory`
---
-ALTER TABLE `subcategory`
-  MODIFY `SubID` int(20) NOT NULL AUTO_INCREMENT;
-
---
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`CID`) REFERENCES `category` (`CID`);
 
 --
 -- Constraints for table `stock`
 --
 ALTER TABLE `stock`
-  ADD CONSTRAINT `stock_ibfk_1` FOREIGN KEY (`PCode`) REFERENCES `product` (`PCode`),
-  ADD CONSTRAINT `stock_ibfk_2` FOREIGN KEY (`AID`) REFERENCES `admin` (`AID`);
-
---
--- Constraints for table `subcategory`
---
-ALTER TABLE `subcategory`
-  ADD CONSTRAINT `subcategory_ibfk_1` FOREIGN KEY (`CID`) REFERENCES `category` (`CID`);
+  ADD CONSTRAINT `stock_ibfk_2` FOREIGN KEY (`AID`) REFERENCES `admin` (`AID`),
+  ADD CONSTRAINT `stock_ibfk_3` FOREIGN KEY (`PCode`) REFERENCES `product` (`PCode`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
