@@ -3,6 +3,39 @@ include("Connection.php");
 session_start();
 error_reporting(0);
 ?>
+<?php
+if(isset($_POST["sbtn"]))
+{
+	$productname = $_POST["pname"];
+	$product_image = $_FILES['profileImage']['name'];
+	$productcode = $_POST["pcode"];
+	$productstock = $_POST["category"];
+
+
+	$sql=mysqli_query($connect,"INSERT INTO product(PCode,Pname,CID,PImage)VALUES('$productcode','$productname','$productstock','$product_image')");
+
+	header("refresh:0.001;url=addProduct.php");
+	$target = 'images/' . $product_image;
+        if(move_uploaded_file($_FILES['profileImage']['tmp_name'],$target))
+        {
+          $msg = "upload successfully";
+		  $css_class = "alert-sucess";
+        }
+        else{
+          $msg = "problem occur.";
+		  $css_class = "alert-danger";
+        }
+
+?>
+		<script type="text/javascript">
+		alert("Added Successfully!");
+		
+		</script>
+		
+	<?php 
+
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -11,6 +44,7 @@ error_reporting(0);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 		<!-- CSS Files -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"/>
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
 		<!-- CSS Files -->
@@ -52,6 +86,10 @@ $(document).ready(function(){
 ::-webkit-scrollbar-thumb:hover {
   background: #fff; 
 }
+
+	
+
+
 </style>
 		</head>
 	
@@ -138,25 +176,32 @@ $(document).ready(function(){
                     <div class="row" style="margin: auto;">
                         <div class="col-12">
                             <form name = "updatAdmin" method="post" class="tm-signup-form" enctype="multipart/form-data">
+							<div >
+								<label for="profileImage">Product Image</label>
+								<input type="file" name="profileImage" id="profileImage" class="form-control">
+							</div>
                                 <div class="form-group">
                                     <label for="name">Product Code </label>
-                                    <input value="" placeholder="Please Enter Product Code Here" name="name" type="text" class="form-control" pattern="[a-zA-Z'-'\s]*" title="Please Enter Your NRIC Name , no letter or symbols accepted !"  required >
+                                    <input value="" placeholder="Please Enter Product Code Here" name="pcode" type="text" class="form-control"  required >
 									 
 									<span id="errorname"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Product Name </label>
-                                    <input value="" placeholder="Please Enter Product Name" id="email" name="email" type="email" class="form-control validate" required>
+                                    <input value="" placeholder="Please Enter Product Name" id="email" name="pname" type="text" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="select">
-									<label for="gender">Group &nbsp; </label>
-									<select  class="form-control selectList" style="width:100%;Height:50%;" name="gender" id="gender" required>
-									<option value="">Please Select Product Group</option>
+									<label for="gender">Category &nbsp; </label>
+									<select  class="form-control selectList" style="width:100%;Height:50%;" name="category" id="gender" required>
+									<option value="">Please Select Product Category</option>
 									<optgroup label="Group">
-									<option value="A">A</option>
-									<option value="B">B</option>
-									<option value="C">C</option>
+									<option value="1">New Year Cookies</option>
+									<option value="2">Raya Cookies</option>
+									<option value="3">Mooncakes</option>
+									<option value="4">Raw Material </option>
+									<option value="5">Packing Material</option>
+									<option value="6">General Use</option>
 									</select>
                                 </div>
 								<hr>
@@ -173,8 +218,7 @@ $(document).ready(function(){
                 </div>
             </div>
 			</div>
-		
-		
+
 
   </div>
 
