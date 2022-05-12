@@ -64,6 +64,7 @@ if(mysqli_num_rows($select)) {
 		<!-- https://getbootstrap.com/ -->
 		<link rel="stylesheet" href="css/tooplate.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -142,7 +143,7 @@ $(document).ready(function(){
               <p>Notifications</p>
             </a>
           </li>
-		   <li class="active">
+		   <li>
             <a href="#">
               <i class="now-ui-icons users_circle-08"></i>
               <p>Admin List</p>
@@ -170,20 +171,123 @@ $(document).ready(function(){
         </ul>
 	  </div>
     </div>
-    <div class="main-panel" id="main-panel" style="background-image: url('https://res.cloudinary.com/lamboplace/image/upload/f_auto,q_auto/v1591257893/products/yjofydgnvmqfsoi5p2hc.jpg');">
+    <div class="main-panel" id="main-panel" style="background-image: url('');">
 		<!-- row -->
-		<div class="content" style="margin-left:15%;margin-right:15%">
-			<br><br><br><br>
-				<a href="addAdmin.php"><button type="button" class="btn btn-primary btn-lg" style="width: 350px;height: 200px;background-color:#ffc4b961"><h1 style="color:white;"><b>Add Admin</b></h3></button></a>
-				<a href="#"><button type="button" class="btn btn-primary btn-lg" style="width: 350px;height: 200px;float:right;background-color:#ffc4b961"><h1 style="color:white;"><b>Add Product</b></h3></button></a>
-				<a href="#"><button type="button" class="btn btn-primary btn-lg" style="width: 350px;height: 200px;background-color:#ffc4b961"><h1 style="color:white;"><b>Stock In</b></h3></button></a>
-				<a href="#"><button type="button" class="btn btn-primary btn-lg" style="width: 350px;height: 200px;float:right;background-color:#ffc4b961"><h1 style="color:white;"><b>Stock Out</b></h3></button></a>
-			<br><br><br><br><br><br><br><br><br>
+		<div class="panel-header panel-header-lg">
+			<canvas id="chart" style="width:80%;height:80%;"></canvas>
+		 </div>
+		<script>
+			let ctx = document.getElementById("chart").getContext('2d');
+
+			var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+			gradientStroke.addColorStop(0, "#fff");
+			gradientStroke.addColorStop(1, "#fff");
+
+			var gradientBkgrd = ctx.createLinearGradient(0, 100, 0, 400);
+			gradientBkgrd.addColorStop(0, "rgba(255,255,255,0.3)");
+			gradientBkgrd.addColorStop(1, "rgba(255,255,255,0)");
+
+			let draw = Chart.controllers.line.prototype.draw;
+			Chart.controllers.line = Chart.controllers.line.extend({
+				draw: function() {
+					draw.apply(this, arguments);
+					let ctx = this.chart.chart.ctx;
+					let _stroke = ctx.stroke;
+					ctx.stroke = function() {
+						ctx.save();
+						//ctx.shadowColor = 'rgba(244,94,132,0.8)';
+						ctx.shadowBlur = 8;
+						ctx.shadowOffsetX = 0;
+						ctx.shadowOffsetY = 6;
+						_stroke.apply(this, arguments)
+						ctx.restore();
+					}
+				}
+			});
+
+			var xValues = ['Mon','Tue','Wed','Thus','Fri','Sat','Sun'];
+			var yValues = [20,57,180,80,20,79,44];
+
+
+			var chart = new Chart(ctx, {
+				// The type of chart we want to create
+				type: 'line',
+
+				// The data for our dataset
+				data: {
+					labels: xValues,
+					datasets: [{
+						label: "Stock",
+						backgroundColor: gradientBkgrd,
+						borderColor: gradientStroke,
+						data: yValues,
+						pointBorderColor: "rgba(240,240,240,0.8)",
+						pointBackgroundColor: "rgba(240,240,240,0.6)",
+						pointBorderWidth: 8,
+						pointHoverRadius: 8,
+						pointHoverBackgroundColor: gradientStroke,
+						pointHoverBorderColor: "rgba(220,220,220,1)",
+						pointHoverBorderWidth: 4,
+						pointRadius: 1,
+						borderWidth: 2,
+						pointHitRadius: 16,
+						fontColor: '#fff'
+					}]
+				},
+
+				// Configuration options go here
+				options: {
+				  tooltips: {
+					backgroundColor:'#fff',
+					displayColors:false,
+					   titleFontColor: '#000',
+					bodyFontColor: '#000',
+					},      
+				  legend: {
+						display: false
+				  },
+					scales: {
+						xAxes: [{
+							gridLines: {
+								display:false
+							},
+							ticks: {fontColor: 'white'}
+						}],
+						yAxes: [{
+							ticks: {fontColor: 'white',stepSize: 40}
+						}],
+					}
+				}
+			});
+		</script>
+		<div class="content">
+			<div class="row">
+			  <div class="col-lg-4 col-md-6">
+				<div class="card card-chart">
+				  <div class="card-header">
+					<h5 class="card-category">Email Statistics</h5>
+					<h4 class="card-title">24 Hours Performance</h4>
+				  </div>
+				</div>
+			  </div>
+			  <div class="col-lg-4 col-md-6">
+				<div class="card card-chart">
+				  <div class="card-header">
+					<h5 class="card-category">Email Statistics</h5>
+					<h4 class="card-title">24 Hours Performance</h4>
+				  </div>
+				</div>
+			  </div>
+			  <div class="col-lg-4 col-md-6">
+				<div class="card card-chart">
+				  <div class="card-header">
+					<h5 class="card-category">Email Statistics</h5>
+					<h4 class="card-title">24 Hours Performance</h4>
+				  </div>
+				</div>
+			  </div>
+			</div>
 		</div>
-		
-		
-
-  </div>
-
+</div>
 	</body>
 </html>
