@@ -12,7 +12,7 @@ error_reporting(0);
 	
 		<!-- CSS Files -->
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
+		<link href="assets/css/now-ui-dashboard.css" rel="stylesheet" />
 		<!-- CSS Files -->
   <link id="pagestyle" href="assets/css/argon-dashboard.css" rel="stylesheet" />
 		<!-- https://fontawesome.com/ -->
