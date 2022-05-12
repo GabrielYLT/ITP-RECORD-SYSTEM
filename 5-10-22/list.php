@@ -12,7 +12,7 @@ error_reporting(0);
 	
 		<!-- CSS Files -->
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
+		<link href="assets/css/now-ui-dashboard.css" rel="stylesheet" />
 		<!-- CSS Files -->
   <link id="pagestyle" href="assets/css/argon-dashboard.css" rel="stylesheet" />
 		<!-- https://fontawesome.com/ -->
@@ -52,12 +52,16 @@ $(document).ready(function(){
 ::-webkit-scrollbar-thumb:hover {
   background: #fff; 
 }
+
+label {
+	color:black;
+}
 </style>
 		</head>
 	
 	<body>
 <div class="wrapper"  style="overflow:hidden;" >
-    <div class="sidebar" data-color="red" style="opacity:85%;" >
+    <div class="sidebar" style="opacity:85%;" >
 	
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
@@ -82,7 +86,7 @@ $(document).ready(function(){
             <a>
               <i class="now-ui-icons design_bullet-list-67"></i>
               <h3 class="dropdown-header" style="color:white;">Category</h3>
-			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>New Year Cookies</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?view&cid=1"><i class="now-ui-icons design_palette"></i>New Year Cookies</a>
 			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Raya Cookies</a>
 			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Mooncakes</a>
 			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Packing Material</a>
@@ -125,11 +129,11 @@ $(document).ready(function(){
         </ul>
 	  </div>
     </div>
-    <div class="main-panel" id="main-panel">
+    <div class="main-panel" id="main-panel" style="height:100%">
 			<!-- row -->
             <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
                 <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col">
-                    <div class="tm-block h-100" style="background-color:#ff280061; border-radius:10px;">
+                    <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                         <div class="row">
                             <div class="col-md-8 col-sm-12">
 								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;">List</h2>

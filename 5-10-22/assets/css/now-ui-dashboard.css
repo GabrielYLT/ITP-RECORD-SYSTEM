@@ -2499,7 +2499,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
 }
 
 .navbar.navbar-transparent {
-  background-color: #2dbeff !important;
+  background-color: #ff280061 !important;
   box-shadow: none;
   color: #FFFFFF;
 }
