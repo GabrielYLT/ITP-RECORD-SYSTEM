@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2022 at 04:45 AM
+-- Generation Time: May 13, 2022 at 06:29 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -80,9 +80,18 @@ INSERT INTO `category` (`CID`, `CName`) VALUES
 CREATE TABLE `product` (
   `PCode` varchar(255) NOT NULL,
   `PName` varchar(255) NOT NULL,
+  `PQty` int(255) NOT NULL,
+  `QType` varchar(255) NOT NULL,
   `CID` int(30) NOT NULL,
   `PImage` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`PCode`, `PName`, `PQty`, `QType`, `CID`, `PImage`) VALUES
+('Vc8827B', 'Test', 0, '个', 4, '2..jpeg');
 
 -- --------------------------------------------------------
 
@@ -96,8 +105,16 @@ CREATE TABLE `stock` (
   `Qty` int(255) NOT NULL,
   `AID` int(255) NOT NULL,
   `DateAdded` datetime NOT NULL DEFAULT current_timestamp(),
-  `Remarks` varchar(255) DEFAULT NULL
+  `Remarks` varchar(255) DEFAULT NULL,
+  `Status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stock`
+--
+
+INSERT INTO `stock` (`SID`, `PCode`, `Qty`, `AID`, `DateAdded`, `Remarks`, `Status`) VALUES
+(6, 'Vc8827B', 3, 1, '2022-05-13 12:28:34', '-', 'Stock In');
 
 --
 -- Indexes for dumped tables
@@ -144,7 +161,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `SID` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `SID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
