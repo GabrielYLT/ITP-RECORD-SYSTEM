@@ -6,11 +6,28 @@ error_reporting(0);
 <?php	
 if(isset($_POST["sbtn"]))
 {
+	
+	
 	$productname = $_POST["pcode"];
 	$productprice = $_POST["qty"];
 	$productstock = $_POST["remark"];
 	$productStatus = "Stock Out";
 	
+	$result1=mysqli_query($connect,"SELECT * FROM product WHERE PCode='$_POST[pcode]'");
+	$row1 = mysqli_fetch_assoc($result1);
+	
+	if($row1["PQty"] < $_POST["qty"])
+	{
+		$name = $row1["PName"];
+		$qty =$row1["PQty"];
+		header("refresh:0.001;url=stockOut.php");
+		
+		echo "<script type='text/javascript'>
+		alert('Total Number of Stock for ".$name ." is " . $qty." . The Amount You Entered is ". $_POST["qty"] ." WHich is Greater/Larger Than the Stock You Currently Have in Store');
+		
+		</script>" ;
+	
+	}else{
 	mysqli_query($connect,"UPDATE product SET PQty = PQty - '$productprice '
                                                WHERE PCode= '$productname'");
 	
@@ -29,7 +46,7 @@ if(isset($_POST["sbtn"]))
 		
 	<?php 
  }
- 
+}
 ?>
 
 <!DOCTYPE html>
