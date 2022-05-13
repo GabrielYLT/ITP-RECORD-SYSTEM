@@ -27,9 +27,12 @@ if(isset($_GET["sendbtn"]))
 		{
 			$row=mysqli_fetch_assoc($result);
 			$_SESSION["id"]=$row["AID"];
+			if($row["Department"]== 'All Department'){
 			
-			header("location:addStock.php");
-			
+			header("location:dashboard.php");
+			}else{
+				header("location:generalD.php");
+			}
 		}
 		else	
 		{
