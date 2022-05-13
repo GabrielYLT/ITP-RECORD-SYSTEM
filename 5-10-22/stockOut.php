@@ -180,12 +180,12 @@ $(document).ready(function(){
   <hr>
 								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="Qty">Quantity </label>
-                                    <input value="" placeholder="Please Enter Product Name" id="number" name="qty" type="number" class="form-control validate" required>
+                                    <input value="" placeholder="Please Enter Product Name" min="0" id="number" name="qty" type="number" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="email">Remarks </label>
-                                    <textarea style="border-radius:10px;" value="" rows="4" cols="50" placeholder="Remarks" id="email" name="remark" type="text" class="form-control validate"></textarea>
+                                    <textarea style="border-radius:10px;" value="" rows="4" cols="50"  placeholder="Remarks" id="email" name="remark" type="text" class="form-control validate"></textarea>
 									<span id="erroremail"></span>	
                                 </div>
 								<hr>
