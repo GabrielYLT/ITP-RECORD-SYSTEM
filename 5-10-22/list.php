@@ -136,19 +136,8 @@ label {
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                         <div class="row">
                             <div class="col-md-8 col-sm-12">
-								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;">List</h2>
+								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;">List</h2>
 
-                            </div>
-                            <div class="col-md-4 col-sm-12 text-right"style="margin-left:-1%;margin-top:auto;">
-                                <div class="select">
-									<select  class="form-control selectList" style="width:100%;Height:50%;" name="SupCategory" id="SupCategory" required>
-									<option value="Group">Group</option>
-									<optgroup label="Group">
-									<option value="p">P</option>
-									<option value="s">S</option>
-									<option value="a">A</option>
-									</select>
-                                </div>
                             </div>
 							<div>
 							<hr>
@@ -161,9 +150,10 @@ label {
                             <table class="table table-hover table-striped tm-table-striped-even mt-3">
                                 <thead>
                                     <tr class="tm-bg-gray">
-                                        <th scope="col">Code</th>
-                                        <th scope="col" >Name</th>
-										<th scope="col" >Quantity</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Image</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Name</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
                                         
 										<th scope="col">&nbsp;</th>	
                                     </tr>
@@ -175,18 +165,19 @@ label {
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT * FROM admin";
+									$sql = "SELECT * FROM product";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#" . $row["AID"] . "</td>" ;
-									echo "<td>" . $row["AName"]. "</td>" ; 
-									echo "<td>" . $row["AEmail"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PQty"]. $row["QType"] ."</td>" ; 
                                     ?> 
                                     <td>
-									<div class='btn-group'> 
-									<a href="details.php?details&id=<?php echo $row['AID'];?>" class="btn btn-secondary">Details</a>
+									<div class="btn-group"> 
+									<a href="details.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary">Details</a>
 									</div>
                                     <?php
 									echo "</tr>" ;

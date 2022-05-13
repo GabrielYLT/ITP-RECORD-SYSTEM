@@ -146,42 +146,52 @@ $(document).ready(function(){
                             <table class="table table-hover table-striped tm-table-striped-even mt-3">
                                 <thead>
                                     <tr class="tm-bg-gray">
-                                        <th scope="col">Code</th>
-                                        <th scope="col" >Name</th>
-										<th scope="col" >Quantity</th>
-										<th scope="col" >Admin Name</th>
-										<th scope="col" >Date</th>
-                                        
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Admin Name</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;width:15%">Remarks</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Status</th>
 										<th scope="col">&nbsp;</th>	
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
                                 	<?php
 									$conn = mysqli_connect("localhost", "root", "", "itp");
-
+									if(isset($_GET["details"])){
+								
+									$ad_id=$_GET['id'];	
+							
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT * FROM admin";
+									$sql = "SELECT stock.PCode, product.PName, stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status
+									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.PCode ='$ad_id'";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#" . $row["AID"] . "</td>" ;
-									echo "<td>" . $row["AName"]. "</td>" ; 
-									echo "<td>" . $row["AEmail"].  "</td>" ; 
-									echo "<td>" . $row["Date"].  "</td>" ; 
-									echo "<td>" . $row["AEmail"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["DateAdded"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Remarks"].  "</td>" ; 
+									if($row["Status"] == 'Stock In'){
+									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
+									}else{
+										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
+									}
                                     ?> 
                                     <td>
-									<div class='btn-group'> 
-									<a href="Edit.php?edit&id=<?php echo $row['AID'];?>" class="btn btn-secondary">Details</a>
-									</div>
+
                                     <?php
 									echo "</tr>" ;
 									}
 									echo "</table>";
 									} else { echo "0 results"; }
+									}
 									?>    
                                 </tbody>
                             </table>
