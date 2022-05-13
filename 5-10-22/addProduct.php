@@ -9,10 +9,11 @@ if(isset($_POST["sbtn"]))
 	$productname = $_POST["pname"];
 	$product_image = $_FILES['profileImage']['name'];
 	$productcode = $_POST["pcode"];
+	$type = $_POST["type"];
 	$productstock = $_POST["category"];
 
 
-	$sql=mysqli_query($connect,"INSERT INTO product(PCode,PName,CID,PImage)VALUES('$productcode','$productname','$productstock','$product_image')");
+	$sql=mysqli_query($connect,"INSERT INTO product(PCode,PName,QType,CID,PImage)VALUES('$productcode','$productname','$type','$productstock','$product_image')");
 
 	header("refresh:0.001;url=addProduct.php");
 	$target = 'images/' . $product_image;
@@ -182,7 +183,7 @@ $(document).ready(function(){
 							</div>
                                 <div class="form-group">
                                     <label for="name">Product Code </label>
-                                    <input value="" placeholder="Please Enter Product Code Here" name="pcode" type="text" class="form-control"  required >
+                                    <input value="" placeholder="Please Enter Product Code Here" name="pcode" type="text" class="form-control"  autocomplete="off" required >
 									 
 									<span id="errorname"></span>
                                 </div>
@@ -190,6 +191,23 @@ $(document).ready(function(){
                                     <label for="email">Product Name </label>
                                     <input value="" placeholder="Please Enter Product Name" id="email" name="pname" type="text" class="form-control validate" required>
 									<span id="erroremail"></span>	
+                                </div>
+								<div class="select">
+									<label for="gender"> Quantity Type &nbsp; </label>
+									<select  class="form-control selectList" style="width:100%;Height:50%;" name="type" id="gender" required>
+									<option value="">Please Quantity Type</option>
+									<optgroup label="Group">
+									<option value="条">条</option>
+									<option value="箱">箱</option>
+									<option value="包">包</option>
+									<option value="盒">盒</option>
+									<option value="罐">罐</option>
+									<option value="桶">桶</option>
+									<option value="盘">盘</option>
+									<option value="卷">卷</option>
+									<option value="张">张</option>
+									<option value="个">个</option>
+									</select>
                                 </div>
 								<div class="select">
 									<label for="gender">Category &nbsp; </label>
