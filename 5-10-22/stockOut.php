@@ -3,8 +3,7 @@ include("Connection.php");
 session_start();
 error_reporting(0);
 ?>
-
-<?php
+<?php	
 if(isset($_POST["sbtn"]))
 {
 	$productname = $_POST["pcode"];
@@ -12,20 +11,25 @@ if(isset($_POST["sbtn"]))
 	$productstock = $_POST["remark"];
 	$productStatus = "Stock Out";
 	
-
-	$sql=mysqli_query($connect,"INSERT INTO stock(PCode,Qty,AID,Remarks,Status) 
+	mysqli_query($connect,"UPDATE product SET PQty = PQty - '$productprice '
+                                               WHERE PCode= '$productname'");
+	
+	
+ 	$sql=mysqli_query($connect,"INSERT INTO stock(PCode,Qty,AID,Remarks,Status) 
 	VALUES('$productname','$productprice','$_SESSION[id]','$productstock','$productStatus')");
+	header("refresh:0.001;url=stockOut.php");
+	
 
-	header("refresh:0.001;url=addStock.php");
+
 ?>
 		<script type="text/javascript">
-		alert("Added Successfully!");
+		alert("Stock Removed Successfully!");
 		
 		</script>
 		
 	<?php 
-
-}
+ }
+ 
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +125,7 @@ $(document).ready(function(){
 
 								<div >
 									<label for="gender">Product Code &nbsp; </label>
-									<input  type="text" class="form-control selectList" list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode" id="gender" required>
+									<input  type="text" class="form-control selectList" autocomplete="off" list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode" id="gender" required>
 									<datalist id="code">
 									<?php
 									$conn = mysqli_connect("localhost", "root", "", "itp");
