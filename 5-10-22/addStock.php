@@ -26,9 +26,14 @@ if(isset($_POST["sbtn"]))
 	$productstock = $_POST["remark"];
 	$productStatus = "Stock In";
 	
+	mysqli_query($connect,"UPDATE product SET PQty = PQty + '$productprice '
+                                               WHERE PCode= '$productname'");
+	
+	
  	$sql=mysqli_query($connect,"INSERT INTO stock(PCode,Qty,AID,Remarks,Status) 
 	VALUES('$productname','$productprice','$_SESSION[id]','$productstock','$productStatus')");
 	header("refresh:0.001;url=addStock.php");
+	
 
 
 ?>
