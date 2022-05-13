@@ -58,7 +58,7 @@ if(mysqli_num_rows($select)) {
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="assets/css/now-ui-dashboard.css" rel="stylesheet" />
 		<!-- CSS Files -->
-		<link id="pagestyle" href="assets/css/argon-dashboard.css" rel="stylesheet" />
+  <link id="pagestyle" href="assets/css/argon-dashboard.css" rel="stylesheet" />
 		<!-- https://fontawesome.com/ -->
 		<link rel="stylesheet" href="assets/css/bootstrap.css">
 		<!-- https://getbootstrap.com/ -->
@@ -97,6 +97,8 @@ $(document).ready(function(){
 ::-webkit-scrollbar-thumb:hover {
   background: #fff; 
 }
+
+
 
 </style>
 		</head>
@@ -172,138 +174,76 @@ $(document).ready(function(){
 	  </div>
     </div>
     <div class="main-panel" id="main-panel" style="background-image: url('');">
-		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:0.4;">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
+
+<body class="background">
+    <div class="container rounded-3 my-5 bgcontainer  shadow  box" style="  width: 95%;">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="d-flex align-items-stretch flex-column h-75 justify-content-center">
+                    <div class="row mt-md-5">
+                        <div class="col text-center">
+                            <img class="rounded-circle mb-3" id="imgload" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTlJgcPWvijPP8j4Kjn4J3gdoR4ReO6lYugg&usqp=CAU" width="175px"
+                                height="175px" alt="" />
+                            <h5 class="myname">Name</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <small>
+                                <p class="idinfo fs-6 text-light" aria-placeholder="Idinfo">User Link</p>
+                            </small>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="col-md-7 px-0 mt-md-3">
+                <h2 class="fw-semi-bold my-3 pb-1" id="profileh3">User Profile Details</h2>
+                <div class="container border mt-4 ">
+					<div class="row mb-4">
+                        <div class="col-12">
+                            <label for="homeworld">Admin Name</label>
+                            <input class=" w-100 form-control" type="text" name="homeworld" id="homeworld"
+                                placeholder="Homeworld" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label for="name">First</label>
+                            <input class=" w-100 form-control shadow" type="text" name="name" id="name"
+                                placeholder="UserName" aria-label="Name" />
+                        </div>
+                        <div class="col-6">
+                            <label for="id">Last</label>
+                            <input class=" w-70 form-control" type="text" name="id" id="id" placeholder="UserID" />
+                        </div>
+                    </div>
+					<div class="row mb-4">
+                        <div class="col-12">
+                            <label for="homeworld">Department</label>
+                            <input class=" w-100 form-control" type="text" name="homeworld" id="homeworld"
+                                placeholder="Homeworld" />
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <label for="homeworld">Status</label>
+                            <input class=" w-100 form-control" type="text" name="homeworld" id="homeworld"
+                                placeholder="Homeworld" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="flex text-center mt-4">
+                        <button class="btn btn-outline-dark shadow">Edit Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-3">dfds</div> -->
         </div>
-      </nav>
-		<!-- row -->
-		<div class="panel-header panel-header-lg">
-			<canvas id="chart" style="width:100%;height:100%;"></canvas>
-		 </div>
-		<script>
-			let ctx = document.getElementById("chart").getContext('2d');
-
-			var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-			gradientStroke.addColorStop(0, "#fff");
-			gradientStroke.addColorStop(1, "#fff");
-
-			var gradientBkgrd = ctx.createLinearGradient(0, 100, 0, 400);
-			gradientBkgrd.addColorStop(0, "rgba(255,255,255,0.3)");
-			gradientBkgrd.addColorStop(1, "rgba(255,255,255,0)");
-
-			let draw = Chart.controllers.line.prototype.draw;
-			Chart.controllers.line = Chart.controllers.line.extend({
-				draw: function() {
-					draw.apply(this, arguments);
-					let ctx = this.chart.chart.ctx;
-					let _stroke = ctx.stroke;
-					ctx.stroke = function() {
-						ctx.save();
-						//ctx.shadowColor = 'rgba(244,94,132,0.8)';
-						ctx.shadowBlur = 8;
-						ctx.shadowOffsetX = 0;
-						ctx.shadowOffsetY = 6;
-						_stroke.apply(this, arguments)
-						ctx.restore();
-					}
-				}
-			});
-
-			var xValues = ['Mon','Tue','Wed','Thus','Fri','Sat','Sun'];
-			var yValues = [20,57,180,80,20,79,44];
-
-
-			var chart = new Chart(ctx, {
-				// The type of chart we want to create
-				type: 'line',
-
-				// The data for our dataset
-				data: {
-					labels: xValues,
-					datasets: [{
-						label: "Stock",
-						backgroundColor: gradientBkgrd,
-						borderColor: gradientStroke,
-						data: yValues,
-						pointBorderColor: "rgba(240,240,240,0.8)",
-						pointBackgroundColor: "rgba(240,240,240,0.6)",
-						pointBorderWidth: 8,
-						pointHoverRadius: 8,
-						pointHoverBackgroundColor: gradientStroke,
-						pointHoverBorderColor: "rgba(220,220,220,1)",
-						pointHoverBorderWidth: 4,
-						pointRadius: 1,
-						borderWidth: 2,
-						pointHitRadius: 16,
-						fontColor: '#fff'
-					}]
-				},
-
-				// Configuration options go here
-				options: {
-				  tooltips: {
-					backgroundColor:'#fff',
-					displayColors:false,
-					   titleFontColor: '#000',
-					bodyFontColor: '#000',
-					},      
-				  legend: {
-						display: false
-				  },
-					scales: {
-						xAxes: [{
-							gridLines: {
-								display:false
-							},
-							ticks: {fontColor: 'white'}
-						}],
-						yAxes: [{
-							ticks: {fontColor: 'white',stepSize: 40}
-						}],
-					}
-				}
-			});
-		</script>
-		<div class="content">
-			<div class="row">
-			  <div class="col-lg-4 col-md-6">
-				<div class="card card-chart">
-				  <div class="card-header">
-					<h5 class="card-category">Email Statistics</h5>
-					<h4 class="card-title">24 Hours Performance</h4>
-				  </div>
-				</div>
-			  </div>
-			  <div class="col-lg-4 col-md-6">
-				<div class="card card-chart">
-				  <div class="card-header">
-					<h5 class="card-category">Email Statistics</h5>
-					<h4 class="card-title">24 Hours Performance</h4>
-				  </div>
-				</div>
-			  </div>
-			  <div class="col-lg-4 col-md-6">
-				<div class="card card-chart">
-				  <div class="card-header">
-					<h5 class="card-category">Email Statistics</h5>
-					<h4 class="card-title">24 Hours Performance</h4>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		</div>
-</div>
-	<script src="assets/js/core/jquery.min.js"></script>
-	<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-	<script src="assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script>
+    </div>
+    
+	</div>
 	</body>
 </html>

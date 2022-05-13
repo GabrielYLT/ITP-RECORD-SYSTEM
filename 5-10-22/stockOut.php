@@ -103,6 +103,22 @@ $(document).ready(function(){
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             
             <ul class="navbar-nav">
+			  <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="now-ui-icons business_bank"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Home</span>
+                  </p>
+                </a>
+              </li>
+			  <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="now-ui-icons files_paper"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">History</span>
+                  </p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <i class="now-ui-icons users_single-02"></i>

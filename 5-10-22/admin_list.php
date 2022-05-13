@@ -12,7 +12,7 @@ error_reporting(0);
 	
 		<!-- CSS Files -->
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
+		<link href="assets/css/now-ui-dashboard.css" rel="stylesheet" />
 		<!-- CSS Files -->
   <link id="pagestyle" href="assets/css/argon-dashboard.css" rel="stylesheet" />
 		<!-- https://fontawesome.com/ -->
@@ -57,7 +57,7 @@ $(document).ready(function(){
 	
 	<body style="overflow-x: hidden;">
 <div class="wrapper" >
-    <div class="sidebar" data-color="red" style="opacity:85%;" >
+    <div class="sidebar" style="opacity:85%;" >
 	
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
@@ -99,8 +99,8 @@ $(document).ready(function(){
           </li>
 		   <li class="active">
             <a href="#">
-              <i class="now-ui-icons users_circle-08"></i>
-              <p>Admin List</p>
+              <i style="color:#ff280061;" class="now-ui-icons users_circle-08"></i>
+              <p style="color:#ff280061;">Admin List</p>
             </a>
           </li>
           <li>

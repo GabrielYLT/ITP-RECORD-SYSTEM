@@ -4071,18 +4071,18 @@ Created using IcoMoon - icomoon.io
 }
 
 .sidebar:after,
-.off-canvas-sidebar[data-color="blue"]:after {
+.off-canvas-sidebar[data-color="pink"]:after {
   background: #ff280061;
 }
 
-.sidebar[data-color="blue"] .nav li.active>a:not([data-toggle="collapse"]),
+.sidebar[data-color="pink"] .nav li.active>a:not([data-toggle="collapse"]),
 .off-canvas-sidebar[data-color="blue"] .nav li.active>a:not([data-toggle="collapse"]) {
-  color: #2CA8FF;
+  color: #ff280061;
 }
 
-.sidebar[data-color="blue"] .nav li.active>a:not([data-toggle="collapse"]) i,
+.sidebar[data-color="pink"] .nav li.active>a:not([data-toggle="collapse"]) i,
 .off-canvas-sidebar[data-color="blue"] .nav li.active>a:not([data-toggle="collapse"]) i {
-  color: #2CA8FF;
+  color: #ff280061;
 }
 
 .sidebar[data-color="green"]:after,

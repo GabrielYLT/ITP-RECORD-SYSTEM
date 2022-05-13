@@ -145,7 +145,7 @@ label {
               <p>Notifications</p>
             </a>
           </li>
-		   <li class="active">
+		  <li class="active">
             <a href="#">
               <i class="now-ui-icons users_circle-08"></i>
               <p>Admin List</p>
@@ -169,7 +169,6 @@ label {
               <p>Logout</p>
             </a>
           </li>
-          
         </ul>
 	  </div>
     </div>
@@ -254,9 +253,9 @@ label {
 									</script>
 									<br>
 									<span id="message" style="margin-left:3px"></span><span style="color: red;"><br> <?php echo $error1 ?> </span>	
-									</div>
+								</div>
 									<hr>
-                                </div>
+                        </div>
 								<div class="select">
 									<label for="gender">Department &nbsp; </label>
 									<select  class="form-control selectList" style="width:100%;Height:50%;" name="dept" id="dept" required>
@@ -280,11 +279,11 @@ label {
                                     </div>
                                 </div>
                             </form>
-                        </div>
                     </div>
                 </div>
             </div>
-			</div>
+        </div>
+	</div>
 		
 		
 

@@ -30,109 +30,71 @@ $(document).ready(function(){
   });
 });
 </script>
-<style>
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 2px grey; 
-  border-radius: 5px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: grey; 
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #fff; 
-}
-
-label {
-	color:black;
-}
-</style>
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow:hidden;" >
-    <div class="sidebar" style="opacity:85%;" >
-	
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
-      <div class="logo">
-        <a href="#" class="simple-text logo-mini">
-          JMM
-        </a>
-        <a href="#" class="simple-text logo-normal">
-          DASHBOARD
-        </a>
+<div class="wrapper"  style="overflow-x:hidden;background:none;" >
+    <!-- Navbar -->
+      <div><nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" >
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="#">JMM Record System</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navigation">
+            
+            <ul class="navbar-nav">
+			  <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="now-ui-icons business_bank"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Home</span>
+                  </p>
+                </a>
+              </li>
+			  <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="now-ui-icons files_paper"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">History</span>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="now-ui-icons users_single-02"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Account</span>
+                  </p>
+                </a>
+              </li>
+			  <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="now-ui-icons media-1_button-power"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Logout</span>
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav></div>
+      <!-- End Navbar -->
+	  <div style="height:10%;">
       </div>
-      <div class="sidebar-wrapper" id="sidebar-wrapper" >
-        <ul class="nav">
-          <li>
-            <a href="./dashboard.html">
-              <i class="now-ui-icons education_paper"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li>
-            <a>
-			
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <h3 class="dropdown-header" style="color:white;">Category</h3>
-			</a>
-			  <ul class="nav" style="padding">
-			  <li ><a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>New Year Cookies</a></li>
-			  <li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Raya Cookies</a></li>
-			  <li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Mooncakes</a></li>
-			  <li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Packing Material</a></li>
-			  <li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>Raw Material</a></li>
-			  <li><a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="#"><i class="now-ui-icons design_palette"></i>General Use</a></li>
-			  </ul>
-          </li>
-          <li>
-            <a href="./notifications.html">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
-            </a>
-          </li>
-		   <li>
-            <a href="./map.html">
-              <i class="now-ui-icons users_circle-08"></i>
-              <p>Admin List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./user.html">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li>
-            <a href="./tables.html">
-              <i class="now-ui-icons loader_gear"></i>
-              <p>Manage</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="now-ui-icons media-1_button-power"></i>
-              <p>Logout</p>
-            </a>
-          </li>
-          
-        </ul>
-	  </div>
-    </div>
-    <div class="main-panel" id="main-panel" style="height:100%">
-			<!-- row -->
+    <!-- row -->
             <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
                 <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col">
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
@@ -153,9 +115,9 @@ label {
                                 <thead>
                                     <tr class="tm-bg-gray">
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Image</th>
-                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Status</th>
                                         
 										<th scope="col">&nbsp;</th>	
                                     </tr>
@@ -193,10 +155,8 @@ label {
             </div>
         </div>
     </div>
-		
-		
-
-  </div>
-
+</div>
+	</div>
+ <script src="../assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script>
 	</body>
 </html>
