@@ -200,7 +200,7 @@ $(document).ready(function(){
 			    </div>
 			</div>
         </nav>
-		<div style="margin-top:12.5%;margin-bottom:2%;">
+		<div style="margin-top:19.5%;margin-bottom:2%;">
     <div class="container rounded-3 my-5 bgcontainer  shadow  box" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;padding-top:1%;margin: auto; width: 95%;">
         <div class="row" >
             <div class="col-md-4">
