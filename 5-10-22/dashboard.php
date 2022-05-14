@@ -61,7 +61,7 @@ $(document).ready(function(){
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow-x:hidden;background:none;" >
+<div class="wrapper"  style="background:none;" >
     <div class="sidebar" data-color="pink">
 	
       <!--
@@ -88,14 +88,14 @@ $(document).ready(function(){
               <i class="now-ui-icons design_bullet-list-67"></i>
               <h3 class="dropdown-header" style="color:white;">Category</h3>
 			</a>
-			  <ul class="nav" style="padding">
-			  <li ><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=1"><i class="now-ui-icons design_palette"></i>New Year Cookies</a></li>
-			  <li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=2"><i class="now-ui-icons design_palette"></i>Raya Cookies</a></li>
-			  <li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=3"><i class="now-ui-icons design_palette"></i>Mooncakes</a></li>
-			  <li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=4"><i class="now-ui-icons design_palette"></i>Raw Material</a></li>
-			  <li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=5"><i class="now-ui-icons design_palette"></i>Packing Material</a></li>
-			  <li><a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="list.php?details&id=6"><i class="now-ui-icons design_palette"></i>General Use</a></li>
-			  </ul>
+			<ul class="nav" style="padding">
+				<li ><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=1"><i class="now-ui-icons design_palette"></i>New Year Cookies</a></li>
+				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=2"><i class="now-ui-icons design_palette"></i>Raya Cookies</a></li>
+				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=3"><i class="now-ui-icons design_palette"></i>Mooncakes</a></li>
+				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=4"><i class="now-ui-icons design_palette"></i>Raw Material</a></li>
+				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=5"><i class="now-ui-icons design_palette"></i>Packing Material</a></li>
+				<li><a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="list.php?details&id=6"><i class="now-ui-icons design_palette"></i>General Use</a></li>
+			</ul>
           </li>
           <li>
             <a href="#">
@@ -110,41 +110,53 @@ $(document).ready(function(){
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li>
             <a href="manage.php">
               <i class="now-ui-icons loader_gear"></i>
               <p>Manage</p>
             </a>
           </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons media-1_button-power"></i>
-              <p>Logout</p>
-            </a>
-          </li>
-          
         </ul>
 	  </div>
     </div>
     <div class="main-panel" id="main-panel" style="background-image: url('');">
-		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:0.4;">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
+			<div class="container-fluid">
+			    <div class="navbar-wrapper">
+					<div class="navbar-toggle">
+					    <button type="button" class="navbar-toggler">
+							<span class="navbar-toggler-bar bar1"></span>
+							<span class="navbar-toggler-bar bar2"></span>
+							<span class="navbar-toggler-bar bar3"></span>
+					    </button>
+					</div>
+			    </div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-bar navbar-kebab"></span>
+					<span class="navbar-toggler-bar navbar-kebab"></span>
+					<span class="navbar-toggler-bar navbar-kebab"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="navigation">
+					<ul class="navbar-nav">
+					    <li class="nav-item">
+							<a class="nav-link" href="viewProfile.php">
+							    <i class="now-ui-icons users_single-02"></i>
+							    <p>
+									<span class="d-lg-none d-md-block">Profile</span>
+							    </p>
+							</a>
+					    </li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">
+							    <i class="now-ui-icons media-1_button-power"></i>
+							    <p>
+									<span class="d-lg-none d-md-block">Logout</span>
+							    </p>
+							</a>
+					    </li>
+					</ul>
+			    </div>
+			</div>
+        </nav>
 		<!-- row -->
 		<div class="panel-header panel-header-lg">
 			<canvas id="chart" style="width:100%;height:100%;"></canvas>
@@ -263,7 +275,8 @@ $(document).ready(function(){
 		</div>
 </div>
 	<script src="assets/js/core/jquery.min.js"></script>
+	<script src="assets/js/core/bootstrap.min.js"></script>
 	<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-	<script src="assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script>
+	<script src="assets/js/now-ui-dashboard.min.js" type="text/javascript"></script>
 	</body>
 </html>

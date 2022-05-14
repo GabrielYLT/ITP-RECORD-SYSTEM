@@ -86,14 +86,7 @@ $(document).ready(function(){
       <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
-            <a class="navbar-brand" href="#pablo">JMM Record System</a>
+            <a class="navbar-brand" href="generalD.php">JMM Record System</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -104,7 +97,7 @@ $(document).ready(function(){
             
             <ul class="navbar-nav">
 			  <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="generalD.php">
                   <i class="now-ui-icons business_bank"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Home</span>
@@ -123,7 +116,7 @@ $(document).ready(function(){
                 <a class="nav-link" href="#">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
-                    <span class="d-lg-none d-md-block">Account</span>
+                    <span class="d-lg-none d-md-block">Profile</span>
                   </p>
                 </a>
               </li>
@@ -146,7 +139,7 @@ $(document).ready(function(){
 			<!-- row -->
         <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;" >
             <div class="tm-col tm-col-big" style="padding-top:1%;padding-bottom:1%;margin: auto; width: 700px;">
-                <div class="tm-block" style="background-color:#ff280061; border-radius:10px;">
+                <div class="tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                     <div class="row" style="margin: auto;">
                         <div class="col-12" >
                             <h1 class="tm-block-title">Stock Out</h1>
@@ -222,6 +215,9 @@ $(document).ready(function(){
 		
 
   </div>
-
+	<script src="assets/js/core/jquery.min.js"></script>
+	<script src="assets/js/core/bootstrap.min.js"></script>
+	<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+	<script src="assets/js/now-ui-dashboard.min.js" type="text/javascript"></script>
 	</body>
 </html>

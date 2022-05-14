@@ -130,14 +130,15 @@ $(document).ready(function(){
             <a>
               <i class="now-ui-icons design_bullet-list-67"></i>
               <h3 class="dropdown-header" style="color:white;">Category</h3>
-			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php"><i class="now-ui-icons design_palette"></i>New Year Cookies</a>
-			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php"><i class="now-ui-icons design_palette"></i>Raya Cookies</a>
-			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php"><i class="now-ui-icons design_palette"></i>Mooncakes</a>
-			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php"><i class="now-ui-icons design_palette"></i>Packing Material</a>
-			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php"><i class="now-ui-icons design_palette"></i>Raw Material</a>
-			  <a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="list.php"><i class="now-ui-icons design_palette"></i>General Use</a>
-			  
 			</a>
+			<ul class="nav" style="padding">
+				<li ><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=1"><i class="now-ui-icons design_palette"></i>New Year Cookies</a></li>
+				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=2"><i class="now-ui-icons design_palette"></i>Raya Cookies</a></li>
+				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=3"><i class="now-ui-icons design_palette"></i>Mooncakes</a></li>
+				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=4"><i class="now-ui-icons design_palette"></i>Raw Material</a></li>
+				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=5"><i class="now-ui-icons design_palette"></i>Packing Material</a></li>
+				<li><a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="list.php?details&id=6"><i class="now-ui-icons design_palette"></i>General Use</a></li>
+			</ul>
           </li>
           <li>
             <a href="#">
@@ -152,32 +153,56 @@ $(document).ready(function(){
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li>
             <a href="manage.php">
               <i class="now-ui-icons loader_gear"></i>
               <p>Manage</p>
             </a>
           </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons media-1_button-power"></i>
-              <p>Logout</p>
-            </a>
-          </li>
-          
         </ul>
 	  </div>
     </div>
     <div class="main-panel" id="main-panel" style="background-image: url('');">
-
-<body class="background">
-    <div class="container rounded-3 my-5 bgcontainer  shadow  box" style="  width: 95%;">
-        <div class="row">
+	<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
+			<div class="container-fluid">
+			    <div class="navbar-wrapper">
+					<div class="navbar-toggle">
+					    <button type="button" class="navbar-toggler">
+							<span class="navbar-toggler-bar bar1"></span>
+							<span class="navbar-toggler-bar bar2"></span>
+							<span class="navbar-toggler-bar bar3"></span>
+					    </button>
+					</div>
+			    </div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-bar navbar-kebab"></span>
+					<span class="navbar-toggler-bar navbar-kebab"></span>
+					<span class="navbar-toggler-bar navbar-kebab"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="navigation">
+					<ul class="navbar-nav">
+					    <li class="nav-item">
+							<a class="nav-link" href="viewProfile.php">
+							    <i class="now-ui-icons users_single-02"></i>
+							    <p>
+									<span class="d-lg-none d-md-block">Profile</span>
+							    </p>
+							</a>
+					    </li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">
+							    <i class="now-ui-icons media-1_button-power"></i>
+							    <p>
+									<span class="d-lg-none d-md-block">Logout</span>
+							    </p>
+							</a>
+					    </li>
+					</ul>
+			    </div>
+			</div>
+        </nav>
+		<div style="margin-top:12.5%;margin-bottom:2%;">
+    <div class="container rounded-3 my-5 bgcontainer  shadow  box" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;padding-top:1%;margin: auto; width: 95%;">
+        <div class="row" >
             <div class="col-md-4">
                 <div class="d-flex align-items-stretch flex-column h-75 justify-content-center">
                     <div class="row mt-md-5">
@@ -202,7 +227,7 @@ $(document).ready(function(){
 					<div class="row mb-4">
                         <div class="col-12">
                             <label for="homeworld">Admin Name</label>
-                            <input class=" w-100 form-control" type="text" name="homeworld" id="homeworld"
+                            <input class=" w-100 form-control shadow" type="text" name="homeworld" id="homeworld"
                                 placeholder="Homeworld" />
                         </div>
                     </div>
@@ -214,20 +239,20 @@ $(document).ready(function(){
                         </div>
                         <div class="col-6">
                             <label for="id">Last</label>
-                            <input class=" w-70 form-control" type="text" name="id" id="id" placeholder="UserID" />
+                            <input class=" w-70 form-control shadow" type="text" name="id" id="id" placeholder="UserID" />
                         </div>
                     </div>
 					<div class="row mb-4">
                         <div class="col-12">
                             <label for="homeworld">Department</label>
-                            <input class=" w-100 form-control" type="text" name="homeworld" id="homeworld"
+                            <input class=" w-100 form-control shadow" type="text" name="homeworld" id="homeworld"
                                 placeholder="Homeworld" />
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-12">
                             <label for="homeworld">Status</label>
-                            <input class=" w-100 form-control" type="text" name="homeworld" id="homeworld"
+                            <input class=" w-100 form-control shadow" type="text" name="homeworld" id="homeworld"
                                 placeholder="Homeworld" />
                         </div>
                     </div>
@@ -236,14 +261,19 @@ $(document).ready(function(){
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="flex text-center mt-4">
-                        <button class="btn btn-outline-dark shadow">Edit Details</button>
+                        <a href="editProfile.php?edit&id"><button class="btn btn-outline-dark shadow">Edit Details</button></a>
                     </div>
                 </div>
             </div>
             <!-- <div class="col-3">dfds</div> -->
         </div>
     </div>
+	</div>
     
 	</div>
+	<script src="assets/js/core/jquery.min.js"></script>
+	<script src="assets/js/core/bootstrap.min.js"></script>
+	<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+	<script src="assets/js/now-ui-dashboard.min.js" type="text/javascript"></script>
 	</body>
 </html>

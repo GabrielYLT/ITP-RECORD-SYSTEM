@@ -45,7 +45,7 @@ $(document).ready(function(){
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#">JMM Record System</a>
+            <a class="navbar-brand" href="generalD.php">JMM Record System</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -56,7 +56,7 @@ $(document).ready(function(){
             
             <ul class="navbar-nav">
 			  <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="generalD.php">
                   <i class="now-ui-icons business_bank"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Home</span>
@@ -75,7 +75,7 @@ $(document).ready(function(){
                 <a class="nav-link" href="#">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
-                    <span class="d-lg-none d-md-block">Account</span>
+                    <span class="d-lg-none d-md-block">Profile</span>
                   </p>
                 </a>
               </li>
@@ -96,8 +96,8 @@ $(document).ready(function(){
       </div>
     <div class="content" style="margin-left:11%;margin-top:5%;margin-right:11%">
 			<!-- row -->
-        <button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;background-color:#ff280061"><h1 style="color:white;"><b>Stock In</b></h3></button>
-		<button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;float:right;background-color:#ff280061"><h1 style="color:white;"><b>Stock Out</b></h3></button>
+        <a href="addStock.php"><button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;background-color:#ff280061"><h1 style="color:white;"><b>Stock In</b></h3></button></a>
+		<a href="stockOut.php"><button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;float:right;background-color:#ff280061"><h1 style="color:white;"><b>Stock Out</b></h3></button></a>
   </div>
 </div>
 	</div>
