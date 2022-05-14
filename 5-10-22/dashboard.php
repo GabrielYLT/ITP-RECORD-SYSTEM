@@ -128,12 +128,12 @@ $(document).ready(function(){
             <a>
               <i class="now-ui-icons design_bullet-list-67"></i>
               <h3 class="dropdown-header" style="color:white;">Category</h3>
-			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php"><i class="now-ui-icons design_palette"></i>New Year Cookies</a>
-			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php"><i class="now-ui-icons design_palette"></i>Raya Cookies</a>
-			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php"><i class="now-ui-icons design_palette"></i>Mooncakes</a>
-			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php"><i class="now-ui-icons design_palette"></i>Packing Material</a>
-			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php"><i class="now-ui-icons design_palette"></i>Raw Material</a>
-			  <a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="list.php"><i class="now-ui-icons design_palette"></i>General Use</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=1"><i class="now-ui-icons design_palette"></i>New Year Cookies</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=2	"><i class="now-ui-icons design_palette"></i>Raya Cookies</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=3"><i class="now-ui-icons design_palette"></i>Mooncakes</a>
+			   <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=4"><i class="now-ui-icons design_palette"></i>Raw Material</a>
+			  <a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=5"><i class="now-ui-icons design_palette"></i>Packing Material</a>
+			  <a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="list.php?details&id=6"><i class="now-ui-icons design_palette"></i>General Use</a>
 			  
 			</a>
           </li>

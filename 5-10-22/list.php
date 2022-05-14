@@ -138,8 +138,16 @@ label {
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                         <div class="row">
                             <div class="col-md-8 col-sm-12">
-								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;">List</h2>
-
+							<?php
+							if(isset($_GET["details"])){
+								
+							$ad_id=$_GET['id'];	
+							$result=mysqli_query($connect,"SELECT * FROM category WHERE CID='$ad_id'");
+							$row=mysqli_fetch_assoc($result);}
+									
+									
+							echo "<h2 class='tm-block-title d-inline-block' style='margin-left:3%;margin-top:2%;color:black;font-weight:bold;'>". $row["CName"] . " List</h2>";
+							?>
                             </div>
 							<div>
 							<hr>
@@ -156,18 +164,22 @@ label {
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Image</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
-                                        
+
 										<th scope="col">&nbsp;</th>	
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
                                 	<?php
 									$conn = mysqli_connect("localhost", "root", "", "itp");
+									if(isset($_GET["details"])){
+								
+									$ad_id=$_GET['id'];
 
+										
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT * FROM product";
+									$sql = "SELECT product.PCode, product.PImage, product.PName,product.PQty,product.Qtype,product.CID,category.CName FROM (product INNER JOIN category ON product.CID = category.CID) WHERE product.CID = '$ad_id'  ";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
@@ -185,7 +197,7 @@ label {
 									echo "</tr>" ;
 									}
 									echo "</table>";
-									} else { echo "0 results"; }
+									} else { echo "0 results"; }}
 									?>    
                                 </tbody>
                             </table>

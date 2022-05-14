@@ -183,7 +183,7 @@ $(document).ready(function(){
 									}else{
 										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
 									}
-                                    ?> 
+                                    ?>  
                                     <td>
 
                                     <?php
