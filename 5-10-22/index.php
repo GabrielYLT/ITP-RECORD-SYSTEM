@@ -1,5 +1,3 @@
-<<<<<<< HEAD:5-10-22/login.php
-
 <?php
 session_start();
 include("Connection.php");
