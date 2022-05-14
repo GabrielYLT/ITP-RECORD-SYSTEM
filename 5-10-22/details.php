@@ -158,8 +158,16 @@ $(document).ready(function(){
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                         <div class="row">
                             <div class="col-md-8 col-sm-12">
-								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;">Details</h2>
-
+							<?php
+								if(isset($_GET["details"])){
+								
+							$ad_id=$_GET['id'];	
+							$result=mysqli_query($connect,"SELECT * FROM product WHERE PCode='$ad_id'");
+							$row=mysqli_fetch_assoc($result);}
+									
+									
+							echo "<h2 class='tm-block-title d-inline-block' style='margin-left:3%;margin-top:2%;color:black;font-weight:bold;'>Record for ". $row["PName"] . "</h2>";
+							?>
                             </div>
 							<div>
 							<hr>

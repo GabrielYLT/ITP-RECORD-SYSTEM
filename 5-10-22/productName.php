@@ -4,6 +4,7 @@ if($conn->connect_error) {
   exit('Could not connect');
 }
 
+
 $sql = "SELECT PName
 FROM product WHERE PCode = ?";
 

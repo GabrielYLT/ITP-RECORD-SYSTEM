@@ -170,7 +170,7 @@ label {
 							$row=mysqli_fetch_assoc($result);}
 									
 									
-							echo "<h2 class='tm-block-title d-inline-block' style='margin-left:3%;margin-top:2%;color:black;font-weight:bold;'>". $row["CName"] . " List</h2>";
+							echo "<h2 class='tm-block-title d-inline-block' style='margin-left:3%;margin-top:2%;color:black;font-weight:bold;'>List of ". $row["CName"] . " </h2>";
 							?>
                             </div>
 							<div>

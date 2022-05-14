@@ -15,7 +15,7 @@ if(isset($_POST["sbtn"]))
 {
 	$productname = $_POST["pcode"];
 	$productprice = $_POST["qty"];
-	$productstock = $_POST["remark"];
+	$productstock = $_POST["remark"];	
 	$productStatus = "Stock In";
 	
 	$total = $row['Qty'];
