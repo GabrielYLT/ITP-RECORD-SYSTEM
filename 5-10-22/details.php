@@ -158,7 +158,7 @@ $(document).ready(function(){
                                 </thead>
                                 <tbody id="myTable">
                                 	<?php
-									$conn = mysqli_connect("localhost", "root", "", "itp");
+									$conn = $connect;
 									if(isset($_GET["details"])){
 								
 									$ad_id=$_GET['id'];	

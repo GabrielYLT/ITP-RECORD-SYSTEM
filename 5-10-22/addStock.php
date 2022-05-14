@@ -144,7 +144,7 @@ $(document).ready(function(){
 									<input  type="text" class="form-control selectList"  autocomplete="off"  list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode" id="gender" required>
 									<datalist id="code">
 									<?php
-									$conn = mysqli_connect("localhost", "root", "", "itp");
+									$conn = $connect;
 
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);

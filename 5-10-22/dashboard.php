@@ -5,47 +5,6 @@ error_reporting(0);
 $error = "";
 $error1 ="";
 ?>
-<?php
-if(isset($_POST["sbtn"]))
-{
- $FName = $_POST["fname"];
- $LName = $_POST["lname"];
- $Admin_Name = $_POST["name"];
- $Admin_Email = $_POST["email"];
- $Admin_Password = $_POST["pass1"];
- $Admin_PhoneNo = $_POST["dept"];
- $AStat = "Active";
- 
-
-if($_POST['pass'] === $_POST["pass1"]){
-$select = mysqli_query($connect, "SELECT * FROM admin WHERE AEmail = '".$_POST['email']."'");
-if(mysqli_num_rows($select)) {
-    $error="This email address is already registered";
-	?>
-		<script type="text/javascript">
-		alert("Email Already in Use!");
-		
-		</script>
-		
-	<?php 
-}else{
-	 
-	mysqli_query($connect,"INSERT INTO admin(AFirst,ALast,AName,AEmail,APassword,AStatus,Department)VALUES('$FName','$LName','$Admin_Name','$Admin_Email','$Admin_Password','$AStat','$Admin_PhoneNo')");
- 
-	?>
-		<script type="text/javascript">
-		alert("Added Successfully!");
-		
-		</script>
-		
-	<?php 
- }
- }else{
-	 $error1="Password Entered Does not Match";
- }
- 
-}
-?>
 
 
 <!DOCTYPE html>

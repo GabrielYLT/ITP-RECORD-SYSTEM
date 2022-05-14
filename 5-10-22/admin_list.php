@@ -161,7 +161,7 @@ $(document).ready(function(){
                                 </thead>
                                 <tbody id="myTable">
                                 	<?php
-									$conn = mysqli_connect("localhost", "root", "", "itp");
+									$conn = $connect;
 
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);

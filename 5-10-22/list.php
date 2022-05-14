@@ -170,7 +170,7 @@ label {
                                 </thead>
                                 <tbody id="myTable">
                                 	<?php
-									$conn = mysqli_connect("localhost", "root", "", "itp");
+									$conn = $connect;
 									if(isset($_GET["details"])){
 								
 									$ad_id=$_GET['id'];
@@ -197,7 +197,7 @@ label {
 									echo "</tr>" ;
 									}
 									echo "</table>";
-									} else { echo "0 results"; }}
+									} else { echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results Found !"; }}
 									?>    
                                 </tbody>
                             </table>

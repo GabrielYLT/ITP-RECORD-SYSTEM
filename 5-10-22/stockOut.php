@@ -23,7 +23,7 @@ if(isset($_POST["sbtn"]))
 		header("refresh:0.001;url=stockOut.php");
 		
 		echo "<script type='text/javascript'>
-		alert('Total Number of Stock for ".$name ." is " . $qty." . The Amount You Entered is ". $_POST["qty"] ." WHich is Greater/Larger Than the Stock You Currently Have in Store');
+		alert('Total Number of Stock for ".$name ." is " . $qty." . The Amount You Entered is ". $_POST["qty"] ." Which is Greater/Larger Than the Stock You Currently Have in Store');
 		
 		</script>" ;
 	
@@ -161,7 +161,7 @@ $(document).ready(function(){
 									<input  type="text" class="form-control selectList" autocomplete="off" list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode" id="gender" required>
 									<datalist id="code">
 									<?php
-									$conn = mysqli_connect("localhost", "root", "", "itp");
+									$conn = $connect;
 
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
