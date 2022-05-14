@@ -100,7 +100,7 @@ $(document).ready(function(){
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                         <div class="row">
                             <div class="col-md-8 col-sm-12">
-								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;">List</h2>
+								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;">History</h2>
 
                             </div>
 							<div>
@@ -114,22 +114,26 @@ $(document).ready(function(){
                             <table class="table table-hover table-striped tm-table-striped-even mt-3">
                                 <thead>
                                     <tr class="tm-bg-gray">
-                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Code</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Image</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
-                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Status</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Remarks</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Admin Name</th>
                                         
 										<th scope="col">&nbsp;</th>	
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
                                 	<?php
-									$conn = mysqli_connect("localhost", "root", "", "itp");
+									$conn = $connect;
 
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT * FROM product";
+									$sql = "SELECT stock.SID,stock.PCode,product.PName,product.PImage,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.AID = '$_SESSION[id]'";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
@@ -137,11 +141,19 @@ $(document).ready(function(){
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
 									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PQty"]. $row["QType"] ."</td>" ; 
-                                    ?> 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]."</td>" ; 
+									if($row["Status"] == 'Stock In'){
+									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
+									}else{
+										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
+									}
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["DateAdded"]."</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Remarks"]."</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"]."</td>" ; 
+                                    ?> 	
                                     <td>
 									<div class="btn-group"> 
-									<a href="details.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary">Details</a>
+									<a href="hstoryEdit.php?details&id=<?php echo $row['SID'];?>" class="btn btn-secondary">Details</a>
 									</div>
                                     <?php
 									echo "</tr>" ;
