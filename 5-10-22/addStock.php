@@ -88,7 +88,7 @@ $(document).ready(function(){
                 </a>
               </li>
 			  <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="hstory.php">
                   <i class="now-ui-icons files_paper"></i>
                   <p>
                     <span class="d-lg-none d-md-block">History</span>

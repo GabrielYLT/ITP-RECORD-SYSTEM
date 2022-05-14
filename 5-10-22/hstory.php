@@ -45,7 +45,7 @@ $(document).ready(function(){
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#">JMM Record System</a>
+            <a class="navbar-brand" href="generalD.php">JMM Record System</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -56,7 +56,7 @@ $(document).ready(function(){
             
             <ul class="navbar-nav">
 			  <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="generalD.php">
                   <i class="now-ui-icons business_bank"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Home</span>
@@ -64,7 +64,7 @@ $(document).ready(function(){
                 </a>
               </li>
 			  <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="hstory.php">
                   <i class="now-ui-icons files_paper"></i>
                   <p>
                     <span class="d-lg-none d-md-block">History</span>

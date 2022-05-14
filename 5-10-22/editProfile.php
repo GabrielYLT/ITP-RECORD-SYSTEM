@@ -154,7 +154,7 @@ error_reporting(0);
 			</div>
         </nav>
 	       <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;" >
-            <div class="tm-col tm-col-big" style="padding-top:1%;margin: auto; margin-top:8%;margin-bottom:2%;">
+            <div class="tm-col tm-col-big" style="padding-top:1%;margin: auto; margin-top:10%;margin-bottom:2%;">
                 <div class="tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                     <div class="row">
                         <div class="col-12" >
