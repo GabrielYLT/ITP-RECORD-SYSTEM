@@ -193,7 +193,7 @@ label {
                             </div>
 								<div class="form-group">
                                     <label for="name">Username </label>
-                                    <input value="" placeholder="Enter Your Username Here" name="name" type="text" class="form-control" title="Please Enter Your NRIC Name , no letter or symbols accepted !"  required >
+                                    <input value="" placeholder="Enter Your Username Here" name="name" type="text" class="form-control"   required >
 									 
 									<span id="errorname"></span>
                                 </div>
