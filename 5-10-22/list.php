@@ -84,7 +84,6 @@ label {
           </li>
           <li>
             <a>
-			
               <i class="now-ui-icons design_bullet-list-67"></i>
               <h3 class="dropdown-header" style="color:white;">Category</h3>
 			</a>
