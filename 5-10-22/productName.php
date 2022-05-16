@@ -1,5 +1,6 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "itp");
+include("Connection.php");
+$conn = $connect;
 if($conn->connect_error) {
   exit('Could not connect');
 }
