@@ -174,12 +174,6 @@ function validate_email()
 				<li><a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="list.php?details&id=6"><i class="now-ui-icons design_palette"></i>General Use</a></li>
 			</ul>
           </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
-            </a>
-          </li>
 		   <li>
             <a href="admin_list.php">
               <i class="now-ui-icons users_circle-08"></i>
