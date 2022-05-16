@@ -275,7 +275,7 @@ $(document).ready(function(){
 				}
 			});
 		</script>
-		<div class="content">
+		<div class="content" style="min-height:10%">
 			<div class="row">
 			  <div class="col-lg-4 col-md-6">
 				<div class="card card-chart">
