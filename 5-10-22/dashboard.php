@@ -302,6 +302,32 @@ $(document).ready(function(){
 				</div>
 			  </div>
 			</div>
+			<div class="row">
+			  <div class="col-lg-4 col-md-6">
+				<div class="card card-chart">
+				  <div class="card-header">
+					<h5 class="card-category">Email Statistics</h5>
+					<h4 class="card-title">24 Hours Performance</h4>
+				  </div>
+				</div>
+			  </div>
+			  <div class="col-lg-4 col-md-6">
+				<div class="card card-chart">
+				  <div class="card-header">
+					<h5 class="card-category">Email Statistics</h5>
+					<h4 class="card-title">24 Hours Performance</h4>
+				  </div>
+				</div>
+			  </div>
+			  <div class="col-lg-4 col-md-6">
+				<div class="card card-chart">
+				  <div class="card-header">
+					<h5 class="card-category">Email Statistics</h5>
+					<h4 class="card-title">24 Hours Performance</h4>
+				  </div>
+				</div>
+			  </div>
+			</div>
 		</div>
 </div>
 	<script src="assets/js/core/jquery.min.js"></script>
