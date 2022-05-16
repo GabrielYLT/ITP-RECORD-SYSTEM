@@ -32,6 +32,41 @@ $row = mysqli_fetch_assoc($result);
 }
 }
 ?>
+<?php
+if(isset($_POST["sbtn"]))
+{
+	$productname = $_POST["pname"];
+	$product_image = $_FILES['profileImage']['name'];
+	$productcode = $_POST["pcode"];
+	$type = $_POST["type"];
+	$productstock = $_POST["category"];
+
+
+	$sql=mysqli_query($connect,"INSERT INTO product(PCode,PName,QType,CID,PImage)VALUES('$productcode','$productname','$type','$productstock','$product_image')");
+
+	header("refresh:0.001;url=addProduct.php");
+	$target = 'images/' . $product_image;
+        if(move_uploaded_file($_FILES['profileImage']['tmp_name'],$target))
+        {
+          $msg = "upload successfully";
+		  $css_class = "alert-sucess";
+        }
+        else{
+          $msg = "problem occur.";
+		  $css_class = "alert-danger";
+        }
+
+?>
+		<script type="text/javascript">
+		alert("Added Successfully!");
+		
+		</script>
+		
+	<?php 
+
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -39,8 +74,9 @@ $row = mysqli_fetch_assoc($result);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 		<!-- CSS Files -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"/>
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="assets/css/now-ui-dashboard.css" rel="stylesheet" />
+		<link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
 		<!-- CSS Files -->
   <link id="pagestyle" href="assets/css/argon-dashboard.css" rel="stylesheet" />
 		<!-- https://fontawesome.com/ -->
@@ -81,14 +117,14 @@ $(document).ready(function(){
   background: #fff; 
 }
 
-label {
-	color:black;
-}
+	
+
+
 </style>
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow:hidden;" >
+<div class="wrapper"  style="background:none;" >
     <div class="sidebar" data-color="pink">
 	
       <!--
@@ -145,7 +181,7 @@ label {
         </ul>
 	  </div>
     </div>
-    <div class="main-panel" id="main-panel" style="height:100%">
+    <div class="main-panel" id="main-panel" style="height:100%;background-image: url('https://res.cloudinary.com/lamboplace/image/upload/f_auto,q_auto/v1591257893/products/yjofydgnvmqfsoi5p2hc.jpg');">
 		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
 			<div class="container-fluid">
 			    <div class="navbar-wrapper">
@@ -185,85 +221,83 @@ label {
 			</div>
         </nav>
 			<!-- row -->
-            <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
-                <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:1%;margin: auto; margin-top:10%;margin-bottom:2%;">
-                    <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
-                        <div class="row">
-                            <div class="col-md-8 col-sm-12">
-							<?php
-							if(isset($_GET["details"])){
-								
-							$ad_id=$_GET['id'];	
-							$result=mysqli_query($connect,"SELECT * FROM category WHERE CID='$ad_id'");
-							$row=mysqli_fetch_assoc($result);}
-									
-									
-							echo "<h2 class='tm-block-title d-inline-block' style='margin-left:3%;margin-top:2%;color:black;font-weight:bold;'>List of ". $row["CName"] . " </h2>";
-							?>
-                            </div>
-							<div>
-							<hr>
-
-<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:30%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" name="searchname" placeholder="Search" ></h6>
-<hr>
-</div>
+        <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;" >
+            <div class="tm-col tm-col-big" style="padding-top:1%;padding-bottom:1%;margin: auto;margin-top:10%; width: 700px;">
+                <div class="tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
+                    <div class="row" style="margin: auto;">
+                        <div class="col-12" >
+                            <h1 class="tm-block-title" style="color:black;">Edit Product</h1>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-hover table-striped tm-table-striped-even mt-3">
-                                <thead>
-                                    <tr class="tm-bg-gray">
-                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Image</th>
-                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Name</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
-										<th scope="col">&nbsp;</th>	
-                                    </tr>
-                                </thead>
-                                <tbody id="myTable">
-                                	<?php
-									$conn = $connect;
-									if(isset($_GET["details"])){
-								
-									$ad_id=$_GET['id'];
+                    </div>
+                    <div class="row" style="margin: auto;">
+                        <div class="col-12">
+                            <form name = "updatAdmin" method="post" class="tm-signup-form" enctype="multipart/form-data">
+							<div >
+								<label for="profileImage">Product Image</label>
+								<input type="file" name="profileImage" id="profileImage" class="form-control">
+							</div>
+                                <div class="form-group">
+                                    <label for="name">Product Code </label>
+                                    <input value="" placeholder="Please Enter Product Code Here" name="pcode" type="text" class="form-control"  autocomplete="off" required >
+									 
+									<span id="errorname"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Product Name </label>
+                                    <input value="" placeholder="Please Enter Product Name" id="email" name="pname" type="text" class="form-control validate" required>
+									<span id="erroremail"></span>	
+                                </div>
+								<div class="select">
+									<label for="gender"> Quantity Type &nbsp; </label>
+									<select  class="form-control selectList" style="width:100%;Height:50%;" name="type" id="gender" required>
+									<option value="">Please Quantity Type</option>
+									<optgroup label="Group">
+									<option value="条">条</option>
+									<option value="箱">箱</option>
+									<option value="包">包</option>
+									<option value="盒">盒</option>
+									<option value="罐">罐</option>
+									<option value="桶">桶</option>
+									<option value="盘">盘</option>
+									<option value="卷">卷</option>
+									<option value="张">张</option>
+									<option value="个">个</option>
+									</select>
+                                </div>
+								<div class="select">
+									<label for="gender">Category &nbsp; </label>
+									<select  class="form-control selectList" style="width:100%;Height:50%;" name="category" id="gender" required>
+									<option value="">Please Select Product Category</option>
+									<optgroup label="Group">
+									<option value="1">New Year Cookies</option>
+									<option value="2">Raya Cookies</option>
+									<option value="3">Mooncakes</option>
+									<option value="4">Raw Material </option>
+									<option value="5">Packing Material</option>
+									<option value="6">General Use</option>
+									</select>
+                                </div>
+								<hr>
+                                <div class="form-group">
+                                    <div class="col-12 col-sm-6" style="float:right;">
+									
+                                        <button style="float:right;" type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Add</button>
 
-										
-									if ($conn->connect_error) {
-									die("Connection failed: " . $conn->connect_error);
-									}
-									$sql = "SELECT product.PCode, product.PImage, product.PName,product.PQty,product.Qtype,product.CID,category.CName FROM (product INNER JOIN category ON product.CID = category.CID) WHERE product.CID = '$ad_id'  ";
-									$result = $conn->query($sql);
-									if ($result->num_rows > 0) {
-
-									while($row = $result->fetch_assoc()) {
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
-									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PQty"]. $row["QType"] ."</td>" ; 
-                                    ?> 
-                                    <td>
-									<div class="btn-group"> 
-									<a href="details.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary">Details</a>
-									<a href="editProduct.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary">Edit</a>
-									</div></td>
-                                    <?php
-									echo "</tr>" ;
-									}
-									echo "</table>";
-									} else { echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results Found !"; }}
-									?>    
-                                </tbody>
-                            </table>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-		
-		
+		</div>
 
-  </div>
-	<script src="assets/js/core/jquery.min.js"></script>
-	<script src="assets/js/core/bootstrap.min.js"></script>
-	<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-	<script src="assets/js/now-ui-dashboard.min.js" type="text/javascript"></script>
+
+	</div>
+
+		<script src="assets/js/core/jquery.min.js"></script>
+		<script src="assets/js/core/bootstrap.min.js"></script>
+		<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+		<script src="assets/js/now-ui-dashboard.min.js" type="text/javascript"></script>
 	</body>
 </html>
