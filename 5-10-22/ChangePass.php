@@ -5,19 +5,7 @@ error_reporting(0);
 $error = "" ;
 ?>
 <?php
-if(!isset($_SESSION['id']))
-{
-?>
-    <script>
-    alert("Please login. Thank you!!!");
-    </script>
-    <?php
-    header("refresh:0.001;url=login.php");
-    //exit();
-}
-$Admin_id=$_SESSION['id'];
-$result=mysqli_query($connect,"SELECT *FROM addadmin WHERE Admin_ID='$Admin_id'");
-$row = mysqli_fetch_assoc($result);
+
 
 if(isset($_GET["cPass"]))
 {
@@ -108,115 +96,130 @@ function validate_email()
 }
 </script>
 <head>
-    <meta charset="UTF-8">	
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Change Password Page | JJG Fruits &amp Vege	</title>
-   
-
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-	
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-	
-	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    
-	
-    <link rel="stylesheet" href="css/fontawesome.min.css">
-    <!-- https://fontawesome.com/ -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="css/tooplate.css">
-	
-<style>
-body {
-	  
-  background-image: url('img/colorfulfruitsandvegetables-ddf6c1ae7ad74d72866f5f64fe3118aa.jpg');
-}
-
-
-
-</style>	
-	
+		<!-- CSS Files -->
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
+		<!-- CSS Files -->
+  <link id="pagestyle" href="assets/css/argon-dashboard.css" rel="stylesheet" />
+		<!-- https://fontawesome.com/ -->
+		<link rel="stylesheet" href="assets/css/bootstrap.css">
+		<!-- https://getbootstrap.com/ -->
+		<link rel="stylesheet" href="css/tooplate.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	
 </head>
 <body class="bg01">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                    <a class="navbar-brand" href="index.html">
-                        <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
-                         <h1 class="tm-site-title mb-0">JJG Fruits &amp Vege<br> Admin Dashboard</h1>
-                    </a>
-                    <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav mx-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="Dashboard.php">Dashboard
-                                        <span class="sr-only">(current)</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        Account
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="ViewCustomer.php">Member's Account</a>
-										<a class="dropdown-item" href="Staff.php">Staff's Account</a>
-										<a class="dropdown-item" href="accounts.php">Add Staff's Account</a>
-										<a class="dropdown-item" href="EditProfile.php?edit&id=<?php echo $_SESSION['id']?>">Edit Profile</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        Product/Category
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="ViewProduct.php">View Product</a>
-                                        <a class="dropdown-item" href="AddProduct.php">Add Product</a>
-										
-                                    </div>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="ViewOrder.php">Order</a>
-                                </li>
-								
-								<li class="nav-item">
-                                    <a class="nav-link" href="SalesReport.php">Sales Report</a>
-                                </li>
-								
-                            </ul>
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex" href="logout.php">
-                                        <i class="far fa-user mr-2 tm-logout-icon"></i>
-                                        <span>Logout</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
-		</div>
-        <!-- row -->
-        <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;" >
-            <div class="tm-col tm-col-big" style="margin: auto; width: 600px;">
-                <div class="bg-white tm-block">
-                    <div class="row">
+    <div class="wrapper"  style="overflow-x:hidden;background:none;" >
+    <div class="sidebar" data-color="pink">
+	
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+      <div class="logo">
+        <a href="dashboard.php" class="simple-text logo-mini">
+          JMM
+        </a>
+        <a href="dashboard.php" class="simple-text logo-normal">
+          DASHBOARD
+        </a>
+      </div>
+      <div class="sidebar-wrapper" id="sidebar-wrapper" >
+        <ul class="nav">
+          <li>
+            <a href="dashboard.php">
+              <i class="now-ui-icons education_paper"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li>
+            <a>
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <h3 class="dropdown-header" style="color:white;">Category</h3>
+			</a>
+			<ul class="nav" style="padding">
+				<li ><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=1"><i class="now-ui-icons design_palette"></i>New Year Cookies</a></li>
+				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=2"><i class="now-ui-icons design_palette"></i>Raya Cookies</a></li>
+				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=3"><i class="now-ui-icons design_palette"></i>Mooncakes</a></li>
+				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=4"><i class="now-ui-icons design_palette"></i>Raw Material</a></li>
+				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=5"><i class="now-ui-icons design_palette"></i>Packing Material</a></li>
+				<li><a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="list.php?details&id=6"><i class="now-ui-icons design_palette"></i>General Use</a></li>
+			</ul>
+          </li>
+          <li>
+            <a href="#">
+              <i class="now-ui-icons ui-1_bell-53"></i>
+              <p>Notifications</p>
+            </a>
+          </li>
+		   <li>
+            <a href="admin_list.php">
+              <i class="now-ui-icons users_circle-08"></i>
+              <p>Admin List</p>
+            </a>
+          </li>
+          <li>
+            <a href="manage.php">
+              <i class="now-ui-icons loader_gear"></i>
+              <p>Manage</p>
+            </a>
+          </li>
+        </ul>
+	  </div>
+    </div>
+	<div class="main-panel" id="main-panel" style="background-image: url('https://res.cloudinary.com/lamboplace/image/upload/f_auto,q_auto/v1591257893/products/yjofydgnvmqfsoi5p2hc.jpg');">
+		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
+			<div class="container-fluid">
+			    <div class="navbar-wrapper">
+					<div class="navbar-toggle">
+					    <button type="button" class="navbar-toggler">
+							<span class="navbar-toggler-bar bar1"></span>
+							<span class="navbar-toggler-bar bar2"></span>
+							<span class="navbar-toggler-bar bar3"></span>
+					    </button>
+					</div>
+			    </div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-bar navbar-kebab"></span>
+					<span class="navbar-toggler-bar navbar-kebab"></span>
+					<span class="navbar-toggler-bar navbar-kebab"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="navigation">
+					<ul class="navbar-nav">
+					    <li class="nav-item">
+							<a class="nav-link" href="viewProfile.php">
+							    <i class="now-ui-icons users_single-02"></i>
+							    <p>
+									<span class="d-lg-none d-md-block">Profile</span>
+							    </p>
+							</a>
+					    </li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">
+							    <i class="now-ui-icons media-1_button-power"></i>
+							    <p>
+									<span class="d-lg-none d-md-block">Logout</span>
+							    </p>
+							</a>
+					    </li>
+					</ul>
+			    </div>
+			</div>
+        </nav>
+	  <div style="height:10%;">
+      </div>
+			<!-- row -->
+        <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;" >
+            <div class="tm-col tm-col-big" style="padding-top:1%;padding-bottom:1%;margin: auto; width: 700px;">
+                <div class="bg-white tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
+                    <div class="row" style="margin: auto;">
                         <div class="col-12" >
-                            <h1 class="tm-block-title">Change Password </h1>
+                            <h1 class="tm-block-title" style="color:black;">Change Password </h1>
                         </div>
                     </div>
-                    <div class="row">	
+                    <div class="row" style="margin: auto;">	
                         <div class="col-12">
                             <form name = "updatAdmin" method="post" class="tm-signup-form" enctype="multipart/form-data" >
                                 <div class="form-group">
@@ -256,10 +259,8 @@ body {
 									<span style='color: red;'> <?php echo $error; ?> </span><hr>
 								</div>	
                                 <div class="form-group">
-                                    <div class="col-12 col-sm-6">
-                                        <button type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Update 
-                                        </button>
-										<a href="Edit.php?edit&id=<?php echo $pass_id;?>" class="btn btn-danger" style="height:50px;margin-left:150%;margin-top:-40%;">Return</a>
+                                    <div class="col-12 col-sm-6" style="float:right;">
+                                        <button type="submit" style="float:right;" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Update</button>
                                     </div>
                                 </div>
                             </form>
@@ -268,19 +269,15 @@ body {
                 </div>
             </div>
 			</div>
-        <footer class="row tm-mt-small">
-            <div class="col-12 font-weight-light">
-                <p class="d-inline-block tm-bg-black text-white py-2 px-4">
-                    Profile Page
-                </p>
-            </div>
-        </footer>
-    </div>
+		
+		</div>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <!-- https://jquery.com/download/ -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- https://getbootstrap.com/ -->
+  </div>
+
+    <script src="assets/js/core/jquery.min.js"></script>
+	<script src="assets/js/core/bootstrap.min.js"></script>
+	<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+	<script src="assets/js/now-ui-dashboard.min.js" type="text/javascript"></script>
 </body>
 </html>
 
