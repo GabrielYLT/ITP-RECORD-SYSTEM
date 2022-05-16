@@ -178,51 +178,20 @@ $(document).ready(function(){
 									<label for="gender" style="color:black;">Product Code &nbsp; </label>
 									<input  type="text" class="form-control selectList"  autocomplete="off"  list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode" id="gender" required>
 									<datalist id="code">
-									<?php
+																		<?php
 									$conn = $connect;
-									$Admin_id=$_SESSION['id'];
-									$result=mysqli_query($connect,"SELECT *FROM admin WHERE AID='$Admin_id'");
-									$row = mysqli_fetch_assoc($result);
-
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									if($row["Department"]=='Product'){
-									$sql = "SELECT * FROM product WHERE CID = 1 OR CID = 2 OR CID = 3";
+									
+									$sql = "SELECT * FROM product";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
 									echo "<option value='" . $row["PCode"] . "'>". $row["PCode"]."</option>";
 									}
-									} else { echo "0 results"; }}
-									elseif($row["Department"]=='Raw Material'){
-									$sql = "SELECT * FROM product WHERE CID = 4";
-									$result = $conn->query($sql);
-									if ($result->num_rows > 0) {
-
-									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PCode"]."</option>";
-									}
-									} else { echo "0 results"; }}
-									elseif($row["Department"]=='Packing Material'){
-									$sql = "SELECT * FROM product WHERE CID = 5";
-									$result = $conn->query($sql);
-									if ($result->num_rows > 0) {
-
-									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PCode"]."</option>";
-									}
-									} else { echo "0 results"; }}
-									elseif($row["Department"]=='General Use'){
-									$sql = "SELECT * FROM product WHERE CID = 6";
-									$result = $conn->query($sql);
-									if ($result->num_rows > 0) {
-
-									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PCode"]."</option>";
-									}
-									} else { echo "0 results"; }}
+									} else { echo "0 results"; }
 									?>    
 									</datalist>
                                 </div>

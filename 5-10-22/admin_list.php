@@ -212,7 +212,6 @@ $(document).ready(function(){
                                     <td>
 									<div class='btn-group'> 
 									<a href="editProfile.php?edit&id=<?php echo $row['AID'];?>" class="btn btn-secondary">Edit</a>
-									<a href="Staff.php?del&id=<?php echo $row['AID'];?>" class="btn btn-danger" onclick="return confirmation()">Delete</a></td>
 									</div>
                                     <?php
 									echo "</tr>" ;
