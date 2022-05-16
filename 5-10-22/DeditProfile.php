@@ -4,6 +4,24 @@ session_start();
 error_reporting(0);
 ?>
 <?php
+if(!isset($_SESSION['id']))
+{
+?>
+    <script>
+    alert("Please login. Thank you!!!");
+    </script>
+    <?php
+    header("refresh:0.001;url=login.php");
+    //exit();
+	
+	
+}
+
+$Admin_id=$_SESSION['id'];
+$result=mysqli_query($connect,"SELECT *FROM admin WHERE AID = $Admin_id");
+$row = mysqli_fetch_assoc($result);
+?>
+<?php
 								if(isset($_GET["edit"]))
 								{
 								$ad_id=$_GET['id'];
@@ -107,7 +125,7 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="Dprofile.php">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Profile</span>
