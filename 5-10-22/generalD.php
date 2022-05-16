@@ -72,7 +72,7 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="Dprofile.php">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Profile</span>
