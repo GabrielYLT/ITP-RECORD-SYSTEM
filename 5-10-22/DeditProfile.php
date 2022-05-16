@@ -34,7 +34,7 @@ if(isset($_POST["sbtn"]))
 		</script>
 		
 		<?php 
-	header("Refresh:0;");
+	header("Refresh:0;  url=Dprofile.php");
 
 }		
 mysqli_close($connect);
