@@ -36,7 +36,7 @@ if(isset($_GET["cPass"]))
 		</script>
 		
 		<?php 
-		header("Refresh:0; url=editProfile.php?edit&id=$pass_id");
+		header("Refresh:0; url=DeditProfile.php?edit&id=$pass_id");
 		
 		}
 		else
