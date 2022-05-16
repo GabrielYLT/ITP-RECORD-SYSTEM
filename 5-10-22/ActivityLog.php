@@ -2,8 +2,6 @@
 include("Connection.php");
 session_start();
 error_reporting(0);
-$error = "";
-$error1 ="";
 ?>
 <?php
 if(!isset($_SESSION['id']))
@@ -34,23 +32,6 @@ $row = mysqli_fetch_assoc($result);
 }
 }
 ?>
-<?php
-if(!isset($_SESSION['id']))
-{
-?>
-    <script>
-    alert("Please login. Thank you!!!");
-    </script>
-    <?php
-    header("refresh:0.001;url=login.php");
-    //exit();
-}
-$Admin_id=$_SESSION['id'];
-$result=mysqli_query($connect,"SELECT *FROM admin WHERE AID='$Admin_id'");
-$row = mysqli_fetch_assoc($result);
-?>
-
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -59,7 +40,7 @@ $row = mysqli_fetch_assoc($result);
 	
 		<!-- CSS Files -->
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="assets/css/now-ui-dashboard.css" rel="stylesheet" />
+		<link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
 		<!-- CSS Files -->
   <link id="pagestyle" href="assets/css/argon-dashboard.css" rel="stylesheet" />
 		<!-- https://fontawesome.com/ -->
@@ -67,7 +48,6 @@ $row = mysqli_fetch_assoc($result);
 		<!-- https://getbootstrap.com/ -->
 		<link rel="stylesheet" href="css/tooplate.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -86,7 +66,7 @@ $(document).ready(function(){
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 2px white; 
+  box-shadow: inset 0 0 2px grey; 
   border-radius: 5px;
 }
  
@@ -100,14 +80,11 @@ $(document).ready(function(){
 ::-webkit-scrollbar-thumb:hover {
   background: #fff; 
 }
-
-
-
 </style>
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow-x:hidden;background:none;" >
+<div class="wrapper"  style="overflow:hidden;" >
     <div class="sidebar" data-color="pink">
 	
       <!--
@@ -164,8 +141,8 @@ $(document).ready(function(){
         </ul>
 	  </div>
     </div>
-    <div class="main-panel" id="main-panel" style="background-image: url('');">
-	<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
+    <div class="main-panel" id="main-panel">
+		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
 			<div class="container-fluid">
 			    <div class="navbar-wrapper">
 					<div class="navbar-toggle">
@@ -203,79 +180,87 @@ $(document).ready(function(){
 			    </div>
 			</div>
         </nav>
-		<div style="height:5%"></div>
-		<div style="margin-bottom:2%;">
+			<!-- row -->
+            <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
+                <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:1%;margin: auto; margin-top:10%;margin-bottom:2%;">
+                    <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12">
+						<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;display:inline;">Activity Log<h2><h2 style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;display:inline;" id="current_date"></h2>			
+<script>
+date = new Date();
+year = date.getFullYear();
+month = date.getMonth() + 1;
+day = date.getDate();
+document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
+</script>
+							
+                            </div>
+							<div>
+							<hr>
 
-    <div class="container rounded-3 my-5 bgcontainer  shadow  box" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;padding-top:1%;margin: auto; width: 95%;">
-        <div class="row" >
-            <div class="col-md-4">
-                <div class="d-flex align-items-stretch flex-column h-75 justify-content-center">
-                    <div class="row mt-md-5">
-                        <div class="col text-center">
-                            <img class="rounded-circle mb-3" id="imgload" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTlJgcPWvijPP8j4Kjn4J3gdoR4ReO6lYugg&usqp=CAU" width="175px"
-                                height="175px" alt="" />
-                            <h5 class="myname">Name</h5>
+<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:30%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" name="searchname" placeholder="Search" ></h6>
+<hr>
+</div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col text-center">
-                            <small>
-                                <p class="idinfo fs-6 text-light" aria-placeholder="Idinfo">User Link</p>
-                            </small>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped tm-table-striped-even mt-3">
+                                <thead>
+                                    <tr class="tm-bg-gray">
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Admin Name</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;width:15%">Remarks</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Status</th>
+										<th scope="col">&nbsp;</th>	
+                                    </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                	<?php
+									$conn = $connect;
+									
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT stock.PCode, product.PName, stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status
+									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE DATE(DateAdded) = CURDATE()";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["DateAdded"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Remarks"].  "</td>" ; 
+									if($row["Status"] == 'Stock In'){
+									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
+									}else{
+										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
+									}
+                                    ?>  
+                                    <td>
+
+                                    <?php
+									echo "</tr>" ;
+									}
+									echo "</table>";
+									} else { echo "0 results"; }
+									
+									?>    
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
-                </div>
             </div>
-            <div class="col-md-7 px-0 mt-md-3">
-                <h2 class="fw-semi-bold my-3 pb-1" id="profileh3">User Profile Details</h2>
-                <div class="container border mt-4 ">
-					<div class="row mb-4">
-                        <div class="col-12">
-                            <label for="homeworld">Admin Name</label>
-                            <input class=" w-100 form-control shadow" type="text" value="<?php echo $row['AName']?>" name="homeworld" id="homeworld"
-                                placeholder="Homeworld" readonly />
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-6">
-                            <label for="name">First</label>
-                            <input class=" w-100 form-control shadow" type="text" value="<?php echo $row['AFirst']?>" name="name" id="name"
-                                placeholder="UserName" readonly />
-                        </div>
-                        <div class="col-6">
-                            <label for="id">Last</label>
-                            <input class=" w-70 form-control shadow" type="text" value="<?php echo $row['ALast']?>" name="id" id="id" placeholder="UserID" readonly />
-                        </div>
-                    </div>
-					<div class="row mb-4">
-                        <div class="col-12">
-                            <label for="homeworld">Department</label>
-                            <input class=" w-100 form-control shadow" value="<?php echo $row['Department']?>" type="text" name="homeworld" id="homeworld"
-                                placeholder="Homeworld"readonly />
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col-12">
-                            <label for="homeworld">Status</label>
-                            <input class=" w-100 form-control shadow" value="<?php echo $row['AStatus']?>" type="text" name="homeworld" id="homeworld"
-                                placeholder="Homeworld" readonly />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="flex text-center mt-4">
-                        <a href="editProfile.php?edit&id=<?php echo $row['AID'];?>"><button class="btn btn-outline-dark shadow">Edit Details</button></a>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="col-3">dfds</div> -->
         </div>
     </div>
-	</div>
-    
-	</div>
+		
+		
+
+  </div>
 	<script src="assets/js/core/jquery.min.js"></script>
 	<script src="assets/js/core/bootstrap.min.js"></script>
 	<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>

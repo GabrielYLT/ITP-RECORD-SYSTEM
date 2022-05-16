@@ -4,6 +4,33 @@ session_start();
 error_reporting(0);
 ?>
 <?php
+if(!isset($_SESSION['id']))
+{
+?>
+    <script>
+    alert("Please login. Thank you!!!");
+    </script>
+    <?php
+    header("refresh:0.001;url=login.php");
+    //exit();
+	
+	
+}
+
+$Admin_id=$_SESSION['id'];
+$result=mysqli_query($connect,"SELECT *FROM admin WHERE AID = $Admin_id");
+$row = mysqli_fetch_assoc($result);
+?>
+<?php
+								if(isset($_GET["edit"]))
+								{
+								$ad_id=$_GET['id'];
+								$result=mysqli_query($connect,"SELECT * FROM admin WHERE AID='$ad_id'");
+								$row=mysqli_fetch_assoc($result);
+								}?>
+
+	
+								<?php
 if(isset($_POST["sbtn"]))
 {
 	$first_name = $_POST["fname"];
@@ -16,9 +43,7 @@ if(isset($_POST["sbtn"]))
 	mysqli_query($connect,"UPDATE admin SET AName='$admin_name',
 											AFirst='$first_name',
 											ALast='$last_name',
-                                               AEmail='$admin_email',
-                                               Department = '$admin_phone',
-                                               AStatus = '$admin_gender'	
+                                               AEmail='$admin_email'
                                                WHERE AID = '$ad_id'");
 		 ?>
 		<script type="text/javascript">
@@ -27,7 +52,7 @@ if(isset($_POST["sbtn"]))
 		</script>
 		
 		<?php 
-	header("Refresh:0; url=Dprofile.php");
+	header("Refresh:0;  url=Dprofile.php");
 
 }		
 mysqli_close($connect);
@@ -100,7 +125,7 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="Dprofile.php">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Profile</span>
@@ -122,8 +147,8 @@ $(document).ready(function(){
       <!-- End Navbar -->
 	  <div style="height:10%;">
       </div>
-    <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;" >
-            <div class="tm-col tm-col-big" style="padding-top:1%;margin: auto;margin-bottom:2%;">
+    	       <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;" >
+            <div class="tm-col tm-col-big" style="padding-top:1%;margin: auto; margin-top:auto%;margin-bottom:2%;">
                 <div class="tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                     <div class="row">
                         <div class="col-12" >
@@ -135,8 +160,7 @@ $(document).ready(function(){
                         <div class="col-12">
                             <form name = "updatAdmin" method="post" class="tm-signup-form" >
                                 
-								
-								
+							
 								<div class="form-group">
                                     <label for="name">First Name</label>
                                     <input value="<?php echo $row['AFirst']?>" placeholder="Enter Your Firstname Here" name="fname" type="text" class="form-control" pattern="[a-zA-Z'-'\s]*" title="Please Enter Your NRIC Name , no letter or symbols accepted !"   required>
@@ -155,30 +179,6 @@ $(document).ready(function(){
                                     <input value="<?php echo $row['AEmail']?>" placeholder="Please Enter Your Email" id="email" name="email" type="email" class="form-control validate" required >
 									<span id="erroremail"></span>	
                                 </div>
-								<div class="select">
-									<label for="gender">Department &nbsp; </label>
-									<select  class="form-control selectList" style="width:100%;Height:50%;" name="phone" id="gender" required>
-									<option value="<?php echo $row['Department']?>"><?php echo $row['Department']?></option>
-									<optgroup label="Department">
-									<option value="Product">Product</option>
-									<option value="General Use">General Use</option>
-									<option value="Raw Material">Raw Material</option>
-									<option value="Packing Material">Packing Material</option>
-									<option value="All Department">All Department</option>
-									
-									</select>
-                                </div>
-								<div class="select">
-                                    <br>
-									<label for="gender">Status &nbsp; </label>
-									<select  class="form-control selectList" style="width:100%;Height:50%;" name="gender" id="gender" required>
-									<option value="<?php echo $row['AStatus']?>"><?php echo $row['AStatus']?></option>
-									<optgroup label="Status">
-									<option value="Active">Active</option>
-									<option value="Suspended">Suspended</option>
-									<option value="Blocked">Blocked</option>
-									</select>
-                                </div>
 								<hr>
                                 <div class="form-group">
                                     <div class="form-group">
@@ -186,6 +186,7 @@ $(document).ready(function(){
 									
                                         <button type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Update 
                                         </button>
+
 										<a href="DchangePass.php?cPass&id=<?php echo $row['AID'];?>" class="btn btn-info" style="width:150px;height:auto;float:right;">Change Password</a>
 										
 										

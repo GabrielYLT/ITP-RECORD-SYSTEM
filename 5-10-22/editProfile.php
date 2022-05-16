@@ -2,7 +2,35 @@
 include("Connection.php");
 session_start();
 error_reporting(0);
-
+<?php
+if(!isset($_SESSION['id']))
+{
+?>
+    <script>
+    alert("Please login. Thank you!!!");
+    </script>
+    <?php
+    header("refresh:0.001;url=login.php");
+    //exit();
+	
+	
+}else{
+	$Admin_id=$_SESSION['id'];
+$result=mysqli_query($connect,"SELECT *FROM admin WHERE AID = $Admin_id");
+$row = mysqli_fetch_assoc($result);
+	if(($row['Department'])!='All Department')
+{	
+?>
+    <script>
+    alert("You Are Not Authorize To Access This Page!!!");
+    </script>
+    <?php
+    header("refresh:0.001;url=generalD.php");
+    //exit();
+	
+}
+}
+?>
 ?>
 <?php
 								if(isset($_GET["edit"]))
@@ -182,8 +210,10 @@ mysqli_close($connect);
 			    </div>
 			</div>
         </nav>
+					  <div style="height:5%;">
+      </div>
 	       <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;" >
-            <div class="tm-col tm-col-big" style="padding-top:1%;margin: auto; margin-top:10%;margin-bottom:2%;">
+            <div class="tm-col tm-col-big" style="padding-top:1%;margin: auto; margin-top:auto%;margin-bottom:2%;">
                 <div class="tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                     <div class="row">
                         <div class="col-12" >
