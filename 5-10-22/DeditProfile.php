@@ -168,7 +168,8 @@ $(document).ready(function(){
 									
                                         <button type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Update 
                                         </button>
-										<a href="ChangePass.php?cPass&id=<?php echo $row['AID'];?>" class="btn btn-info" style="width:150px;height:auto;float:right;">Change Password</a>
+
+										<a href="DchangePass.php?cPass&id=<?php echo $row['AID'];?>" class="btn btn-info" style="width:150px;height:auto;float:right;">Change Password</a>
 										
 										
                                     </div>
