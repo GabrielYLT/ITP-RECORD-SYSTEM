@@ -285,7 +285,7 @@ $(document).ready(function(){
             </div>
 			</div>
 		
-		
+		</div>
 
   </div>
 	<script src="assets/js/core/jquery.min.js"></script>
