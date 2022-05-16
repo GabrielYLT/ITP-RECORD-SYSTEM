@@ -124,12 +124,6 @@ label {
 				<li><a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="list.php?details&id=6"><i class="now-ui-icons design_palette"></i>General Use</a></li>
 			</ul>
           </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
-            </a>
-          </li>
 		   <li>
             <a href="admin_list.php">
               <i class="now-ui-icons users_circle-08"></i>
@@ -173,7 +167,7 @@ label {
 							</a>
 					    </li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="logout.php">
 							    <i class="now-ui-icons media-1_button-power"></i>
 							    <p>
 									<span class="d-lg-none d-md-block">Logout</span>
@@ -184,9 +178,10 @@ label {
 			    </div>
 			</div>
         </nav>
+		<div style="height:5%;"></div>
 			<!-- row -->
             <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
-                <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:1%;margin: auto; margin-top:10%;margin-bottom:2%;">
+                <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:1%;margin: auto; margin-bottom:2%;">
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                         <div class="row">
                             <div class="col-md-8 col-sm-12">

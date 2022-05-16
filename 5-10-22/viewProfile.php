@@ -143,12 +143,6 @@ $(document).ready(function(){
 				<li><a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="list.php?details&id=6"><i class="now-ui-icons design_palette"></i>General Use</a></li>
 			</ul>
           </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
-            </a>
-          </li>
 		   <li>
             <a href="admin_list.php">
               <i class="now-ui-icons users_circle-08"></i>
@@ -192,7 +186,7 @@ $(document).ready(function(){
 							</a>
 					    </li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="logout.php">
 							    <i class="now-ui-icons media-1_button-power"></i>
 							    <p>
 									<span class="d-lg-none d-md-block">Logout</span>
@@ -214,20 +208,20 @@ $(document).ready(function(){
                         <div class="col text-center">
                             <img class="rounded-circle mb-3" id="imgload" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTlJgcPWvijPP8j4Kjn4J3gdoR4ReO6lYugg&usqp=CAU" width="175px"
                                 height="175px" alt="" />
-                            <h5 class="myname">Name</h5>
+                            <h5 class="myname"><?php echo $row['AFirst'] . "&nbsp;" .$row['ALast'] ?></h5>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <small>
-                                <p class="idinfo fs-6 text-light" aria-placeholder="Idinfo">User Link</p>
+                            <small style="color:grey">
+                                <p class="idinfo fs-6" aria-placeholder="Idinfo"><?php echo $row['AEmail']?></p>
                             </small>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-7 px-0 mt-md-3">
-                <h2 class="fw-semi-bold my-3 pb-1" id="profileh3">User Profile Details</h2>
+                <h2 class="fw-semi-bold my-3 pb-1" id="profileh3">Profile Details</h2>
                 <div class="container border mt-4 ">
 					<div class="row mb-4">
                         <div class="col-12">

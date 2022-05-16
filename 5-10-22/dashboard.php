@@ -127,12 +127,6 @@ $(document).ready(function(){
 				<li><a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="list.php?details&id=6"><i class="now-ui-icons design_palette"></i>General Use</a></li>
 			</ul>
           </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
-            </a>
-          </li>
 		   <li>
             <a href="admin_list.php">
               <i class="now-ui-icons users_circle-08"></i>
@@ -275,7 +269,33 @@ $(document).ready(function(){
 				}
 			});
 		</script>
-		<div class="content">
+		<div class="content" style="min-height:10%">
+			<div class="row">
+			  <div class="col-lg-4 col-md-6">
+				<div class="card card-chart">
+				  <div class="card-header">
+					<h5 class="card-category">Email Statistics</h5>
+					<h4 class="card-title">24 Hours Performance</h4>
+				  </div>
+				</div>
+			  </div>
+			  <div class="col-lg-4 col-md-6">
+				<div class="card card-chart">
+				  <div class="card-header">
+					<h5 class="card-category">Email Statistics</h5>
+					<h4 class="card-title">24 Hours Performance</h4>
+				  </div>
+				</div>
+			  </div>
+			  <div class="col-lg-4 col-md-6">
+				<div class="card card-chart">
+				  <div class="card-header">
+					<h5 class="card-category">Email Statistics</h5>
+					<h4 class="card-title">24 Hours Performance</h4>
+				  </div>
+				</div>
+			  </div>
+			</div>
 			<div class="row">
 			  <div class="col-lg-4 col-md-6">
 				<div class="card card-chart">
@@ -303,6 +323,143 @@ $(document).ready(function(){
 			  </div>
 			</div>
 		</div>
+		<div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
+                <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:1%;margin: auto; margin-bottom:2%;">
+                    <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12">
+						<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;display:inline;">Activity Log<h2><h2 style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;display:inline;" id="current_date"></h2>			
+<script>
+date = new Date();
+year = date.getFullYear();
+month = date.getMonth() + 1;
+day = date.getDate();
+document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
+</script>
+							
+                            </div>
+							<div>
+							<hr>
+
+<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:30%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" name="searchname" placeholder="Search" ></h6>
+<hr>
+</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped tm-table-striped-even mt-3">
+                                <thead>
+                                    <tr class="tm-bg-gray">
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Admin Name</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;width:15%">Remarks</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Status</th>
+										<th scope="col">&nbsp;</th>	
+                                    </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                	<?php
+									$conn = $connect;
+									
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT stock.PCode, product.PName,product.PImage, stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status
+									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE DATE(DateAdded) = CURDATE()";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'><img width='125px' src='images/" . $row["PImage"]. "'></td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["DateAdded"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Remarks"].  "</td>" ; 
+									if($row["Status"] == 'Stock In'){
+									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
+									}else{
+										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
+									}
+                                    ?>  
+                                    <td>
+
+                                    <?php
+									echo "</tr>" ;
+									}
+									echo "</table>";
+									} else { echo "0 results"; }
+									
+									?>    
+                                </tbody>
+                            </table>
+                        </div>
+            </div>
+        </div>
+    </div>
+	
+	            <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:auto%;padding-right:1%;padding-bottom:1%;">
+                <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:auto%;margin: auto; margin-top:auto%;margin-bottom:2%;">
+                    <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12">
+						<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;display:inline;">Low on Stock </h2>
+                            </div>
+							<div>
+							<hr>
+
+<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:30%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" name="searchname" placeholder="Search" ></h6>
+<hr>
+</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped tm-table-striped-even mt-3">
+                                <thead>
+                                    <tr class="tm-bg-gray">
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Image</th>
+									    <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Category</th>
+										<th scope="col">&nbsp;</th>	
+                                    </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                	<?php
+									$conn = $connect;
+									
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT product.PCode,product.PName,product.PImage,product.PQty,product.QType,product.CID,category.CName FROM product INNER JOIN category ON product.CID = category.CID WHERE PQty <= 5";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'><img width='125px' src='images/" . $row["PImage"]. "'></td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"] . "</td>" ;
+									echo "<td class='align-middle text-center text-sm' style='text-align:center;color:black;font-weight:bold;'> <span class='badge badge-sm bg-gradient-danger'>" . $row["PQty"]."</span> &nbsp;" . $row["QType"] ."</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["CName"].  "</td>" ; 
+                                    ?>  
+                                    <td>
+
+                                    <?php
+									echo "</tr>" ;
+									}
+									echo "</table>";
+									} else { echo "0 results"; }
+									
+									?>    
+                                </tbody>
+                            </table>
+                        </div>
+            </div>
+        </div>
+    </div>
 </div>
 	<script src="assets/js/core/jquery.min.js"></script>
 	<script src="assets/js/core/bootstrap.min.js"></script>
