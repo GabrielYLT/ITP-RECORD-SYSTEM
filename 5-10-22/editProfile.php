@@ -2,7 +2,7 @@
 include("Connection.php");
 session_start();
 error_reporting(0);
-<?php
+?><?php
 if(!isset($_SESSION['id']))
 {
 ?>
@@ -30,7 +30,6 @@ $row = mysqli_fetch_assoc($result);
 	
 }
 }
-?>
 ?>
 <?php
 								if(isset($_GET["edit"]))

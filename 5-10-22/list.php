@@ -216,7 +216,6 @@ label {
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Image</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
-
 										<th scope="col">&nbsp;</th>	
                                     </tr>
                                 </thead>
@@ -244,7 +243,8 @@ label {
                                     <td>
 									<div class="btn-group"> 
 									<a href="details.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary">Details</a>
-									</div>
+									<a href="editProduct.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary">Edit</a>
+									</div></td>
                                     <?php
 									echo "</tr>" ;
 									}
