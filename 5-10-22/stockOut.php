@@ -55,6 +55,8 @@ if(isset($_POST["sbtn"]))
 	header("refresh:0.001;url=stockOut.php");
 	
 
+	
+
 
 ?>
 		<script type="text/javascript">
