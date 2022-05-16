@@ -4,9 +4,44 @@ session_start();
 error_reporting(0);
 
 ?>
+<?php
+								if(isset($_GET["edit"]))
+								{
+								$ad_id=$_GET['id'];
+								$result=mysqli_query($connect,"SELECT * FROM admin WHERE AID='$ad_id'");
+								$row=mysqli_fetch_assoc($result);
+								}?>
 
+	
+								<?php
+if(isset($_POST["sbtn"]))
+{
+	$first_name = $_POST["fname"];
+	$last_name = $_POST["lname"];
+	$admin_name = $_POST["name"];
+    $admin_email = $_POST["email"];
+    $admin_phone = $_POST["phone"];
+    $admin_gender = $_POST["gender"];
+	
+	mysqli_query($connect,"UPDATE admin SET AName='$admin_name',
+											AFirst='$first_name',
+											ALast='$last_name',
+                                               AEmail='$admin_email',
+                                               Department = '$admin_phone',
+                                               AStatus = '$admin_gender'	
+                                               WHERE AID = '$ad_id'");
+		 ?>
+		<script type="text/javascript">
+		alert("Update Successfully!");
+		
+		</script>
+		
+		<?php 
+	header("Refresh:0;");
 
-
+}		
+mysqli_close($connect);
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -50,13 +85,7 @@ error_reporting(0);
 		
 	
 	<body>
-	<?php
-								if(isset($_GET["edit"]))
-								{
-								$ad_id=$_GET['id'];
-								$result=mysqli_query($connect,"SELECT * FROM admin WHERE AID='$ad_id'");
-								$row=mysqli_fetch_assoc($result);
-								}?>
+	
 	<div class="wrapper" >
 		<div class="sidebar" data-color="pink">
 	
@@ -166,36 +195,7 @@ error_reporting(0);
                         <div class="col-12">
                             <form name = "updatAdmin" method="post" class="tm-signup-form" >
                                 
-								
-								<?php
-if(isset($_POST["sbtn"]))
-{
-	$first_name = $_POST["fname"];
-	$last_name = $_POST["lname"];
-	$admin_name = $_POST["name"];
-    $admin_email = $_POST["email"];
-    $admin_phone = $_POST["phone"];
-    $admin_gender = $_POST["gender"];
-	
-	mysqli_query($connect,"UPDATE admin SET AName='$admin_name',
-											AFirst='$first_name',
-											ALast='$last_name',
-                                               AEmail='$admin_email',
-                                               Department = '$admin_phone',
-                                               AStatus = '$admin_gender'	
-                                               WHERE AID = '$ad_id'");
-		 ?>
-		<script type="text/javascript">
-		alert("Update Successfully!");
-		
-		</script>
-		
-		<?php 
-	header("Refresh:0; url=admin_list.php");
-
-}		
-mysqli_close($connect);
-?>
+							
 								<div class="form-group">
                                     <label for="name">First Name</label>
                                     <input value="<?php echo $row['AFirst']?>" placeholder="Enter Your Firstname Here" name="fname" type="text" class="form-control" pattern="[a-zA-Z'-'\s]*" title="Please Enter Your NRIC Name , no letter or symbols accepted !"   required>
@@ -245,7 +245,7 @@ mysqli_close($connect);
 									
                                         <button type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Update 
                                         </button>
-										<a href="nChangPass.php?cPass&id=<?php echo $row['AID'];?>" class="btn btn-info" style="width:150px;height:auto;float:right;">Change Password</a>
+										<a href="ChangePass.php?cPass&id=<?php echo $row['AID'];?>" class="btn btn-info" style="width:150px;height:auto;float:right;">Change Password</a>
 										
 										
                                     </div>

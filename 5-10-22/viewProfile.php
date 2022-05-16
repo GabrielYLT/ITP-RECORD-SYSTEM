@@ -6,45 +6,19 @@ $error = "";
 $error1 ="";
 ?>
 <?php
-if(isset($_POST["sbtn"]))
+if(!isset($_SESSION['id']))
 {
- $FName = $_POST["fname"];
- $LName = $_POST["lname"];
- $Admin_Name = $_POST["name"];
- $Admin_Email = $_POST["email"];
- $Admin_Password = $_POST["pass1"];
- $Admin_PhoneNo = $_POST["dept"];
- $AStat = "Active";
- 
-
-if($_POST['pass'] === $_POST["pass1"]){
-$select = mysqli_query($connect, "SELECT * FROM admin WHERE AEmail = '".$_POST['email']."'");
-if(mysqli_num_rows($select)) {
-    $error="This email address is already registered";
-	?>
-		<script type="text/javascript">
-		alert("Email Already in Use!");
-		
-		</script>
-		
-	<?php 
-}else{
-	 
-	mysqli_query($connect,"INSERT INTO admin(AFirst,ALast,AName,AEmail,APassword,AStatus,Department)VALUES('$FName','$LName','$Admin_Name','$Admin_Email','$Admin_Password','$AStat','$Admin_PhoneNo')");
- 
-	?>
-		<script type="text/javascript">
-		alert("Added Successfully!");
-		
-		</script>
-		
-	<?php 
- }
- }else{
-	 $error1="Password Entered Does not Match";
- }
- 
+?>
+    <script>
+    alert("Please login. Thank you!!!");
+    </script>
+    <?php
+    header("refresh:0.001;url=login.php");
+    //exit();
 }
+$Admin_id=$_SESSION['id'];
+$result=mysqli_query($connect,"SELECT *FROM admin WHERE AID='$Admin_id'");
+$row = mysqli_fetch_assoc($result);
 ?>
 
 
@@ -227,33 +201,33 @@ $(document).ready(function(){
 					<div class="row mb-4">
                         <div class="col-12">
                             <label for="homeworld">Admin Name</label>
-                            <input class=" w-100 form-control shadow" type="text" name="homeworld" id="homeworld"
-                                placeholder="Homeworld" />
+                            <input class=" w-100 form-control shadow" type="text" value="<?php echo $row['AName']?>" name="homeworld" id="homeworld"
+                                placeholder="Homeworld" readonly />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-6">
                             <label for="name">First</label>
-                            <input class=" w-100 form-control shadow" type="text" name="name" id="name"
-                                placeholder="UserName" aria-label="Name" />
+                            <input class=" w-100 form-control shadow" type="text" value="<?php echo $row['AFirst']?>" name="name" id="name"
+                                placeholder="UserName" readonly />
                         </div>
                         <div class="col-6">
                             <label for="id">Last</label>
-                            <input class=" w-70 form-control shadow" type="text" name="id" id="id" placeholder="UserID" />
+                            <input class=" w-70 form-control shadow" type="text" value="<?php echo $row['ALast']?>" name="id" id="id" placeholder="UserID" readonly />
                         </div>
                     </div>
 					<div class="row mb-4">
                         <div class="col-12">
                             <label for="homeworld">Department</label>
-                            <input class=" w-100 form-control shadow" type="text" name="homeworld" id="homeworld"
-                                placeholder="Homeworld" />
+                            <input class=" w-100 form-control shadow" value="<?php echo $row['Department']?>" type="text" name="homeworld" id="homeworld"
+                                placeholder="Homeworld"readonly />
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-12">
                             <label for="homeworld">Status</label>
-                            <input class=" w-100 form-control shadow" type="text" name="homeworld" id="homeworld"
-                                placeholder="Homeworld" />
+                            <input class=" w-100 form-control shadow" value="<?php echo $row['AStatus']?>" type="text" name="homeworld" id="homeworld"
+                                placeholder="Homeworld" readonly />
                         </div>
                     </div>
                 </div>
@@ -261,7 +235,7 @@ $(document).ready(function(){
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="flex text-center mt-4">
-                        <a href="editProfile.php?edit&id"><button class="btn btn-outline-dark shadow">Edit Details</button></a>
+                        <a href="editProfile.php?edit&id=<?php echo $row['AID'];?>"><button class="btn btn-outline-dark shadow">Edit Details</button></a>
                     </div>
                 </div>
             </div>

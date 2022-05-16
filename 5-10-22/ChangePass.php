@@ -5,8 +5,6 @@ error_reporting(0);
 $error = "" ;
 ?>
 <?php
-
-
 if(isset($_GET["cPass"]))
 {
 	$pass_id=$_GET['id'];
@@ -19,19 +17,18 @@ if(isset($_GET["cPass"]))
 	else
 	{
 		$pass=$_POST["current"];
-		$result=mysqli_query($connect,"SELECT * FROM addadmin WHERE Admin_password='$pass' AND Admin_CPassword='$pass' AND Admin_ID ='$pass_id'");
+		$result=mysqli_query($connect,"SELECT * FROM admin WHERE APassword='$pass' AND AID ='$pass_id'");
 		$count=mysqli_num_rows($result);
 		if($count == 1)
 		{
 			$row=mysqli_fetch_assoc($result);	
 		if($_POST["new"]=== $_POST["rnew"])
 		{
-			$newPass=$_POST["new"];
 			$rnewPass = $_POST['rnew'];
 			
-			mysqli_query($connect, "UPDATE addadmin SET Admin_Password='$newPass',
-														Admin_CPassword ='$rnewPass'
-														WHERE Admin_ID='$pass_id'")
+			mysqli_query($connect, "UPDATE admin SET APassword ='$rnewPass'
+														WHERE AID='$pass_id'");
+			
 			?>
 		<script type="text/javascript">
 		alert("Password Change Successfully!");
@@ -39,7 +36,7 @@ if(isset($_GET["cPass"]))
 		</script>
 		
 		<?php 
-		header("refresh:0.1");
+		header("Refresh:0; url=editProfile.php?edit&id=$pass_id");
 		
 		}
 		else
@@ -235,9 +232,10 @@ function validate_email()
                                 <div class="form-group">
                                     <label for="phone">Re-enter New Password </label>
                                     <input  placeholder="Please Re-enter Your New Password"  name="rnew" id="rnew" class="form-control validate" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~=?\|<>/]).{8,}" title="Must contain at least 8 or more characters with at least one number,one uppercase letter,one lowercase letter and one special character!"  required>
-									<div class="form-check">
-										<label class="form-check-label">
-										<input type="checkbox" class="form-check-input" onclick="myFunction()" style="width:12px;height:12px;" >&nbsp; Show All Password
+									<div class="">
+										<label >
+										<input type="checkbox" class="form-check-input" onclick="myFunction()" style="width:15px;height:15px;margin:auto;margin-top:2px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Show All Password
+										
 										<script type="text/javascript">
 										function myFunction() {
 										var x = document.getElementById("current");
@@ -254,9 +252,11 @@ function validate_email()
 											z.type = "password";
 										}
 										}</script>
+										
 										</label>
+										<span style='color: red;font-weight:bold;'> <?php echo $error; ?> </span>
 									</div>
-									<span style='color: red;'> <?php echo $error; ?> </span><hr>
+									<hr>
 								</div>	
                                 <div class="form-group">
                                     <div class="col-12 col-sm-6" style="float:right;">
