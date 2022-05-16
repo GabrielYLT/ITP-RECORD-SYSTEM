@@ -186,7 +186,7 @@ $(document).ready(function(){
 							</a>
 					    </li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="logout.php">
 							    <i class="now-ui-icons media-1_button-power"></i>
 							    <p>
 									<span class="d-lg-none d-md-block">Logout</span>
