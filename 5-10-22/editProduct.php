@@ -172,8 +172,8 @@ $(document).ready(function(){
             </a>
           </li>
           <li>
-            <a>3
-			
+            <a>
+   
               <i class="now-ui-icons design_bullet-list-67"></i>
               <h3 class="dropdown-header" style="color:white;">Category</h3>
 			</a>
