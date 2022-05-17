@@ -229,7 +229,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PCode"]."</option>";
+									echo "<option value='" . $row["PCode"] . "'>". $row["PName"]."</option>";
 									}
 									} else { echo "0 results"; }
 									?>    
