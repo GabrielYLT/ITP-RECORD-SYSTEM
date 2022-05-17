@@ -181,7 +181,7 @@ label {
 		<div style="height:5%;"></div>
 			<!-- row -->
             <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
-                <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:1%;margin: auto; margin-bottom:2%;">
+                <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:auto%;margin: auto; margin-bottom:2%;">
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                         <div class="row">
                             <div class="col-md-8 col-sm-12">
@@ -211,7 +211,7 @@ label {
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Image</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
-										<th scope="col">&nbsp;</th>	
+										<th scope="col" style="width:20%">&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
@@ -225,21 +225,22 @@ label {
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT product.PCode, product.PImage, product.PName,product.PQty,product.Qtype,product.CID,category.CName FROM (product INNER JOIN category ON product.CID = category.CID) WHERE product.CID = '$ad_id'  ";
+									$sql = "SELECT product.PCode, product.PImage, product.PName,product.PQty,product.QType,product.CID,category.CName FROM (product INNER JOIN category ON product.CID = category.CID) WHERE product.CID = '$ad_id'  ";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
+									echo "<tr><td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
 									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PQty"]. $row["QType"] ."</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PQty"]."&nbsp;&nbsp;". $row["QType"] ."</td>" ; 
+
                                     ?> 
-                                    <td>
-									<div class="btn-group"> 
-									<a href="details.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary">Details</a>
-									<a href="editProduct.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary">Edit</a>
-									</div></td>
+                                  <td style="text-align:center;font-weight:bold";>
+									<div class='btn-group'> 
+									<a href="details.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary">Details</a>	
+									<a href="editProduct.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary" >Edit</a></td>
+									</div>
                                     <?php
 									echo "</tr>" ;
 									}
