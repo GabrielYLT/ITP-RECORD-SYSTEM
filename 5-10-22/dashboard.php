@@ -299,7 +299,10 @@ canvas{
 				  title: {
 						display: true,
 						text: 'Daily Stock',
-						fontColor: 'white'
+						fontColor: 'white',
+						fontSize : 20
+						
+						
 					  },
 					scales: {
 						xAxes: [{
