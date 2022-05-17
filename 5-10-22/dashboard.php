@@ -87,11 +87,18 @@ $(document).ready(function(){
   background: #fff; 
 }
 
+canvas{
+
+  width:98% !important;
+  height:100% !important;
+
+}
+
 </style>
 		</head>
 	
 	<body>
-<div class="wrapper"  style="background:none;" >
+<div class="wrapper">
     <div class="sidebar" data-color="pink">
 	
       <!--
@@ -142,7 +149,7 @@ $(document).ready(function(){
         </ul>
 	  </div>
     </div>
-    <div class="main-panel" id="main-panel" style="background-image: url('');">
+    <div class="main-panel" id="main-panel" style="height:100%;background-image: url('images/bg.jpg');background-size: cover;background-attachment: fixed;">
 		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
 			<div class="container-fluid">
 			    <div class="navbar-wrapper">
@@ -310,8 +317,8 @@ $(document).ready(function(){
 		</script>
 			<div class="content" style="min-height:10%">
 			<div class="row">
-			  <div class="col-lg-4 col-md-6">
-				<div class="card card-chart">
+			  <div class="col-lg-4 col-md-6" >
+				<div class="card card-chart" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
 				  <div class="card-header">
 					<h5 class="card-category">Category</h5>
 					<h4 class="card-title">New Year Cookies</h4>
@@ -340,7 +347,7 @@ $(document).ready(function(){
 				</div>
 			  </div>
 			  <div class="col-lg-4 col-md-6">
-				<div class="card card-chart">
+				<div class="card card-chart" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
 				  <div class="card-header">
 					<h5 class="card-category">Category</h5>
 					<h4 class="card-title">Raya Cookies</h4>
@@ -369,7 +376,7 @@ $(document).ready(function(){
 				</div>
 			  </div>
 			  <div class="col-lg-4 col-md-6">
-				<div class="card card-chart">
+				<div class="card card-chart" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
 				  <div class="card-header">
 					<h5 class="card-category">Category</h5>
 					<h4 class="card-title">Mooncakes </h4>
@@ -400,7 +407,7 @@ $(document).ready(function(){
 			</div>
 			<div class="row">
 			  <div class="col-lg-4 col-md-6">
-				<div class="card card-chart">
+				<div class="card card-chart" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
 				  <div class="card-header">
 					<h5 class="card-category">Category</h5>
 					<h4 class="card-title">Raw Material</h4>
@@ -429,7 +436,7 @@ $(document).ready(function(){
 				</div>
 			  </div>
 			  <div class="col-lg-4 col-md-6">
-				<div class="card card-chart">
+				<div class="card card-chart" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
 				  <div class="card-header">
 					<h5 class="card-category">Category</h5>
 					<h4 class="card-title">Packing Material</h4>
@@ -458,7 +465,7 @@ $(document).ready(function(){
 				</div>
 			  </div>
 			  <div class="col-lg-4 col-md-6">
-				<div class="card card-chart">
+				<div class="card card-chart" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
 				  <div class="card-header">
 					<h5 class="card-category">Category</h5>
 					<h4 class="card-title">General Use</h4>

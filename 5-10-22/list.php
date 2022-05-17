@@ -139,7 +139,7 @@ label {
         </ul>
 	  </div>
     </div>
-    <div class="main-panel" id="main-panel" style="height:100%">
+    <div class="main-panel" id="main-panel" style="height:100%;background-image: url('images/bg.jpg');background-size: cover;">
 		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
 			<div class="container-fluid">
 			    <div class="navbar-wrapper">

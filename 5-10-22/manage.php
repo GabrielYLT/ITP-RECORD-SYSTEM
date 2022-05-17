@@ -130,7 +130,7 @@ $(document).ready(function(){
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow-x:hidden;background:none;" >
+<div class="wrapper"  style="overflow-x:hidden;" >
     <div class="sidebar" data-color="pink">
 	
       <!--
@@ -181,7 +181,7 @@ $(document).ready(function(){
         </ul>
 	  </div>
     </div>
-    <div class="main-panel" id="main-panel" style="background-image: url('https://res.cloudinary.com/lamboplace/image/upload/f_auto,q_auto/v1591257893/products/yjofydgnvmqfsoi5p2hc.jpg');">
+    <div class="main-panel" id="main-panel" style="height:100%;background-image: url('images/bg.jpg');background-size: cover;background-attachment: fixed;">
 		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
 			<div class="container-fluid">
 			    <div class="navbar-wrapper">
