@@ -149,7 +149,7 @@ $(document).ready(function(){
 		</head>
 	
 	<body>
-<div class="wrapper"  style="background:none;" >
+<div class="wrapper"  style="background:none;height:100%" >
     <div class="sidebar" data-color="pink">
 	
       <!--
@@ -201,7 +201,7 @@ $(document).ready(function(){
         </ul>
 	  </div>
     </div>
-    <div class="main-panel" id="main-panel" style="height:100%;background-image: url('https://res.cloudinary.com/lamboplace/image/upload/f_auto,q_auto/v1591257893/products/yjofydgnvmqfsoi5p2hc.jpg');">
+    <div class="main-panel" id="main-panel" style="height:100%;background-image: url('images/bg.jpg');background-size: cover;background-attachment: fixed;">
 		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
 			<div class="container-fluid">
 			    <div class="navbar-wrapper">
@@ -240,7 +240,7 @@ $(document).ready(function(){
 			    </div>
 			</div>
         </nav>
-		<div style="height:10%;"></div>
+		<div><br><br><br></div>
 			<!-- row -->
         <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;" >
             <div class="tm-col tm-col-big" style="padding-top:1%;padding-bottom:1%;margin: auto;width: 700px;">
