@@ -237,7 +237,7 @@ $(document).ready(function(){
   <hr>
 								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="Qty" style="color:black;">Quantity </label>
-                                    <input value="" placeholder="Please Enter Product Name" id="number" min="0" name="qty" type="number" class="form-control validate" required>
+                                    <input value="" placeholder="Please Enter Product Quantity" id="number" min="0" name="qty" type="number" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="form-group" style="margin-bottom:0%;">

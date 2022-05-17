@@ -63,7 +63,7 @@ if(isset($_POST["sbtn"]))
 		</script>
 		
 	<?php 
-
+ header("refresh:0.001;url=manage.php");
 }
 ?>
 

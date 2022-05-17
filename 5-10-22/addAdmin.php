@@ -68,6 +68,7 @@ if(mysqli_num_rows($select)) {
 		</script>
 		
 	<?php 
+	 header("refresh:0.001;url=manage.php");
  }
  }else{
 	 $error1="Password Entered Does not Match";
