@@ -33,6 +33,15 @@ $row = mysqli_fetch_assoc($result);
 }
 ?>
 <?php
+								if(isset($_GET["details"]))
+								{
+								$ad_id=$_GET['id'];
+								$result=mysqli_query($connect,"SELECT product.PCode,product.PName, product.PImage, product.PQty ,product.QType, product.CID, category.CName
+								FROM product INNER JOIN category ON product.CID= category.CID WHERE PCode='$ad_id'");
+								$row=mysqli_fetch_assoc($result);
+								$CID = $row['CID'];
+								}?>
+<?php
 if(isset($_POST["sbtn"]))
 {
 	$productname = $_POST["pname"];
@@ -40,11 +49,26 @@ if(isset($_POST["sbtn"]))
 	$productcode = $_POST["pcode"];
 	$type = $_POST["type"];
 	$productstock = $_POST["category"];
+	
+	$Image= $row['PImage'];
+	
+	if(empty($product_image)){
+		
+		$sql=mysqli_query($connect,"Update product SET PName = '$productname',
+												   QType = '$type',
+												   CID = '$productstock'
+												   WHERE PCode = '$ad_id'");
+		header("refresh:0.001;url=list.php?details&id=$CID");
+	}else{
 
 
-	$sql=mysqli_query($connect,"INSERT INTO product(PCode,PName,QType,CID,PImage)VALUES('$productcode','$productname','$type','$productstock','$product_image')");
+	$sql=mysqli_query($connect,"Update product SET PName = '$productname',
+												   QType = '$type',
+												   CID = '$productstock',
+												   PImage = '$product_image'
+												   WHERE PCode = '$ad_id'");
 
-	header("refresh:0.001;url=addProduct.php");
+	header("refresh:0.001;url=list.php?details&id=$CID");
 	$target = 'images/' . $product_image;
         if(move_uploaded_file($_FILES['profileImage']['tmp_name'],$target))
         {
@@ -58,12 +82,13 @@ if(isset($_POST["sbtn"]))
 
 ?>
 		<script type="text/javascript">
-		alert("Added Successfully!");
+		alert("Updated Successfully!");
 		
 		</script>
 		
 	<?php 
 
+}
 }
 ?>
 
@@ -147,7 +172,8 @@ $(document).ready(function(){
             </a>
           </li>
           <li>
-            <a>
+            <a>3
+			
               <i class="now-ui-icons design_bullet-list-67"></i>
               <h3 class="dropdown-header" style="color:white;">Category</h3>
 			</a>
@@ -228,24 +254,32 @@ $(document).ready(function(){
                         <div class="col-12">
                             <form name = "updatAdmin" method="post" class="tm-signup-form" enctype="multipart/form-data">
 							<div >
-								<label for="profileImage">Product Image</label>
-								<input type="file" name="profileImage" id="profileImage" class="form-control">
+							<div class="form-group" style="text-align:center;">
+								
+								<hr>
+									<label for="gender"><h4>Product Image &nbsp;</h4> </label>
+									<div class="d-flex flex-column align-items-center text-center p-2 py-3">
+									<input class="" style="margin:auto;width:150px;height:150px;border-radius:30px;" img src="images/<?php echo $row['PImage'] ?>" type="image" class="form-control selectList"  autocomplete="off"  list="code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
+									</div>
+									</div>				
+								<input type="file" value="" name="profileImage" id="profileImage" class="form-control">
 							</div>
+							<hr>
                                 <div class="form-group">
                                     <label for="name">Product Code </label>
-                                    <input value="" placeholder="Please Enter Product Code Here" name="pcode" type="text" class="form-control"  autocomplete="off" required >
+                                    <input value="<?php echo $row['PCode']?>" placeholder="Please Enter Product Code Here" name="pcode" type="text" class="form-control"  autocomplete="off" readonly >
 									 
 									<span id="errorname"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Product Name </label>
-                                    <input value="" placeholder="Please Enter Product Name" id="email" name="pname" type="text" class="form-control validate" required>
+                                    <input value="<?php echo $row['PName'] ?>" placeholder="Please Enter Product Name" id="email" name="pname" type="text" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="select">
 									<label for="gender"> Quantity Type &nbsp; </label>
 									<select  class="form-control selectList" style="width:100%;Height:50%;" name="type" id="gender" required>
-									<option value="">Please Quantity Type</option>
+									<option value="<?php echo $row['QType']?>"><?php echo $row['QType']?></option>
 									<optgroup label="Group">
 									<option value="条">条</option>
 									<option value="箱">箱</option>
@@ -262,7 +296,7 @@ $(document).ready(function(){
 								<div class="select">
 									<label for="gender">Category &nbsp; </label>
 									<select  class="form-control selectList" style="width:100%;Height:50%;" name="category" id="gender" required>
-									<option value="">Please Select Product Category</option>
+									<option value="<?php echo $row['CID']?>"><?php echo $row['CName']?></option>
 									<optgroup label="Group">
 									<option value="1">New Year Cookies</option>
 									<option value="2">Raya Cookies</option>
@@ -276,7 +310,7 @@ $(document).ready(function(){
                                 <div class="form-group">
                                     <div class="col-12 col-sm-6" style="float:right;">
 									
-                                        <button style="float:right;" type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Add</button>
+                                        <button style="float:right;" type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Update</button>
 
                                     </div>
                                 </div>

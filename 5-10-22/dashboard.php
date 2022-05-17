@@ -185,8 +185,42 @@ $(document).ready(function(){
 		<div class="panel-header panel-header-lg">
 			<canvas id="chart" style="width:100%;height:100%;"></canvas>
 		 </div>
+		 <?php
+									$conn = $connect;
+								
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT stock.PCode, product.PName,product.CID, stock.Qty , stock.DateAdded
+									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE Status = 'Stock In' AND DATE(DateAdded) = CURDATE() AND product.CID ='1' OR CID = '2' OR CID = '3'";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+									$NewYearQTY = [];
+									$NewYearArray = [];
+									while($row = $result->fetch_assoc()) {
+										$NewYearArray[] = $row['PName'];
+										$NewYearQTY[] = $row['Qty'];
+										
+			
+									}
+									
+									} else { echo "0 results"; }
+									?>
+									
+									<!-- <?= print_r($NewYearArray);?>
+									<br>
+									<?= print_r($NewYearQTY);?> -->
 		<script>
+		
+			console.log(<?php echo json_encode($NewYearArray);?>);
+			const NewYear = <?php echo json_encode($NewYearArray);?>;
+			
+			console.log(<?php echo json_encode($NewYearQTY);?>);
+			const NewYearQty = <?php echo json_encode($NewYearQTY);?>;
+			
+			
 			let ctx = document.getElementById("chart").getContext('2d');
+			
 
 			var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
 			gradientStroke.addColorStop(0, "#fff");
@@ -224,12 +258,12 @@ $(document).ready(function(){
 
 				// The data for our dataset
 				data: {
-					labels: xValues,
+					labels: NewYear,
 					datasets: [{
 						label: "Stock",
 						backgroundColor: gradientBkgrd,
 						borderColor: gradientStroke,
-						data: yValues,
+						data: NewYearQty,
 						pointBorderColor: "rgba(240,240,240,0.8)",
 						pointBackgroundColor: "rgba(240,240,240,0.6)",
 						pointBorderWidth: 8,
@@ -263,13 +297,13 @@ $(document).ready(function(){
 							ticks: {fontColor: 'white'}
 						}],
 						yAxes: [{
-							ticks: {fontColor: 'white',stepSize: 40}
+							ticks: {fontColor: 'white',stepSize: 10}
 						}],
 					}
 				}
 			});
 		</script>
-		<div class="content" style="min-height:10%">
+			<div class="content" style="min-height:10%">
 			<div class="row">
 			  <div class="col-lg-4 col-md-6">
 				<div class="card card-chart">
@@ -323,18 +357,18 @@ $(document).ready(function(){
 			  </div>
 			</div>
 		</div>
-		<div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
+		<div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:auto%;padding-right:1%;padding-bottom:1%;">
                 <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:1%;margin: auto; margin-bottom:2%;">
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                         <div class="row">
                             <div class="col-md-8 col-sm-12">
-						<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;display:inline;">Activity Log<h2><h2 style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;display:inline;" id="current_date"></h2>			
+						<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;display:inline;">Activity Log<h2><h2 style="margin-left:3%;margin-top:2%;color:maroon;font-weight:bold;display:inline;" id="current_date"></h2>			
 <script>
 date = new Date();
 year = date.getFullYear();
 month = date.getMonth() + 1;
 day = date.getDate();
-document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
+document.getElementById("current_date").innerHTML = month + "-" + day + "-" + year;
 </script>
 							
                             </div>
