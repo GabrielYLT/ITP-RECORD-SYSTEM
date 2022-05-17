@@ -160,7 +160,7 @@ $(document).ready(function(){
         </ul>
 	  </div>
     </div>
-	<div class="main-panel" id="main-panel" style="background-image: url('https://res.cloudinary.com/lamboplace/image/upload/f_auto,q_auto/v1591257893/products/yjofydgnvmqfsoi5p2hc.jpg');">
+	<div class="main-panel" id="main-panel" style="height:100%;background-image: url('images/bg.jpg');background-size: cover;">
 		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
 			<div class="container-fluid">
 			    <div class="navbar-wrapper">
@@ -203,7 +203,7 @@ $(document).ready(function(){
       </div>
 			<!-- row -->
         <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;" >
-            <div class="tm-col tm-col-big" style="padding-top:1%;padding-bottom:1%;margin-top:13%;margin: auto; width: 700px;">
+            <div class="tm-col tm-col-big" style="padding-top:1%;padding-bottom:1%;margin: auto; width: 700px;">
                 <div class="tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                     <div class="row" style="margin: auto;">
                         <div class="col-12" >
