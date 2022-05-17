@@ -98,7 +98,7 @@ canvas{
 		</head>
 	
 	<body>
-<div class="wrapper">
+<div class="wrapper" style="overflow-x:hidden;height:100%">
     <div class="sidebar" data-color="pink">
 	
       <!--

@@ -130,7 +130,7 @@ $(document).ready(function(){
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow-x:hidden;" >
+<div class="wrapper"  style="overflow-x:hidden;height:100%" >
     <div class="sidebar" data-color="pink">
 	
       <!--

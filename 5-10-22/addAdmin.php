@@ -134,7 +134,7 @@ label {
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow-x:hidden;background:none;" >
+<div class="wrapper"  style="overflow-x:hidden;background:none;height:100%" >
     <div class="sidebar" data-color="pink">
 	
       <!--
@@ -185,7 +185,7 @@ label {
         </ul>
 	  </div>
     </div>
-    <div class="main-panel" id="main-panel" style="background-image: url('https://res.cloudinary.com/lamboplace/image/upload/f_auto,q_auto/v1591257893/products/yjofydgnvmqfsoi5p2hc.jpg');">
+    <div class="main-panel" id="main-panel" style="height:100%;background-image: url('images/bg.jpg');background-size: cover;background-attachment: fixed;height: 100%;">
 		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
 			<div class="container-fluid">
 			    <div class="navbar-wrapper">
@@ -225,9 +225,9 @@ label {
 			</div>
         </nav>
 		<!-- row -->
-		<div style="height:10%;"></div>
-        <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;" >
-            <div class="tm-col tm-col-big" style="padding-top:1%;margin: auto;margin-bottom:2%;width: 700px;">
+		<div><br><br><br></div>
+        <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;margin-bottom:2%" >
+            <div class="tm-col tm-col-big" style="padding-top:1%;margin: auto;width: 700px;">
                 <div class="tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                     <div class="row" style="margin: auto;">
                         <div class="col-12" >
@@ -257,13 +257,13 @@ label {
                                 </div>
 								<div class="form-group">
                                     <label for="name">Password </label>
-                                    <input value="" placeholder="Enter Your Username Here" name="pass" id="pass" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~=?\|<>/]).{8,}" title="Must contain at least 8 or more characters with at least one number,one uppercase letter,one lowercase letter and one special character!"  required onkeyup='check();' class="form-control validate" required>
+                                    <input value="" placeholder="Enter Your Password Here" name="pass" id="pass" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~=?\|<>/]).{8,}" title="Must contain at least 8 or more characters with at least one number,one uppercase letter,one lowercase letter and one special character!"  required onkeyup='check();' class="form-control validate" required>
 									 
 									<span id="errorname"></span>
                                 </div>
 								<div class="form-group">
                                     <label for="name">Confirm Password </label>
-                                    <input value="" placeholder="Enter Your Username Here" name="pass1" id="pass1" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~=?\|<>/]).{8,}" title="Must contain at least 8 or more characters with at least one number,one uppercase letter,one lowercase letter and one special character!"  required onkeyup='check();' class="form-control validate" required >
+                                    <input value="" placeholder="Confirm Your Password Here" name="pass1" id="pass1" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~=?\|<>/]).{8,}" title="Must contain at least 8 or more characters with at least one number,one uppercase letter,one lowercase letter and one special character!"  required onkeyup='check();' class="form-control validate" required >
 									 
 									<div >
 										<label class="form-check-label" style="margin-left:22px;">

@@ -107,7 +107,7 @@ $(document).ready(function(){
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow-x:hidden;background:none;" >
+<div class="wrapper"  style="overflow-x:hidden;background:none;height:100%" >
     <div class="sidebar" data-color="pink">
 	
       <!--
@@ -158,7 +158,7 @@ $(document).ready(function(){
         </ul>
 	  </div>
     </div>
-    <div class="main-panel" id="main-panel" style="background-image: url('');">
+    <div class="main-panel" id="main-panel" style="height:100%;background-image: url('images/bg.jpg');background-size: cover;background-attachment: fixed;">
 	<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
 			<div class="container-fluid">
 			    <div class="navbar-wrapper">
@@ -197,7 +197,7 @@ $(document).ready(function(){
 			    </div>
 			</div>
         </nav>
-		<div style="height:5%"></div>
+		<div><br><br><br></div>
 		<div style="margin-bottom:2%;">
 
     <div class="container rounded-3 my-5 bgcontainer  shadow  box" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;padding-top:1%;margin: auto; width: 95%;">

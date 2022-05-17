@@ -88,7 +88,7 @@ label {
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow:hidden;" >
+<div class="wrapper"  style="overflow:hidden;height:100%" >
     <div class="sidebar" data-color="pink">
 	
       <!--
@@ -178,7 +178,7 @@ label {
 			    </div>
 			</div>
         </nav>
-		<div style="height:5%;"></div>
+		<div><br><br><br></div>
 			<!-- row -->
             <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
                 <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:auto%;margin: auto; margin-bottom:2%;">

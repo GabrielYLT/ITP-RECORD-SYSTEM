@@ -83,8 +83,8 @@ $(document).ready(function(){
 </style>
 		</head>
 	
-	<body style="overflow-x: hidden;">
-<div class="wrapper" >
+	<body >
+<div class="wrapper" style="overflow-x: hidden;height:100%">
     <div class="sidebar" data-color="pink">
 	
       <!--
@@ -135,7 +135,7 @@ $(document).ready(function(){
         </ul>
 	  </div>
     </div>
-    <div class="main-panel" id="main-panel" style="height:100%;background-image: url('images/bg.jpg');background-size: cover;">
+    <div class="main-panel" id="main-panel" style="height:100%;background-image: url('images/bg.jpg');background-size: cover;background-attachment: fixed;">
 		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
 			<div class="container-fluid">
 			    <div class="navbar-wrapper">
@@ -175,7 +175,7 @@ $(document).ready(function(){
 			</div>
         </nav>
 			<!-- row -->
-			<div style="height:5%"></div>
+			<div><br><br><br></div>
             <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
                 <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:1%;margin: auto; margin-bottom:2%;">
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
