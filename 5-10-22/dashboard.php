@@ -289,6 +289,11 @@ $(document).ready(function(){
 				  legend: {
 						display: false
 				  },
+				  title: {
+						display: true,
+						text: 'Daily Stock',
+						fontColor: 'white'
+					  },
 					scales: {
 						xAxes: [{
 							gridLines: {
