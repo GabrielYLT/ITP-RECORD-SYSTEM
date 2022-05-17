@@ -308,24 +308,87 @@ $(document).ready(function(){
 			  <div class="col-lg-4 col-md-6">
 				<div class="card card-chart">
 				  <div class="card-header">
-					<h5 class="card-category">Email Statistics</h5>
-					<h4 class="card-title">24 Hours Performance</h4>
+					<h5 class="card-category">Category</h5>
+					<h4 class="card-title">New Year Cookies</h4>
+					<br>
+					<div style="width: auto%; height: 400px; overflow-x:hidden;">
+									<?php
+									$conn = $connect;
+
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT * FROM product WHERE CID = '1'";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo $row["PName"] ."</h5><span class='badge badge-info' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;
+									echo "</ul>" ;
+									}
+									} else { echo "0 results"; }
+									?>									
+						</div>
 				  </div>
 				</div>
 			  </div>
 			  <div class="col-lg-4 col-md-6">
 				<div class="card card-chart">
 				  <div class="card-header">
-					<h5 class="card-category">Email Statistics</h5>
-					<h4 class="card-title">24 Hours Performance</h4>
+					<<h5 class="card-category">Category</h5>
+					<h4 class="card-title">Raya Cookies</h4>
+					<br>
+					<div style="width: auto%; height: 400px; overflow-x:hidden;">
+									<?php
+									$conn = $connect;
+
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT * FROM product WHERE CID = '2'";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo $row["PName"] ."</h5><span class='badge badge-info' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;
+									echo "</ul>" ;
+									}
+									} else { echo "0 results"; }
+									?>									
+						</div>
 				  </div>
 				</div>
 			  </div>
 			  <div class="col-lg-4 col-md-6">
 				<div class="card card-chart">
 				  <div class="card-header">
-					<h5 class="card-category">Email Statistics</h5>
-					<h4 class="card-title">24 Hours Performance</h4>
+					<h5 class="card-category">Category</h5>
+					<h4 class="card-title">Mooncakes </h4>
+					<br>
+					<div style="width: auto%; height: 400px; overflow-x:hidden;">
+									<?php
+									$conn = $connect;
+
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT * FROM product WHERE CID = '3'";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo $row["PName"] ."</h5><span class='badge badge-info' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;
+									echo "</ul>" ;
+									}
+									} else { echo "0 results"; }
+									?>									
+						</div>
 				  </div>
 				</div>
 			  </div>
@@ -334,24 +397,87 @@ $(document).ready(function(){
 			  <div class="col-lg-4 col-md-6">
 				<div class="card card-chart">
 				  <div class="card-header">
-					<h5 class="card-category">Email Statistics</h5>
-					<h4 class="card-title">24 Hours Performance</h4>
+					<h5 class="card-category">Category</h5>
+					<h4 class="card-title">Raw Material</h4>
+					<br>
+					<div style="width: auto%; height: 400px; overflow-x:hidden;">
+									<?php
+									$conn = $connect;
+
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT * FROM product WHERE CID = '4'";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo $row["PName"] ."</h5><span class='badge badge-info' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;
+									echo "</ul>" ;
+									}
+									} else { echo "0 results"; }
+									?>									
+						</div>
 				  </div>
 				</div>
 			  </div>
 			  <div class="col-lg-4 col-md-6">
 				<div class="card card-chart">
 				  <div class="card-header">
-					<h5 class="card-category">Email Statistics</h5>
-					<h4 class="card-title">24 Hours Performance</h4>
+					<h5 class="card-category">Category</h5>
+					<h4 class="card-title">Packing Material</h4>
+					<br>
+					<div style="width: auto%; height: 400px; overflow-x:hidden;">
+									<?php
+									$conn = $connect;
+
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT * FROM product WHERE CID = '5'";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo $row["PName"] ."</h5><span class='badge badge-info' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;
+									echo "</ul>" ;
+									}
+									} else { echo "0 results"; }
+									?>									
+						</div>
 				  </div>
 				</div>
 			  </div>
 			  <div class="col-lg-4 col-md-6">
 				<div class="card card-chart">
 				  <div class="card-header">
-					<h5 class="card-category">Email Statistics</h5>
-					<h4 class="card-title">24 Hours Performance</h4>
+					<h5 class="card-category">Category</h5>
+					<h4 class="card-title">General Use</h4>
+					<br>
+					<div style="width: auto%; height: 400px; overflow-x:hidden;">
+									<?php
+									$conn = $connect;
+
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT * FROM product WHERE CID = '6'";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo $row["PName"] ."</h5><span class='badge badge-info' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;
+									echo "</ul>" ;
+									}
+									} else { echo "0 results"; }
+									?>									
+						</div>
 				  </div>
 				</div>
 			  </div>
