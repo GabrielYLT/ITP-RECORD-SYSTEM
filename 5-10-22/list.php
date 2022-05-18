@@ -218,6 +218,7 @@ label {
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Image</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Added By</th>
 										<th scope="col" style="width:20%">&nbsp;</th>
                                     </tr>
                                 </thead>
@@ -232,7 +233,9 @@ label {
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT product.PCode, product.PImage, product.PName,product.PQty,product.QType,product.CID,category.CName FROM (product INNER JOIN category ON product.CID = category.CID) WHERE product.CID = '$ad_id'  ";
+									$sql = "SELECT product.PCode, product.PImage, product.PName,product.PQty,product.QType,product.CID,category.CName,product.AID,admin.AName
+									FROM ((product INNER JOIN category ON product.CID = category.CID)INNER JOIN admin ON product.AID = admin.AID)
+									WHERE product.CID = '$ad_id'  ";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
@@ -241,7 +244,7 @@ label {
 									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PQty"]."&nbsp;&nbsp;". $row["QType"] ."</td>" ; 
-
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"].  "</td>" ; 
                                     ?> 
                                   <td style="text-align:center;font-weight:bold";>
 									<div class='btn-group'> 

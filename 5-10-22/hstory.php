@@ -160,7 +160,7 @@ $(document).ready(function(){
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT stock.SID,stock.PCode,product.PName,product.PImage,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.AID = '$_SESSION[id]'";
+									$sql = "SELECT stock.SID,stock.PCode,product.PName,product.PImage,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.AID = '$_SESSION[id]' ORDER BY DateAdded DESC ";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
