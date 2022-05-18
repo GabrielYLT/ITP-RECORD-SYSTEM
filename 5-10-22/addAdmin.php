@@ -313,7 +313,7 @@ label {
 								<div class="select">
 									<label for="gender">Department &nbsp; </label>
 									<select  class="form-control selectList" style="width:100%;Height:50%;" name="dept" id="dept" required>
-									<option value="">Select Department</option>
+									<option value="" disabled selected>Select Department</option>
 									<optgroup label="Department">
 									<option value="Product">Product</option>
 									<option value="General Use">General Use</option>
