@@ -220,7 +220,7 @@ $(document).ready(function(){
 											<div class='select'>
 											<label for='gender'>Category &nbsp; </label>
 											<select  class='form-control selectList' style='width:100%;Height:50%;' name='category' id='gender' required>
-											<option value='' disabled>Please Select Product Category</option>
+											<option value='' disabled selected>Please Select Product Category</option>
 											<optgroup label='Group'>
 											<option value='1'>New Year Cookies</option>
 											<option value='2'>Raya Cookies</option>
@@ -235,7 +235,7 @@ $(document).ready(function(){
 											<div class='select'>
 											<label for='gender'>Category &nbsp; </label>
 											<select  class='form-control selectList' style='width:100%;Height:50%;' name='category' id='gender' required>
-											<option value='' disabled>Please Select Product Category</option>
+											<option value='' disabled selected >Please Select Product Category</option>
 											<optgroup label='Group'>
 											<option value='4'>Raw Material</option>
 											</select>
@@ -247,7 +247,7 @@ $(document).ready(function(){
 											<div class='select'>
 											<label for='gender'>Category &nbsp; </label>
 											<select  class='form-control selectList' style='width:100%;Height:50%;' name='category' id='gender' required>
-											<option value='' disabled>Please Select Product Category</option>
+											<option value='' disabled selected>Please Select Product Category</option>
 											<optgroup label='Group'>
 											<option value='5'>Packing Material</option>
 											</select>
@@ -259,7 +259,7 @@ $(document).ready(function(){
 											<div class='select'>
 											<label for='gender'>Category &nbsp; </label>
 											<select  class='form-control selectList' style='width:100%;Height:50%;' name='category' id='gender' required>
-											<option value='' disabled>Please Select Product Category</option>
+											<option value='' disabled selected>Please Select Product Category</option>
 											<optgroup label='Group'>
 											<option value='6'>General Use</option>
 											</select>
