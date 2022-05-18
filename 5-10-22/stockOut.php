@@ -31,6 +31,9 @@ if(isset($_POST["sbtn"]))
 	$productstock = $_POST["remark"];
 	$productStatus = "Stock Out";
 	
+	$select = mysqli_query($connect, "SELECT * FROM product WHERE PCode = '".$_POST['pcode']."'");
+	if(mysqli_num_rows($select)) {
+	
 	$result1=mysqli_query($connect,"SELECT * FROM product WHERE PCode='$_POST[pcode]'");
 	$row1 = mysqli_fetch_assoc($result1);
 	
@@ -66,6 +69,18 @@ if(isset($_POST["sbtn"]))
 		
 	<?php 
  }
+ }else{
+	 header("refresh:0.001;url=stockOut.php");
+	
+
+
+	?>
+		<script type="text/javascript">
+		alert("Product Not Found!");
+		
+		</script>
+		
+	<?php }
 }
 ?>
 
