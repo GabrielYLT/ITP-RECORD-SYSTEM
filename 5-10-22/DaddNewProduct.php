@@ -22,52 +22,57 @@ $result=mysqli_query($connect,"SELECT *FROM admin WHERE AID = $Admin_id");
 $row = mysqli_fetch_assoc($result);
 ?>
 <?php
-if(isset($_GET["details"])){
-								
-$ad_id=$_GET['id'];	
-$result=mysqli_query($connect,"SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.PQty,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.SID = '$ad_id'");
-$row=mysqli_fetch_assoc($result);
-}
-
 if(isset($_POST["sbtn"]))
 {
-	$productname = $_POST["pcode"];
-	$productprice = $_POST["qty"];
-	$productstock = $_POST["remark"];	
-	$productStatus = "Stock In";
-	
-	$total = $row['Qty'];
-	
-	mysqli_query($connect,"UPDATE stock SET Qty = '$productprice',
-											Remarks = '$productstock'
-                                               WHERE SID= '$ad_id'");
-											   
-	if($row['Status'] == 'Stock In'){
-	mysqli_query($connect,"UPDATE product SET PQty = (PQty - '$total') + $productprice
-                                               WHERE PCode= '$productname'");
-	}else{mysqli_query($connect,"UPDATE product SET PQty = (PQty + '$total') - $productprice
-                                               WHERE PCode= '$productname'");}
-	
- 	
-	header("refresh:0.001;url=hstory.php");
-?>
+	$productname = $_POST["pname"];
+	$product_image = $_FILES['profileImage']['name'];
+	$productcode = $_POST["pcode"];
+	$type = $_POST["type"];
+	$productstock = $_POST["category"];
+
+	$select = mysqli_query($connect, "SELECT * FROM product WHERE PCode = '".$_POST['pcode']."'");
+	if(mysqli_num_rows($select)) {
+		$error="This Product Code is Already In Use !";
+	?>
 		<script type="text/javascript">
-		alert("Stock Updated Successfully!");
+		alert("Product Code Already in Use!");
 		
 		</script>
 		
 	<?php 
+	header("refresh:0.001;url=addProduct.php");
+}else{
+	$sql=mysqli_query($connect,"INSERT INTO product(PCode,PName,QType,CID,PImage)VALUES('$productcode','$productname','$type','$productstock','$product_image')");
 
-	
+	header("refresh:0.001;url=addProduct.php");
+	$target = 'images/' . $product_image;
+        if(move_uploaded_file($_FILES['profileImage']['tmp_name'],$target))
+        {
+          $msg = "upload successfully";
+		  $css_class = "alert-sucess";
+        }
+        else{
+          $msg = "problem occur.";
+		  $css_class = "alert-danger";
+        }
+
+?>
+		<script type="text/javascript">
+		alert("Added Successfully!");
+		
+		</script>
+		
+	<?php 
+ header("refresh:0.001;url=manage.php");
 }
-
+}
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Edit History</title>
+	<title>Stock In</title>
 	<link rel="icon" type="image/x-icon" href="images/icons/d.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -102,13 +107,6 @@ $(document).ready(function(){
       <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
             <a class="navbar-brand" href="generalD.php">JMM Record System</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -147,7 +145,7 @@ $(document).ready(function(){
                 <a class="nav-link" href="Dprofile.php">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
-                    <span class="d-lg-none d-md-block">Account</span>
+                    <span class="d-lg-none d-md-block">Profile</span>
                   </p>
                 </a>
               </li>
@@ -169,61 +167,67 @@ $(document).ready(function(){
     <div class="content">
 			<!-- row -->
         <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;" >
-            <div class="tm-col tm-col-big" style="padding-top:1%;padding-bottom:1%;margin: auto; width: 700px;">
+            <div class="tm-col tm-col-big" style="padding-top:1%;padding-bottom:1%;margin: auto;width: 700px;">
                 <div class="tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                     <div class="row" style="margin: auto;">
                         <div class="col-12" >
-                            <h1 class="tm-block-title">Edit History Record</h1>
+                            <h1 class="tm-block-title" style="color:black;">Add New Product</h1>
                         </div>
                     </div>
                     <div class="row" style="margin: auto;">
                         <div class="col-12">
                             <form name = "updatAdmin" method="post" class="tm-signup-form" enctype="multipart/form-data">
-								<div class="form-group" >
-									<label for="gender">Product Code &nbsp; </label>
-									
-									<input value="<?php echo $row['PCode']?>" type="text" class="form-control selectList"  autocomplete="off"  list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode"id="gender" readonly>
+							<div >
+								<label for="profileImage">Product Image</label>
+								<input type="file" name="profileImage" id="profileImage" class="form-control">
+							</div>
+                                <div class="form-group">
+                                    <label for="name">Product Code </label>
+                                    <input value="" placeholder="Please Enter Product Code Here" name="pcode" type="text" class="form-control"  autocomplete="off" required >
+									 
+									<span id="errorname"></span>
                                 </div>
-								<div class="form-group" style="text-align:center;">
-								<hr>
-									<label for="gender"><h4>Product Image &nbsp;</h4> </label>
-									<div class="d-flex flex-column align-items-center text-center p-2 py-3">
-									<input class="" style="margin:auto;width:150px;height:150px;border-radius:30px;" img src="images/<?php echo $row['PImage'] ?>" type="image" class="form-control selectList"  autocomplete="off"  list="code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
-									</div>
-								</div>
-								<div class="form-group" >
-								<hr>
-									<label for="gender">Product Name &nbsp; </label>
-									<input value="<?php echo $row['PName']?>" type="text" class="form-control selectList"  autocomplete="off"  list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
-                                </div>
-								<div class="form-group" >
-									<label for="gender">Status &nbsp; </label>
-									<input value="<?php echo $row['Status']?>" type="text" class="form-control selectList"  autocomplete="off"  list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
-                                </div>
-								<div class="form-group" style="margin-bottom:0%;">
-                                    <label for="Qty">Quantity </label>
-                                    <input value="<?php echo $row['Qty']?>" placeholder="Please Enter Product Name" id="number" min="0" name="qty" type="number" class="form-control validate" required>
+                                <div class="form-group">
+                                    <label for="email">Product Name </label>
+                                    <input value="" placeholder="Please Enter Product Name" id="email" name="pname" type="text" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
-								<div class="form-group">
-								<br>
-									<label for="gender">Date Added &nbsp; </label>
-									<input value="<?php echo $row['DateAdded']?>" type="text" class="form-control selectList"  autocomplete="off"  list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
+								<div class="select">
+									<label for="gender"> Quantity Type &nbsp; </label>
+									<select  class="form-control selectList" style="width:100%;Height:50%;" name="type" id="gender" required>
+									<option value="">Please Quantity Type</option>
+									<optgroup label="Group">
+									<option value="条">条</option>
+									<option value="箱">箱</option>
+									<option value="包">包</option>
+									<option value="盒">盒</option>
+									<option value="罐">罐</option>
+									<option value="桶">桶</option>
+									<option value="盘">盘</option>
+									<option value="卷">卷</option>
+									<option value="张">张</option>
+									<option value="个">个</option>
+									</select>
                                 </div>
-								<div class="form-group">
-                                    <label for="email">Remarks </label>
-                                    <textarea value="<?php echo $row['Remarks']?>" style="border-radius:10px;"  rows="4" cols="50" id="email" name="remark" type="text"   class="form-control validate"><?php echo $row['Remarks']?></textarea>
-									<span id="erroremail"></span>	
-                                </div>
-								<div class="form-group" >
-									<label for="gender">Product Code &nbsp; </label>
-									<input value="<?php echo $row['AName']?>" type="text" class="form-control selectList"  autocomplete="off"  list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
+								<div class="select">
+									<label for="gender">Category &nbsp; </label>
+									<select  class="form-control selectList" style="width:100%;Height:50%;" name="category" id="gender" required>
+									<option value="">Please Select Product Category</option>
+									<optgroup label="Group">
+									<option value="1">New Year Cookies</option>
+									<option value="2">Raya Cookies</option>
+									<option value="3">Mooncakes</option>
+									<option value="4">Raw Material </option>
+									<option value="5">Packing Material</option>
+									<option value="6">General Use</option>
+									</select>
                                 </div>
 								<hr>
                                 <div class="form-group">
                                     <div class="col-12 col-sm-6" style="float:right;">
 									
-                                        <button style="float:right;" type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Update</button>
+                                        <button style="float:right;" type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Add</button>
+
                                     </div>
                                 </div>
                             </form>
@@ -231,12 +235,12 @@ $(document).ready(function(){
                     </div>
                 </div>
             </div>
-			</div>
+		</div>
 		
 		
 
   </div>
-<script src="assets/js/core/jquery.min.js"></script>
+	<script src="assets/js/core/jquery.min.js"></script>
 	<script src="assets/js/core/bootstrap.min.js"></script>
 	<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 	<script src="assets/js/now-ui-dashboard.min.js" type="text/javascript"></script>
