@@ -29,7 +29,10 @@ if(isset($_GET["sendbtn"]))
 			$_SESSION["id"]=$row["AID"];
 			
 			if($row["AStatus"]=='Blocked'){	
-			$error="<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; THIS ACCOUNT HAVE BEEN BLOCKED !!!";	
+			$error="<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; THIS ACCOUNT HAVE BEEN BLOCKED !!!";
+			unset($_SESSION['id']);
+
+			session_destroy();
 			?>	
 			<script>
 			alert("THIS ACCOUNT HAVE BEEN BLOCKED !!!");
@@ -38,7 +41,10 @@ if(isset($_GET["sendbtn"]))
 			//exit();
 	
 		}elseif($row["AStatus"]=='Suspended'){
-			$error="<br> &nbsp;&nbsp;THIS ACCOUNT ARE CURRENTLY SUSPENDED!";			
+			$error="<br> &nbsp;&nbsp;THIS ACCOUNT ARE CURRENTLY SUSPENDED!";	
+			unset($_SESSION['id']);
+
+			session_destroy();
 			?>
 			<script>
 			alert("THIS ACCOUNT ARE CURRENTLY SUSPENDED!!!");
