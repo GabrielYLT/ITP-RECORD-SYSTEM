@@ -1,4 +1,4 @@
-
+	
 <?php
 session_start();
 include("Connection.php");
@@ -27,12 +27,34 @@ if(isset($_GET["sendbtn"]))
 		{
 			$row=mysqli_fetch_assoc($result);
 			$_SESSION["id"]=$row["AID"];
+			
+			if($row["AStatus"]=='Blocked'){	
+			$error="<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; THIS ACCOUNT HAVE BEEN BLOCKED !!!";	
+			?>	
+			<script>
+			alert("THIS ACCOUNT HAVE BEEN BLOCKED !!!");
+			</script>
+			<?php
+			//exit();
+	
+		}elseif($row["AStatus"]=='Suspended'){
+			$error="<br> &nbsp;&nbsp;THIS ACCOUNT ARE CURRENTLY SUSPENDED!";			
+			?>
+			<script>
+			alert("THIS ACCOUNT ARE CURRENTLY SUSPENDED!!!");
+			</script>
+			<?php
+			
+			//exit();
+
+		}else{
 			if($row["Department"]== 'All Department'){
 			
 			header("location:dashboard.php");
 			}else{
 				header("location:generalD.php");
 			}
+		}
 		}
 		else	
 		{

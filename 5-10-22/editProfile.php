@@ -255,13 +255,21 @@ mysqli_close($connect);
 								<div class="select">
                                     <br>
 									<label for="gender">Status &nbsp; </label>
-									<select  class="form-control selectList" style="width:100%;Height:50%;" name="gender" id="gender" required>
-									<option value="<?php echo $row['AStatus']?>"><?php echo $row['AStatus']?></option>
-									<optgroup label="Status">
-									<option value="Active">Active</option>
-									<option value="Suspended">Suspended</option>
-									<option value="Blocked">Blocked</option>
+									<?php 
+									if($row["AStatus"]=='Blocked'){
+										echo "<select  class='form-control selectList' style='width:100%;Height:50%;' name='gender' id='gender' readonly>
+									<option value='"  . $row['AStatus'] . "'>" .  $row['AStatus'] . "</option></select>";
+									}else{
+										echo "<select  class='form-control selectList' style='width:100%;Height:50%;' name='gender' id='gender' required>
+									<option value='"  . $row['AStatus'] . "'>" .  $row['AStatus'] . "</option>
+									<optgroup label='Status'>
+									<option value='Active'>Active</option>
+									<option value='Suspended'>Suspended</option>
+									<option value='Blocked'>Blocked</option>
 									</select>
+									";
+									}
+									?>
                                 </div>
 								<hr>
                                 <div class="form-group">
