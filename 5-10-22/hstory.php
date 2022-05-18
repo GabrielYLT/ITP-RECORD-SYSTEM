@@ -174,7 +174,7 @@ $(document).ready(function(){
 									}else{
 										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
 									}
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["DateAdded"]."</td>" ; 
+									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"]."</td>" ; 
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Remarks"]."</td>" ; 
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"]."</td>" ; 
                                     ?> 	
