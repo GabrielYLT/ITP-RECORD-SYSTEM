@@ -112,6 +112,8 @@ function validate_email()
 </script>
 <head>
     <meta charset="UTF-8">
+	<title>Change Password</title>
+	<link rel="icon" type="image/x-icon" href="images/icons/d.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 		<!-- CSS Files -->

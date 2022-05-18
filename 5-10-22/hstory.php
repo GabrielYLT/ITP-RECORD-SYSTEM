@@ -25,6 +25,8 @@ $row = mysqli_fetch_assoc($result);
 <html>
 	<head>
 	<meta charset="UTF-8">
+	<title>History</title>
+	<link rel="icon" type="image/x-icon" href="images/icons/d.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 		<!-- CSS Files -->
@@ -176,7 +178,7 @@ $(document).ready(function(){
 									echo "</tr>" ;
 									}
 									echo "</table>";
-									} else { echo "0 results"; }
+									} else { echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results"; }
 									?>    
                                 </tbody>
                             </table>

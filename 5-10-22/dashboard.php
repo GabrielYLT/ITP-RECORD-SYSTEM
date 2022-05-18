@@ -213,7 +213,7 @@ canvas{
 			
 									}
 									
-									} else { echo "<div style='color: white;text-align:center;font-size:30px;'><b>Today No Stock</b><br><br></div>"; }
+									} else { echo "<div style='color: white;text-align:center;font-size:30px;'><b>Currently No Stock</b><br><br></div>"; }
 									?>
 									
 									<!-- <?= print_r($NewYearArray);?>

@@ -31,11 +31,19 @@ $row = mysqli_fetch_assoc($result);
 	
 }
 }
+
+if(isset($_GET["details"])){
+								
+							$ad_id=$_GET['id'];	
+							$result=mysqli_query($connect,"SELECT * FROM product WHERE PCode='$ad_id'");
+							$row=mysqli_fetch_assoc($result);}
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 	<meta charset="UTF-8">
+	<title><?php echo $row["PName"]. " Record" ?></title>
+	<link rel="icon" type="image/x-icon" href="images/icons/d.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 		<!-- CSS Files -->
@@ -247,7 +255,7 @@ $(document).ready(function(){
 									echo "</tr>" ;
 									}
 									echo "</table>";
-									} else { echo "0 results"; }
+									} else { echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results"; }
 									}
 									?>    
                                 </tbody>

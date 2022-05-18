@@ -31,11 +31,18 @@ $row = mysqli_fetch_assoc($result);
 	
 }
 }
+
+if(isset($_GET["details"])){
+$ad_id=$_GET['id'];	
+$result=mysqli_query($connect,"SELECT * FROM category WHERE CID='$ad_id'");
+$row=mysqli_fetch_assoc($result);}
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 	<meta charset="UTF-8">
+	<title><?php echo $row["CName"]." List" ?></title>
+	<link rel="icon" type="image/x-icon" href="images/icons/d.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 		<!-- CSS Files -->
