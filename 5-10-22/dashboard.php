@@ -199,7 +199,9 @@ canvas{
 									die("Connection failed: " . $conn->connect_error);
 									}
 									$sql = "SELECT stock.PCode, product.PName,product.CID, SUM(stock.Qty) AS calc_sub, stock.DateAdded
-									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID)WHERE Status = 'Stock In' AND DATE(DateAdded) = CURDATE() AND product.CID ='1' OR CID = '2' OR CID = '3' group BY PCode";
+									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID)WHERE Status = 'Stock In' AND DATE(DateAdded) = CURDATE() AND product.CID =1 
+									OR Status = 'Stock In' AND DATE(DateAdded) = CURDATE() AND product.CID= 2 
+									OR Status = 'Stock In' AND DATE(DateAdded) = CURDATE() AND product.CID = 3 group BY PCode";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 									$NewYearQTY = [];
