@@ -261,7 +261,7 @@ $(document).ready(function(){
 								<hr>
 									<label for="gender"><h4>Product Image &nbsp;</h4> </label>
 									<div class="d-flex flex-column align-items-center text-center p-2 py-3">
-									<input class="" style="margin:auto;width:150px;height:150px;border-radius:30px;" img src="images/<?php echo $row['PImage'] ?>" type="image" class="form-control selectList"  autocomplete="off"  list="code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
+									<input class="" style="margin:auto;width:150px;height:auto%;border-radius:30px;" img src="images/<?php echo $row['PImage'] ?>" type="image" class="form-control selectList"  autocomplete="off"  list="code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
 									</div>
 									</div>				
 								<input type="file" value="" name="profileImage" id="profileImage" class="form-control">
