@@ -42,7 +42,7 @@ if(isset($_POST["sbtn"]))
 	<?php 
 	header("refresh:0.001;url=DaddNewProduct.php");
 }else{
-	$sql=mysqli_query($connect,"INSERT INTO product(PCode,PName,QType,CID,PImage)VALUES('$productcode','$productname','$type','$productstock','$product_image')");
+	$sql=mysqli_query($connect,"INSERT INTO product(PCode,PName,QType,CID,PImage,AID)VALUES('$productcode','$productname','$type','$productstock','$product_image','$_SESSION[id]')");
 
 	header("refresh:0.001;url=addProduct.php");
 	$target = 'images/' . $product_image;
@@ -66,6 +66,7 @@ if(isset($_POST["sbtn"]))
 
 
  header("refresh:0.001;url=generalD.php");
+}
 }
 ?>
 
