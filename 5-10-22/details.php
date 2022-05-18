@@ -232,7 +232,8 @@ $(document).ready(function(){
 									die("Connection failed: " . $conn->connect_error);
 									}
 									$sql = "SELECT stock.PCode, product.PName, stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status
-									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.PCode ='$ad_id'";
+									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) 
+									WHERE stock.PCode ='$ad_id' ORDER BY DateAdded DESC";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
