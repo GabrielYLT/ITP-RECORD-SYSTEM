@@ -67,6 +67,7 @@ if(isset($_POST["sbtn"]))
 
  header("refresh:0.001;url=generalD.php");
 }
+}
 ?>
 
 <!DOCTYPE html>
