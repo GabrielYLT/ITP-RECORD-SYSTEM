@@ -41,7 +41,18 @@ if(isset($_POST["sbtn"]))
 	$type = $_POST["type"];
 	$productstock = $_POST["category"];
 
-
+	$select = mysqli_query($connect, "SELECT * FROM product WHERE PCode = '".$_POST['pcode']."'");
+	if(mysqli_num_rows($select)) {
+		$error="This Product Code is Already In Use !";
+	?>
+		<script type="text/javascript">
+		alert("Product Code Already in Use!");
+		
+		</script>
+		
+	<?php 
+	header("refresh:0.001;url=addProduct.php");
+}else{
 	$sql=mysqli_query($connect,"INSERT INTO product(PCode,PName,QType,CID,PImage)VALUES('$productcode','$productname','$type','$productstock','$product_image')");
 
 	header("refresh:0.001;url=addProduct.php");
@@ -64,6 +75,7 @@ if(isset($_POST["sbtn"]))
 		
 	<?php 
  header("refresh:0.001;url=manage.php");
+}
 }
 ?>
 
