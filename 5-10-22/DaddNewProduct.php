@@ -40,7 +40,7 @@ if(isset($_POST["sbtn"]))
 		</script>
 		
 	<?php 
-	header("refresh:0.001;url=addProduct.php");
+	header("refresh:0.001;url=DaddNewProduct.php");
 }else{
 	$sql=mysqli_query($connect,"INSERT INTO product(PCode,PName,QType,CID,PImage)VALUES('$productcode','$productname','$type','$productstock','$product_image')");
 
@@ -63,7 +63,9 @@ if(isset($_POST["sbtn"]))
 		</script>
 		
 	<?php 
- header("refresh:0.001;url=manage.php");
+
+ header("refresh:0.001;url=generalD.php");
+
 }
 }
 ?>
