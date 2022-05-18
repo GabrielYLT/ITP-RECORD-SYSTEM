@@ -151,6 +151,14 @@ function validate_email()
             
             <ul class="navbar-nav">
 			  <li class="nav-item">
+                <a class="nav-link" href="DaddNewProduct.php">
+                  <i class="now-ui-icons ui-1_simple-add"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Add New Product</span>
+                  </p>
+                </a>
+              </li>
+			  <li class="nav-item">
                 <a class="nav-link" href="generalD.php">
                   <i class="now-ui-icons business_bank"></i>
                   <p>

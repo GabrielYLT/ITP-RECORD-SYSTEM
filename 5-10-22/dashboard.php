@@ -527,6 +527,7 @@ document.getElementById("current_date").innerHTML = month + "-" + day + "-" + ye
                                 <thead>
                                     <tr class="tm-bg-gray">
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Image</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Admin Name</th>
