@@ -257,7 +257,7 @@ $(document).ready(function(){
                                 <div class="form-group">
                                     <div class="col-12 col-sm-6" style="float:right;">
 									
-                                        <button style="float:right;" type="submit" name="sbtn" class="btn btn-secondary" onclick="Profile Updated">Add</button>
+                                        <button style="float:right;" type="submit" name="sbtn" class="btn btn-info" onclick="Profile Updated">Add</button>
 
                                     </div>
                                 </div>
