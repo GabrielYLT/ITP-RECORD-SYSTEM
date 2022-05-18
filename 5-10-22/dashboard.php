@@ -40,7 +40,7 @@ $row = mysqli_fetch_assoc($result);
 	<head>
 	<meta charset="UTF-8">
 	<title>Dashboard</title>
-	<link rel="icon" type="image/x-icon" href="images/icons/d.ico">
+	<link rel="icon" type="image/x-icon" href="images/icons/d.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 		<!-- CSS Files -->
@@ -211,7 +211,7 @@ canvas{
 			
 									}
 									
-									} else { echo "0 results"; }
+									} else { echo "<div style='color: white;text-align:center;font-size:30px;'><b>Today No Stock</b><br><br></div>"; }
 									?>
 									
 									<!-- <?= print_r($NewYearArray);?>
