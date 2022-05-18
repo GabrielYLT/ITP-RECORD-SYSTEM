@@ -73,6 +73,8 @@ mysqli_close($connect);
 <html>
 	<head>
 	<meta charset="UTF-8">
+	<title>Edit Admin Account</title>
+	<link rel="icon" type="image/x-icon" href="images/icons/d.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 		<!-- CSS Files -->
