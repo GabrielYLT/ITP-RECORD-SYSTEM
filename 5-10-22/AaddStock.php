@@ -40,6 +40,10 @@ if(isset($_POST["sbtn"]))
 	$productstock = $_POST["remark"];
 	$productStatus = "Stock In";
 	
+	
+	$select = mysqli_query($connect, "SELECT * FROM product WHERE PCode = '".$_POST['pcode']."'");
+	if(mysqli_num_rows($select)) {
+	
 	mysqli_query($connect,"UPDATE product SET PQty = PQty + '$productprice '
                                                WHERE PCode= '$productname'");
 	
@@ -57,6 +61,18 @@ if(isset($_POST["sbtn"]))
 		</script>
 		
 	<?php 
+	}else{
+	 header("refresh:0.001;url=AaddStock.php");
+	
+
+
+	?>
+		<script type="text/javascript">
+		alert("Product Not Found!");
+		
+		</script>
+		
+	<?php }
  }
  
 ?>
