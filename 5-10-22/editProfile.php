@@ -254,6 +254,10 @@ mysqli_close($connect);
                                     <br>
 									<label for="gender">Status &nbsp; </label>
 									<?php 
+									if($row["Department"]=='All Department'){
+										echo "<select  class='form-control selectList' style='width:100%;Height:50%;' name='gender' id='gender' readonly>
+									<option value='"  . $row['AStatus'] . "'>" .  $row['AStatus'] . "</option></select>";
+									}else{
 									if($row["AStatus"]=='Blocked'){
 										echo "<select  class='form-control selectList' style='width:100%;Height:50%;' name='gender' id='gender' readonly>
 									<option value='"  . $row['AStatus'] . "'>" .  $row['AStatus'] . "</option></select>";
@@ -266,6 +270,7 @@ mysqli_close($connect);
 									<option value='Blocked'>Blocked</option>
 									</select>
 									";
+									}
 									}
 									?>
                                 </div>
