@@ -122,11 +122,7 @@ if(isset($_GET["sendbtn"]))
 					</div>
 
 					<span style="color:red;margin-left:1000%;font-weight: bold;"><?php echo $error; ?></span>
-					<div>
-						<a href="recover_psw.php" style="float:right;margin-right:10px;color:blue">
-							Forgot Password
-						</a>
-				</div>
+
 					<div class="container-login100-form-btn m-t-32">
 						<button class="login100-form-btn" name="sendbtn">
 							Login
@@ -134,7 +130,11 @@ if(isset($_GET["sendbtn"]))
 					</div>
 
 				</form>
-				
+				<div class="container-login100-form-btn m-t-32">
+						<a href="recover_psw.php"><button class="login100-form-btn" name="sendbtn">
+							Forgot Password
+						</button></a>
+				</div>
 				</div>
 			</div>
 		</div>
