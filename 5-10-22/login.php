@@ -108,7 +108,8 @@ if(isset($_GET["sendbtn"]))
 				<span class="login100-form-title p-b-41">
 					Account Login
 				</span>
-				<form class="login100-form validate-form p-b-33 p-t-5">
+				<div class="login100-form validate-form p-b-33 p-t-5">
+				<form>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
 						<input class="input100" type="text" autocomplete="off" name="AName" placeholder="Username">
@@ -133,7 +134,8 @@ if(isset($_GET["sendbtn"]))
 						<a href="recover_psw.php"><button class="login100-form-btn" name="sendbtn">
 							Forgot Password
 						</button></a>
-					</div>
+				</div>
+				</div>
 			</div>
 		</div>
 	</div>
