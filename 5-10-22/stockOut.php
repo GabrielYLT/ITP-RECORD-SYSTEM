@@ -109,7 +109,7 @@ if(isset($_POST["sbtn"]))
                     </script>
                 <?php
             }else{
-                header("refresh:0.001;url=AddStock.php");
+                header("refresh:0.001;url=stockOut.php");
             }
 	}
 	
