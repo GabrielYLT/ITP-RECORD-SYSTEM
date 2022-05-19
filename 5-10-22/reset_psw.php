@@ -14,7 +14,56 @@ if(!isset($_SESSION['email']))
 	
 	
 }
+
 ?>
+<?php
+    if(isset($_POST["reset"])){
+        include('Connection.php');
+        $psw = $_POST["password"];
+
+        $Email = $_SESSION['email'];
+
+        $sql = mysqli_query($connect, "SELECT * FROM admin WHERE AEmail='$Email'");
+        $query = mysqli_num_rows($sql);
+  	    $fetch = mysqli_fetch_assoc($sql);
+
+        if($Email){
+            mysqli_query($connect, "UPDATE admin SET APassword='$psw' WHERE AEmail='$Email'");
+            ?>
+            <script>
+                window.location.replace("login.php");
+                alert("<?php echo "your password has been succesful reset"?>");
+            </script>
+            <?php
+			
+			unset($_SESSION['email']);
+
+			session_destroy();
+			
+        }else{
+            ?>
+            <script>
+                alert("<?php echo "Please try again"?>");
+            </script>
+            <?php
+        }
+    }
+
+?>
+<script>
+    const toggle = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+
+    toggle.addEventListener('click', function(){
+        if(password.type === "password"){
+            password.type = 'text';
+        }else{
+            password.type = 'password';
+        }
+        this.classList.toggle('bi-eye');
+    });
+</script>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -101,50 +150,3 @@ if(!isset($_SESSION['email']))
 </main>
 </body>
 </html>
-<?php
-    if(isset($_POST["reset"])){
-        include('Connection.php');
-        $psw = $_POST["password"];
-
-        $Email = $_SESSION['email'];
-
-        $sql = mysqli_query($connect, "SELECT * FROM admin WHERE AEmail='$Email'");
-        $query = mysqli_num_rows($sql);
-  	    $fetch = mysqli_fetch_assoc($sql);
-
-        if($Email){
-            mysqli_query($connect, "UPDATE admin SET APassword='$psw' WHERE AEmail='$Email'");
-            ?>
-            <script>
-                window.location.replace("login.php");
-                alert("<?php echo "your password has been succesful reset"?>");
-            </script>
-            <?php
-			
-			unset($_SESSION['email']);
-
-			session_destroy();
-			
-        }else{
-            ?>
-            <script>
-                alert("<?php echo "Please try again"?>");
-            </script>
-            <?php
-        }
-    }
-
-?>
-<script>
-    const toggle = document.getElementById('togglePassword');
-    const password = document.getElementById('password');
-
-    toggle.addEventListener('click', function(){
-        if(password.type === "password"){
-            password.type = 'text';
-        }else{
-            password.type = 'password';
-        }
-        this.classList.toggle('bi-eye');
-    });
-</script>

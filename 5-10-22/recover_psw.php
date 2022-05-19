@@ -84,7 +84,6 @@
 </main>
 </body>
 </html>
-
 <?php 
     if(isset($_POST["recover"])){
         include('Connection.php');
