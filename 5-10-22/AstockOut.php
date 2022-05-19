@@ -108,7 +108,7 @@ if(isset($_POST["sbtn"]))
             // HTML body
             $mail->isHTML(true);
             $mail->Subject="Product Low on Stock";
-            $mail->Body="<b>Dear User</b>
+            $mail->Body="<b>Dear Admin</b>
             <h3>Your Product : <span style='color:crimson;font-weight:bold;font-size:50px;'>". $name."</span> is Currently Low on Stock.</h3>
 			<p>Total stock : <span style='color:crimson;font-weight:bold;font-size:30px;'>".$qty."</span></p>
             <br><br>
