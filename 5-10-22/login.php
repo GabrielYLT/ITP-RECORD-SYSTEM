@@ -129,6 +129,11 @@ if(isset($_GET["sendbtn"]))
 					</div>
 
 				</form>
+				<div class="container-login100-form-btn m-t-32">
+						<a href="recover_psw.php"><button class="login100-form-btn" name="sendbtn">
+							Forgot Password
+						</button></a>
+					</div>
 			</div>
 		</div>
 	</div>
