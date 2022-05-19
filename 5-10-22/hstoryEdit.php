@@ -49,7 +49,7 @@ if(isset($_POST["sbtn"]))
                                                WHERE PCode= '$productname'");
 	header("refresh:0.001;url=hstory.php");
 	
-	if($row1["PQty"] <= '6'){
+if($row1["PQty"] <= '6'){
 		
 	$conn=$connect;
 
@@ -106,7 +106,7 @@ if(isset($_POST["sbtn"]))
 	
 	
 	}
-	}
+
 ?>
 		<script type="text/javascript">
 		alert("Stock Updated Successfully!");
@@ -116,6 +116,7 @@ if(isset($_POST["sbtn"]))
 	<?php 
 
 	
+}
 }
 
 ?>
