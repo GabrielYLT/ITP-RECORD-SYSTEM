@@ -4,6 +4,7 @@ session_start();
 error_reporting(0);
 $error = "";
 $error1 ="";
+$error2 ="";
 ?>
 <?php
 if(!isset($_SESSION['id']))
@@ -47,9 +48,23 @@ if(isset($_POST["sbtn"]))
  
 
 if($_POST['pass'] === $_POST["pass1"]){
-$select = mysqli_query($connect, "SELECT * FROM admin WHERE AEmail = '".$_POST['email']."'");
-if(mysqli_num_rows($select)) {
+	$select= mysqli_query($connect, "SELECT * FROM admin WHERE AName = '".$_POST['name']."'");
+	$select1 = mysqli_query($connect, "SELECT * FROM admin WHERE AEmail = '".$_POST['email']."'");
+	if(mysqli_num_rows($select)) {
+		 $error2="Username already in use !";
+
+	?>
+		<script type="text/javascript">
+		alert("Username Already in Use!");
+		
+		</script>
+		
+	<?php 
+	
+
+}elseif(mysqli_num_rows($select1)) {
     $error="This email address is already registered";
+
 	?>
 		<script type="text/javascript">
 		alert("Email Already in Use!");
@@ -248,8 +263,8 @@ label {
 								<div class="form-group">
                                     <label for="name">Username </label>
                                     <input value="" placeholder="Enter Your Username Here" name="name" type="text" class="form-control"   required >
-									 
-									<span id="errorname"></span>
+									 <span style="color: red;"><br><?php echo $error2 ?> </span>	
+									
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Account Email </label>
