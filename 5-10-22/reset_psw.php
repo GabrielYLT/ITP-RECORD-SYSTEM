@@ -81,7 +81,7 @@ include('Connection.php');
   	    $fetch = mysqli_fetch_assoc($sql);
 
         if($Email){
-            mysqli_query($connect, "UPDATE admin SET APassword='$new_pass' WHERE AEmail='$Email'");
+            mysqli_query($connect, "UPDATE admin SET APassword='$psw' WHERE AEmail='$Email'");
             ?>
             <script>
                 window.location.replace("login.php");
