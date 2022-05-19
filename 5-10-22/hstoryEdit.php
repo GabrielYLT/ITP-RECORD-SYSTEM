@@ -46,10 +46,67 @@ if(isset($_POST["sbtn"]))
 	mysqli_query($connect,"UPDATE product SET PQty = (PQty - '$total') + $productprice
                                                WHERE PCode= '$productname'");
 	}else{mysqli_query($connect,"UPDATE product SET PQty = (PQty + '$total') - $productprice
-                                               WHERE PCode= '$productname'");}
-	
- 	
+                                               WHERE PCode= '$productname'");
 	header("refresh:0.001;url=hstory.php");
+	
+	if($row1["PQty"] <= '6'){
+		
+	$conn=$connect;
+
+	$result2=mysqli_query($connect,"SELECT * FROM product WHERE PCode='$_POST[pcode]'");
+	$row2 = mysqli_fetch_assoc($result2);
+	$name = $row2["PName"];
+		$qty =$row2["PQty"];
+		
+			
+		            require "Mail/phpmailer/PHPMailerAutoload.php";
+            $mail = new PHPMailer; 
+
+            $mail->isSMTP();
+            $mail->Host='smtp.gmail.com';
+            $mail->Port=587;
+            $mail->SMTPAuth=true;
+            $mail->SMTPSecure='tls';
+
+            // h-hotel account
+            $mail->Username='tes15895@gmail.com';
+            $mail->Password='Qwer@1234';
+
+            // send by h-hotel email
+            $mail->setFrom('email', 'Password Reset');
+            // get email from input
+            $sql = "SELECT * FROM admin WHERE Department = 'All Department'";
+	$res = mysqli_query($conn, $sql);
+	if(mysqli_num_rows($res) > 0) {
+    while($x = mysqli_fetch_assoc($res)) {
+        $mail->addAddress($x['AEmail']);
+    }
+            //$mail->addReplyTo('lamkaizhe16@gmail.com');
+
+            // HTML body
+            $mail->isHTML(true);
+            $mail->Subject="Product Low on Stock";
+            $mail->Body="<b>Dear Admin</b>
+            <h3>Your Product : <span style='color:crimson;font-weight:bold;font-size:50px;'>". $name."</span> is Currently Low on Stock.</h3>
+			<p>Total stock : <span style='color:crimson;font-weight:bold;font-size:30px;'>".$qty."</span></p>
+            <br><br>
+            <p>With regrads,</p>
+            <b>JMM RECORD SYSTEM</b>";
+		
+			            if(!$mail->send()){
+                ?>
+                    <script>
+                        alert("<?php echo " Invalid Email "?>");
+                    </script>
+                <?php
+            }else{
+                header("refresh:0.001;url=hstory.php");
+            }
+	}
+	
+	
+	}
+	}
 ?>
 		<script type="text/javascript">
 		alert("Stock Updated Successfully!");
