@@ -1,6 +1,20 @@
 <?php session_start() ;
 include('Connection.php');
 ?>
+<?php
+if(!isset($_SESSION['email']))
+{
+?>
+    <script>
+    alert("You're Not Authorize !");
+    </script>
+    <?php
+    header("refresh:0.001;url=login.php");
+    //exit();
+	
+	
+}
+?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -88,6 +102,11 @@ include('Connection.php');
                 alert("<?php echo "your password has been succesful reset"?>");
             </script>
             <?php
+			
+			unset($_SESSION['email']);
+
+			session_destroy();
+			
         }else{
             ?>
             <script>
