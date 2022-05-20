@@ -5,6 +5,8 @@ error_reporting(0);
 $error = "";
 $error1 ="";
 $error2 ="";
+date_default_timezone_set("Asia/Kuala_Lumpur");
+$currentDate = date('Y-m-d',time());
 ?>
 <?php
 if(!isset($_SESSION['id']))
@@ -74,7 +76,7 @@ if($_POST['pass'] === $_POST["pass1"]){
 	<?php 
 }else{
 	 
-	mysqli_query($connect,"INSERT INTO admin(AFirst,ALast,AName,AEmail,APassword,AStatus,Department)VALUES('$FName','$LName','$Admin_Name','$Admin_Email','$Admin_Password','$AStat','$Admin_PhoneNo')");
+	mysqli_query($connect,"INSERT INTO admin(AFirst,ALast,AName,AEmail,APassword,AStatus,ADate,Department)VALUES('$FName','$LName','$Admin_Name','$Admin_Email','$Admin_Password','$AStat','$currentDate','$Admin_PhoneNo')");
  
 	?>
 		<script type="text/javascript">
