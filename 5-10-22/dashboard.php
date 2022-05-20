@@ -4,6 +4,8 @@ session_start();
 error_reporting(0);
 $error = "";
 $error1 ="";
+date_default_timezone_set("Asia/Kuala_Lumpur");
+$currentDate = date('Y-m-d',time());
 ?>
 <?php
 if(!isset($_SESSION['id']))
@@ -199,9 +201,10 @@ canvas{
 									die("Connection failed: " . $conn->connect_error);
 									}
 									$sql = "SELECT stock.PCode, product.PName,product.CID, SUM(stock.Qty) AS calc_sub, stock.DateAdded
-									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID)WHERE Status = 'Stock In' AND DATE(DateAdded) = CURDATE() AND product.CID =1 
-									OR Status = 'Stock In' AND DATE(DateAdded) = CURDATE() AND product.CID= 2 
-									OR Status = 'Stock In' AND DATE(DateAdded) = CURDATE() AND product.CID = 3 group BY PCode";
+									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID)
+									WHERE Status = 'Stock In' AND DATE(DateAdded) = '$currentDate' AND product.CID =1 
+									OR Status = 'Stock In' AND DATE(DateAdded) = '$currentDate' AND product.CID= 2 
+									OR Status = 'Stock In' AND DATE(DateAdded) = '$currentDate' AND product.CID = 3 group BY PCode";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 									$NewYearQTY = [];
@@ -546,7 +549,7 @@ document.getElementById("current_date").innerHTML = month + "-" + day + "-" + ye
 									}
 									$sql = "SELECT stock.PCode, product.PName,product.PImage, stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status
 									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) 
-									WHERE DATE(DateAdded) = CURDATE() ORDER BY DateAdded DESC";
+									WHERE DATE(DateAdded) = '$currentDate' ORDER BY DateAdded DESC";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
