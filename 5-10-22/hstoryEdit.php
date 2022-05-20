@@ -45,6 +45,14 @@ if(isset($_POST["sbtn"]))
 	if($row['Status'] == 'Stock In'){
 	mysqli_query($connect,"UPDATE product SET PQty = (PQty - '$total') + $productprice
                                                WHERE PCode= '$productname'");
+	?>
+	<script type="text/javascript">
+		alert("Stock Updated Successfully!");
+		
+		</script>
+
+	<?php
+	header("refresh:0.001;url=hstory.php");
 	}else{mysqli_query($connect,"UPDATE product SET PQty = (PQty + '$total') - $productprice
                                                WHERE PCode= '$productname'");
 	header("refresh:0.001;url=hstory.php");
@@ -69,8 +77,8 @@ if($row1["PQty"] <= '6'){
             $mail->SMTPSecure='tls';
 
             // h-hotel account
-            $mail->Username='tes15895@gmail.com';
-            $mail->Password='Qwer@1234';
+            $mail->Username='jmmrecordsystem@gmail.com';
+            $mail->Password='0175143933';
 
             // send by h-hotel email
             $mail->setFrom('email', 'Password Reset');

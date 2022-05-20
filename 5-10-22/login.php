@@ -124,7 +124,7 @@ if(isset($_GET["sendbtn"]))
 					<span style="color:red;margin-left:1000%;font-weight: bold;"><?php echo $error; ?></span>
 					<div>
 						<a href="recover_psw.php" style="float:right;margin-right:10px;color:blue">
-							Forgot Password
+							Forgot Password？
 						</a>
 				</div>
 					<div class="container-login100-form-btn m-t-32">
