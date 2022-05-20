@@ -545,7 +545,8 @@ document.getElementById("current_date").innerHTML = month + "-" + day + "-" + ye
 									die("Connection failed: " . $conn->connect_error);
 									}
 									$sql = "SELECT stock.PCode, product.PName,product.PImage, stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status
-									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE DATE(DateAdded) = CURDATE() ORDER BY DateAdded DESC";
+									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) 
+									WHERE DATE(DateAdded) = CURDATE() ORDER BY DateAdded DESC";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
