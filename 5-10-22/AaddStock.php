@@ -2,6 +2,8 @@
 include("Connection.php");
 session_start();
 error_reporting(0);
+date_default_timezone_set("Asia/Kuala_Lumpur");
+$currentDate = date('Y-m-d H:i:s',time());
 ?>
 <?php
 if(!isset($_SESSION['id']))
@@ -48,8 +50,8 @@ if(isset($_POST["sbtn"]))
                                                WHERE PCode= '$productname'");
 	
 	
- 	$sql=mysqli_query($connect,"INSERT INTO stock(PCode,Qty,AID,Remarks,Status) 
-	VALUES('$productname','$productprice','$_SESSION[id]','$productstock','$productStatus')");
+ 	$sql=mysqli_query($connect,"INSERT INTO stock(PCode,Qty,AID,DateAdded,Remarks,Status) 
+	VALUES('$productname','$productprice','$_SESSION[id]','$currentDate','$productstock','$productStatus')");
 	header("refresh:0.001;url=manage.php");
 	
 
