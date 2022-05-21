@@ -42,6 +42,7 @@ if(isset($_POST["sbtn"]))
 											Remarks = '$productstock'
                                                WHERE SID= '$ad_id'");
 											   
+
 	if($row['Status'] == 'Stock In'){
 	mysqli_query($connect,"UPDATE product SET PQty = (PQty - '$total') + $productprice
                                                WHERE PCode= '$productname'");
@@ -56,7 +57,10 @@ if(isset($_POST["sbtn"]))
 	}else{mysqli_query($connect,"UPDATE product SET PQty = (PQty + '$total') - $productprice
                                                WHERE PCode= '$productname'");
 	header("refresh:0.001;url=hstory.php");
-	
+												   
+	$result1=mysqli_query($connect,"SELECT * FROM product WHERE PCode='$_POST[pcode]'");
+	$row1 = mysqli_fetch_assoc($result1);
+											   
 if($row1["PQty"] <= '6'){
 		
 	$conn=$connect;
@@ -254,7 +258,7 @@ $(document).ready(function(){
 								<hr>
 									<label for="gender"><h4>Product Image &nbsp;</h4> </label>
 									<div class="d-flex flex-column align-items-center text-center p-2 py-3">
-									<input class="" style="margin:auto;width:150px;height:150px;border-radius:30px;" img src="images/<?php echo $row['PImage'] ?>" type="image" class="form-control selectList"  autocomplete="off"  list="code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
+									<input class="" style="margin:auto;width:150px;height:auto;border-radius:30px;" img src="images/<?php echo $row['PImage'] ?>" type="image" class="form-control selectList"  autocomplete="off"  list="code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
 									</div>
 								</div>
 								<div class="form-group" >
