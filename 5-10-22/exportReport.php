@@ -44,7 +44,7 @@ if($query->num_rows > 0){
     // Output each row of the data 
     while($row = $query->fetch_assoc()){ 
         
-        $lineData = array($row['PCode'], $row['PName'], $row['total_qty'] . $row['QType'], $row['DateAdded'],$row['AName'],$row['Remarks']. $row['Status']); 
+        $lineData = array($row['PCode'], $row['PName'], $row['total_qty'] . $row['QType'], $row['DateAdded'],$row['AName'],$row['Remarks'], $row['Status']); 
         array_walk($lineData, 'filterData'); 
         $excelData .= implode("\t", array_values($lineData)) . "\n"; 
     }
