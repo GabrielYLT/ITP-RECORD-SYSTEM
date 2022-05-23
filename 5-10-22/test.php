@@ -201,21 +201,60 @@ label {
         </nav>
 		<div><br><br><br></div>
 			<!-- row -->
+		<div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;" >
+            <div class="tm-col tm-col-big" style="padding-top:1%;padding-bottom:1%;margin: auto; width:300px;">
+                <div class="tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
+                    <div class="row" style="margin: auto;">
+                        <div class="col-12">
+                            <form name = "updatAdmin" method="get" class="tm-signup-form" enctype="multipart/form-data">
+							<div class="form-group" style="display:inline;">
+							<label style="font-size:14px;margin-top:10%;">Start: &nbsp;</label>
+							<input type="date" name="start" class="datepicker" style="border-radius:10px;width:200px; ">
+							</div>
+							<br>
+							<div class="form-group" style="display:inline;">
+							<label style="font-size:14px;margin-top:1%;">End: &nbsp;</label>
+							<input type="date" name="end" class="datepicker" style="border-radius:10px;width:207px; ">
+							</div>
+							<br>
+							<div class="form-group" style="display:inline;">
+							<label style="font-size:14px;margin-top:1%;">Category: &nbsp; </label>
+							<select type="text" autocomplete="off"  list="code" style="border-radius:10px;width:169px;" placeholder="Select Category" name="cat">
+							<option value="">Select Category</option>
+							<option value="1">New Year Cookies</option>
+							<option value="2">Raya Cookies</option>
+							<option value="3">Mooncakes</option>
+							<option value="4">Raw Material</option>
+							<option value="5">Packing Material</option>
+							<option value="6">General Use</option>
+							</select>
+							</div>
+							<div class="button-group">
+							<button type="submit" name="searchbtn"  class="btn btn-secondary" style="width:240px;height:50px;"> Search </button>
+							</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			</div>
+			
             <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
                 <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:auto%;margin: auto; margin-bottom:2%;">
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                         <div class="row">
-                            <div class="col-md-8 col-sm-12">
+                            <div class="col-md-12 col-sm-12">
 							<?php
-							if(isset($_GET["details"])){
-								
-							$ad_id=$_GET['id'];	
-							$result=mysqli_query($connect,"SELECT * FROM category WHERE CID='$ad_id'");
-							$row=mysqli_fetch_assoc($result);}
-									
-									
-							echo "<h2 class='tm-block-title d-inline-block' style='margin-left:3%;margin-top:2%;color:black;font-weight:bold;'>List of ". $row["CName"] . " </h2>";
+							if(isset($_GET["searchbtn"])){
+										
+										$start = $_GET["start"];
+										$end = $_GET["end"];
+										$cat = $_GET["cat"];
+							}
 							?>
+							<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;">History</h2>
+							<button class="btn btn-info" style="margin-right:3%;margin-top:3%;width:200px;float:right;">
+							<a class="text-white text-capitalize" style="width:20%;margin:auto;"href="exportReport.php?print&start=<?php echo $start;?>&end=<?php echo $end;?>&cat=<?php echo $cat;?>">Download Report</a></button>
                             </div>
 							<div>
 							<hr>
@@ -231,25 +270,27 @@ label {
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Image</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Name</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Category</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Added On</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Added By</th>
-										<th scope="col" style="width:20%">&nbsp;</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Remarks</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Status</th>
+										
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
                                 	<?php
 									$conn = $connect;
-									if(isset($_GET["details"])){
-								
-									$ad_id=$_GET['id'];
+									
 
 										
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT product.PCode, product.PImage, product.PName,product.PQty,product.QType,product.CID,category.CName,product.AID,admin.AName
-									FROM ((product INNER JOIN category ON product.CID = category.CID)INNER JOIN admin ON product.AID = admin.AID)
-									WHERE product.CID = '$ad_id'  ";
+									$sql = "SELECT stock.PCode,product.PName,product.PImage,product.QType,product.CID,category.CName,SUM(stock.Qty) AS total_qty,Stock.AID,admin.AName,stock.DateAdded,stock.Remarks,stock.Status
+									FROM (((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN category ON product.CID = category.CID)INNER JOIN admin ON stock.AID= admin.AID)
+									WHERE product.CID = '$cat' AND DATE(DateAdded) BETWEEN '$start' AND '$end' group BY PCode,Status,AID ORDER BY DateAdded";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
@@ -257,19 +298,45 @@ label {
 									echo "<tr><td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
 									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PQty"]."&nbsp;&nbsp;". $row["QType"] ."</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["CName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["total_qty"]."&nbsp;&nbsp;". $row["QType"] ."</td>" ; 
+									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"].  "</td>" ; 
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"].  "</td>" ; 
-                                    ?> 
-                                  <td style="text-align:center;font-weight:bold";>
-									<div class='btn-group'> 
-									<a href="details.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary">Details</a>	
-									<a href="editProduct.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary" >Edit</a></td>
-									</div>
-                                    <?php
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Remarks"].  "</td>" ; 
+									if($row["Status"] == 'Stock In'){
+									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
+									}else{
+										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
+									}
 									echo "</tr>" ;
 									}
 									echo "</table>";
-									} else { echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results Found !"; }}
+									} else { 
+									$sql = "SELECT stock.PCode,product.PName,product.PImage,product.QType,product.CID,category.CName,SUM(stock.Qty) AS total_qty,Stock.AID,admin.AName,stock.DateAdded,stock.Remarks,stock.Status
+									FROM (((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN category ON product.CID = category.CID)INNER JOIN admin ON stock.AID= admin.AID)
+									WHERE DATE(DateAdded) BETWEEN '$start' AND '$end' group BY PCode,Status,AID ORDER BY DateAdded";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<tr><td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["CName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["total_qty"]."&nbsp;&nbsp;". $row["QType"] ."</td>" ; 
+									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Remarks"].  "</td>" ; 
+									if($row["Status"] == 'Stock In'){
+									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
+									}else{
+										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
+									}
+									echo "</tr>" ;
+									}
+									echo "</table>";
+									} else { echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results Found !"; }
+									}
 									?>    
                                 </tbody>
                             </table>
