@@ -116,14 +116,17 @@ $(document).ready(function(){
             
             <ul class="navbar-nav">
 			  <li class="nav-item">
+			   <Tooltip title="Add New Product">
                 <a class="nav-link" href="DaddNewProduct.php">
                   <i class="now-ui-icons ui-1_simple-add"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Add New Product</span>
                   </p>
                 </a>
+			  </Tooltip>
               </li>
 			  <li class="nav-item">
+			   <Tooltip title="Home">
                 <a class="nav-link" href="generalD.php">
                   <i class="now-ui-icons business_bank"></i>
                   <p>
@@ -132,28 +135,34 @@ $(document).ready(function(){
                 </a>
               </li>
 			  <li class="nav-item">
+			   <Tooltip title="History">
                 <a class="nav-link" href="hstory.php">
                   <i class="now-ui-icons files_paper"></i>
                   <p>
                     <span class="d-lg-none d-md-block">History</span>
                   </p>
                 </a>
+			   </Tooltip>
               </li>
               <li class="nav-item">
+			   <Tooltip title="Profile">
                 <a class="nav-link" href="Dprofile.php">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Profile</span>
                   </p>
                 </a>
+			   </Tooltip>
               </li>
 			  <li class="nav-item">
+			   <Tooltip title="Logout">
                 <a class="nav-link" href="logout.php">
                   <i class="now-ui-icons media-1_button-power"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Logout</span>
                   </p>
                 </a>
+			   </Tooltip>
               </li>
             </ul>
           </div>

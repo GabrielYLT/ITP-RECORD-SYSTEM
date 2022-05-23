@@ -166,20 +166,24 @@ label {
 				<div class="collapse navbar-collapse justify-content-end" id="navigation">
 					<ul class="navbar-nav">
 					    <li class="nav-item">
+						  <Tooltip title="Profile">
 							<a class="nav-link" href="viewProfile.php">
 							    <i class="now-ui-icons users_single-02"></i>
 							    <p>
 									<span class="d-lg-none d-md-block">Profile</span>
 							    </p>
 							</a>
+						  </Tooltip>
 					    </li>
 						<li class="nav-item">
+						  <Tooltip title="Logout">
 							<a class="nav-link" href="logout.php">
 							    <i class="now-ui-icons media-1_button-power"></i>
 							    <p>
 									<span class="d-lg-none d-md-block">Logout</span>
 							    </p>
 							</a>
+						  </Tooltip>
 					    </li>
 					</ul>
 			    </div>
