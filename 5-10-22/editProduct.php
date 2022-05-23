@@ -275,7 +275,7 @@ $(document).ready(function(){
 								<hr>
 									<label for="gender"><h4>Product Image &nbsp;</h4> </label>
 									<div class="d-flex flex-column align-items-center text-center p-2 py-3">
-									<input class="" style="margin:auto;width:150px;height:auto%;border-radius:30px;" img src="images/<?php echo $row['PImage'] ?>" type="image" class="form-control selectList"  autocomplete="off"  list="code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
+									<img class="" style="margin:auto;width:150px;height:auto%;border-radius:30px;" img src="images/<?php echo $row['PImage'] ?>" type="image" class="form-control selectList"  autocomplete="off"  list="code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
 									</div>
 									</div>				
 								<input type="file" value="" name="profileImage" id="profileImage" class="form-control">
@@ -297,17 +297,19 @@ $(document).ready(function(){
 									<select  class="form-control selectList" style="width:100%;Height:50%;" name="type" id="gender" required>
 									<option value="<?php echo $row['QType']?>"><?php echo $row['QType']?></option>
 									<optgroup label="Group">
-									<option value="条">条</option>
-									<option value="箱">箱</option>
-									<option value="包">包</option>
-									<option value="盒">盒</option>
-									<option value="罐">罐</option>
-									<option value="桶">桶</option>
-									<option value="盘">盘</option>
-									<option value="卷">卷</option>
-									<option value="张">张</option>
-									<option value="个">个</option>
+									<option value="bag">bag</option>
+									<option value="bottle">bottle</option>
 									<option value="ctn">ctn</option>
+									<option value="drum">drum</option>
+									<option value="jar">jar</option>
+									<option value="kg">kg</option>
+									<option value="pack">pack</option>
+									<option value="pieces">pieces</option>
+									<option value="ream">ream</option>
+									<option value="roll">roll</option>
+									<option value="tong">tong</option>
+									<option value="tube">tube</option>
+									<option value="unit">unit</option>
 									</select>
                                 </div>
 								<div class="select">

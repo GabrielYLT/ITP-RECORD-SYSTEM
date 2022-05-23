@@ -166,7 +166,7 @@ $(document).ready(function(){
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow-x:hidden;background:none;" >
+<div class="wrapper"  style="overflow-x:hidden;background-image: url('images/dbg.jpg');background-size: cover;" >
     
 	<!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
@@ -261,7 +261,7 @@ $(document).ready(function(){
 								<hr>
 									<label for="gender"><h4>Product Image &nbsp;</h4> </label>
 									<div class="d-flex flex-column align-items-center text-center p-2 py-3">
-									<input class="" style="margin:auto;width:150px;height:auto;border-radius:30px;" img src="images/<?php echo $row['PImage'] ?>" type="image" class="form-control selectList"  autocomplete="off"  list="code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
+									<img style="margin:auto;width:150px;height:auto;border-radius:30px;" img src="images/<?php echo $row['PImage'] ?>" type="image" style="width:100%;Height:50%;" name="" id="image" readonly>
 									</div>
 								</div>
 								<div class="form-group" >

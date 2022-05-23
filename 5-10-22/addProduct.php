@@ -275,17 +275,19 @@ $(document).ready(function(){
 									<select  class="form-control selectList" style="width:100%;Height:50%;" name="type" id="gender" required>
 									<option value=""disabled selected>Please Select Quantity Type</option>
 									<optgroup label="Group">
-									<option value="条">条</option>
-									<option value="箱">箱</option>
-									<option value="包">包</option>
-									<option value="盒">盒</option>
-									<option value="罐">罐</option>
-									<option value="桶">桶</option>
-									<option value="盘">盘</option>
-									<option value="卷">卷</option>
-									<option value="张">张</option>
-									<option value="个">个</option>
+									<option value="bag">bag</option>
+									<option value="bottle">bottle</option>
 									<option value="ctn">ctn</option>
+									<option value="drum">drum</option>
+									<option value="jar">jar</option>
+									<option value="kg">kg</option>
+									<option value="pack">pack</option>
+									<option value="pieces">pieces</option>
+									<option value="ream">ream</option>
+									<option value="roll">roll</option>
+									<option value="tong">tong</option>
+									<option value="tube">tube</option>
+									<option value="unit">unit</option>
 									</select>
                                 </div>
 								<div class="select">

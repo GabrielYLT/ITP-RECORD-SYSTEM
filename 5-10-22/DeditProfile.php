@@ -88,7 +88,7 @@ $(document).ready(function(){
 		</head>
 	
 	<body>
-<div class="wrapper"  style="overflow-x:hidden;background:none;" >
+<div class="wrapper"  style="overflow-x:hidden;background-image: url('images/dbg.jpg');background-size: cover;" >
     <!-- Navbar -->
       <div><nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" >
         <div class="container-fluid">

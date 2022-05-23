@@ -129,7 +129,7 @@ function validate_email()
 	
 </head>
 <body class="bg01">
-    <div class="wrapper"  style="overflow-x:hidden;background:none;" >
+    <div class="wrapper"  style="overflow-x:hidden;background-image: url('images/dbg.jpg');background-size: cover;" >
 		<div><nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" >
         <div class="container-fluid">
           <div class="navbar-wrapper">

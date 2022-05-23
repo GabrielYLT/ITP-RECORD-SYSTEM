@@ -149,7 +149,12 @@ canvas{
 			?>
 				
 			
-         
+			<li>
+				<a href=".php">
+				  <i class="now-ui-icons files_paper"></i>
+				  <p>History</p>
+				</a>
+			</li>
 		   <li>
             <a href="admin_list.php">
               <i class="now-ui-icons users_circle-08"></i>
