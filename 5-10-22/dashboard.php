@@ -150,7 +150,7 @@ canvas{
 				
 			
 			<li>
-				<a href=".php">
+				<a href="history.php">
 				  <i class="now-ui-icons files_paper"></i>
 				  <p>History</p>
 				</a>

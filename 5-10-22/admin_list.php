@@ -131,6 +131,12 @@ $(document).ready(function(){
 			}
 			} 
 			?>
+			<li>
+				<a href="history.php">
+				  <i class="now-ui-icons files_paper"></i>
+				  <p>History</p>
+				</a>
+			</li>
           </li>
 		   <li>
             <a href="admin_list.php">
