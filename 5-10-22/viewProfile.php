@@ -136,14 +136,24 @@ $(document).ready(function(){
               <i class="now-ui-icons design_bullet-list-67"></i>
               <h3 class="dropdown-header" style="color:white;">Category</h3>
 			</a>
-			<ul class="nav" style="padding">
-				<li ><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=1"><i class="now-ui-icons design_palette"></i>New Year Cookies</a></li>
-				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=2"><i class="now-ui-icons design_palette"></i>Raya Cookies</a></li>
-				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=3"><i class="now-ui-icons design_palette"></i>Mooncakes</a></li>
-				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=4"><i class="now-ui-icons design_palette"></i>Raw Material</a></li>
-				<li><a class="dropdown-item" style="width:80%;margin-left:13%;" href="list.php?details&id=5"><i class="now-ui-icons design_palette"></i>Packing Material</a></li>
-				<li><a class="dropdown-item" style="width:80%;height:10%;margin-left:13%;" href="list.php?details&id=6"><i class="now-ui-icons design_palette"></i>General Use</a></li>
-			</ul>
+			<?php 
+			
+			$conn = $connect;
+			
+			if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+			}
+			$sql3 = "SELECT * FROM category ";
+			$result3 = $conn->query($sql3);
+			if ($result3->num_rows > 0) {
+			while($row3 = $result3->fetch_assoc()) {
+				
+			echo "<ul class='nav' style='padding'>";
+			echo "<li><a class='dropdown-item' style='width:80%;margin-left:13%;margin-top:-7%;' href='list.php?details&id=". $row3["CID"]."'><i class='now-ui-icons design_palette'></i>". $row3["CName"]. "</a></li></ul> </li>";
+			
+			}
+			} 
+			?>
           </li>
 		   <li>
             <a href="admin_list.php">
