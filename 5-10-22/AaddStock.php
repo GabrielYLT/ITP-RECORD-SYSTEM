@@ -52,7 +52,7 @@ if(isset($_POST["sbtn"]))
 	
  	$sql=mysqli_query($connect,"INSERT INTO stock(PCode,Qty,AID,DateAdded,Remarks,Status) 
 	VALUES('$productname','$productprice','$_SESSION[id]','$currentDate','$productstock','$productStatus')");
-	header("refresh:0.001;url=manage.php");
+	header("refresh:0.001;url=AaddStock.php");
 	
 
 
@@ -225,8 +225,27 @@ $(document).ready(function(){
 									<label for="gender" style="color:black;">Product Code &nbsp; </label>
 									<input  type="text" class="form-control selectList"  autocomplete="off"  list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode" id="gender" required>
 									<datalist id="code">
-																		<?php
+									<?php
 									$conn = $connect;
+									if(isset($_GET["details"])){
+								
+									$ad_id=$_GET['id'];
+
+									
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									
+									$sql = "SELECT * FROM product WHERE PCODE = '$ad_id'";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<option value='" . $row["PCode"] . "'>". $row["PName"]."</option>";
+									}
+									} else { echo "0 results"; } 
+									}else{
+										
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
@@ -238,7 +257,9 @@ $(document).ready(function(){
 									while($row = $result->fetch_assoc()) {
 									echo "<option value='" . $row["PCode"] . "'>". $row["PName"]."</option>";
 									}
-									} else { echo "0 results"; }
+									} else { echo "0 results"; } 
+										
+									}
 									?>    
 									</datalist>
                                 </div>

@@ -6,7 +6,9 @@ error_reporting(0);
 <?php
 if(!isset($_SESSION['id']))
 {
+	
 ?>
+
     <script>
     alert("Please login. Thank you!!!");
     </script>
@@ -124,10 +126,10 @@ $(document).ready(function(){
       <!-- End Navbar -->
 	  <div style="height:10%;">
       </div>
-    <div class="content" style="margin-left:11%;margin-top:5%;margin-right:11%">
+    <div class="content" style="margin-left:11%;margin-top:11%;margin-right:11%">
 			<!-- row -->
-        <a href="addStock.php"><button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;background-color:#ff280061"><h1 style="color:white;"><b>Stock In</b></h3></button></a>
-		<a href="stockOut.php"><button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;float:right;background-color:#ff280061"><h1 style="color:white;"><b>Stock Out</b></h3></button></a>
+        <a href="addStock.php"><button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;background-color:#ff280061;display:inline;"><h1 style="color:white;"><b>Stock In</b></h3></button></a>
+		<a href="stockOut.php"><button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;float:right;background-color:#ff280061;display:inline;"><h1 style="color:white;"><b>Stock Out</b></h3></button></a>
   </div>
 </div>
 	</div>
