@@ -225,10 +225,11 @@ $(document).ready(function(){
 		<!-- row -->
 		<div class="content" style="margin-left:15%;margin-right:15%">
 			<br><br><br><br>
-				<a href="addAdmin.php"><button type="button" class="btn btn-primary btn-lg" style="width: 350px;height: 200px;background-color:#ffc4b961"><h1 style="color:white;"><b>Add Admin</b></h3></button></a>
-				<a href="addProduct.php"><button type="button" class="btn btn-primary btn-lg" style="width: 350px;height: 200px;float:right;background-color:#ffc4b961"><h1 style="color:white;"><b>Add Product</b></h3></button></a>
-				<a href="AaddStock.php"><button type="button" class="btn btn-primary btn-lg" style="width: 350px;height: 200px;background-color:#ffc4b961"><h1 style="color:white;"><b>Stock In</b></h3></button></a>
-				<a href="AstockOut.php"><button type="button" class="btn btn-primary btn-lg" style="width: 350px;height: 200px;float:right;background-color:#ffc4b961"><h1 style="color:white;"><b>Stock Out</b></h3></button></a>
+				<div style="margin-top:9%"><a href="addAdmin.php"><button type="button" class="btn btn-primary btn-lg" style="width: 350px;height: 200px;background-color:#ffc4b961;display:inline;"><h1 style="color:white;"><b>Add Admin</b></h3></button></a>
+				<a href="addProduct.php"><button type="button" class="btn btn-primary btn-lg" style="width: 350px;height: 200px;float:right;background-color:#ffc4b961;display:inline;"><h1 style="color:white;"><b>Add Product</b></h3></button></a></div>
+				<div>
+				<a href="AaddStock.php"><button type="button" class="btn btn-primary btn-lg" style="width: 350px;height: 200px;background-color:#ffc4b961;display:inline;"><h1 style="color:white;"><b>Stock In</b></h3></button></a>
+				<a href="AstockOut.php"><button type="button" class="btn btn-primary btn-lg" style="width: 350px;height: 200px;float:right;background-color:#ffc4b961;display:inline;"><h1 style="color:white;"><b>Stock Out</b></h3></button></a></div>
 			<br><br><br><br><br><br><br><br><br>
 		</div>
 		
