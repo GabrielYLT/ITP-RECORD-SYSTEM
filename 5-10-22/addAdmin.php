@@ -291,7 +291,7 @@ label {
 									<div >
 										<label class="form-check-label" style="margin-left:22px;">
 										<br>
-										<input type="checkbox" class="form-check-input" onclick="myFunction()" style="width:15px;height:15px;" >Show Password
+										<input type="checkbox" class="form-check-input " onclick="myFunction()" style="width:15px;height:15px;box-shadow:1px 1px 2px 2px #00000050;" >Show Password
 										<script type="text/javascript">
 										function myFunction() {
 										var x = document.getElementById("pass");
