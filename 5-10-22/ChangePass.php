@@ -151,7 +151,7 @@ function validate_email()
           JMM
         </a>
         <a href="dashboard.php" class="simple-text logo-normal">
-          DASHBOARD
+          RECORD SYSTEM
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper" >

@@ -162,7 +162,7 @@ $(document).ready(function(){
           JMM
         </a>
         <a href="dashboard.php" class="simple-text logo-normal">
-          DASHBOARD
+          RECORD SYSTEM
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper" >
@@ -293,6 +293,7 @@ $(document).ready(function(){
 									<option value="卷">卷</option>
 									<option value="张">张</option>
 									<option value="个">个</option>
+									<option value="ctn">ctn</option>
 									</select>
                                 </div>
 								<div class="select">

@@ -209,6 +209,7 @@ $(document).ready(function(){
 									<option value="卷">卷</option>
 									<option value="张">张</option>
 									<option value="个">个</option>
+									<option value="ctn">ctn</option>
 									</select>
 									
 									
