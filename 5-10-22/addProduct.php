@@ -273,7 +273,7 @@ $(document).ready(function(){
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Product Name </label>
-                                    <input value="" placeholder="Please Enter Product Name" id="email" name="pname" type="text" class="form-control validate" required>
+                                    <input value="" placeholder="Please Enter Product Name"  name="pname" type="text" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="select">
