@@ -35,7 +35,7 @@ else
 
 $statement = $connect->prepare($query);
 $statement->execute();
-
+$data = [];
 while($row = $statement->fetch(PDO::FETCH_ASSOC))
 {
  $data[] = $row;

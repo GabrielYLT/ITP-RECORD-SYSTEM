@@ -40,7 +40,7 @@ $row=mysqli_fetch_assoc($result);}
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="UTF-8">  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="UTF-8">  
 	<title><?php echo $row["CName"]." List" ?></title>
 	 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" >
