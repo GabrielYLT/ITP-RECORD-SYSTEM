@@ -212,7 +212,7 @@ label {
                 <div class="tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                     <div class="row" style="margin: auto;">
                         <div class="col-12">
-                            <form name = "updatAdmin" method="get" class="tm-signup-form" enctype="multipart/form-data">
+                            <form method="post" class="tm-signup-form" enctype="multipart/form-data">
 							<div class="form-group" style="display:inline;">
 							<label style="font-size:14px;margin-top:10%;">Start: &nbsp;</label>
 							<input type="date" name="start" class="datepicker" style="border-radius:10px;width:200px; ">
@@ -284,16 +284,16 @@ label {
                                 	<?php
 									$conn = $connect;
 									
-									if(isset($_GET["searchbtn"])){
+									if(isset($_POST["searchbtn"])){
 										
-										$start = $_GET["start"];
-										$end = $_GET["end"];
-										$cat = $_GET["cat"];
+										$start = $_POST["start"];
+										$end = $_POST["end"];
+										$cat = $_POST["cat"];
 								
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT stock.PCode,product.PName,product.PImage,product.QType,product.CID,category.CName,SUM(stock.Qty) AS total_qty,Stock.AID,admin.AName,stock.DateAdded,stock.Remarks,stock.Status
+									$sql = "SELECT stock.PCode,product.PName,product.PImage,product.QType,product.CID,category.CName,SUM(stock.Qty) AS total_qty ,Stock.AID,admin.AName,stock.DateAdded,stock.Remarks,stock.Status
 									FROM (((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN category ON product.CID = category.CID)INNER JOIN admin ON stock.AID= admin.AID)
 									WHERE product.CID = '$cat' AND DATE(DateAdded) BETWEEN '$start' AND '$end' group BY PCode,Status,AID ORDER BY DateAdded";
 									$result = $conn->query($sql);
