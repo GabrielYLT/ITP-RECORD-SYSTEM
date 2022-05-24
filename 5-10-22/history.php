@@ -40,8 +40,14 @@ $row=mysqli_fetch_assoc($result);}
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="UTF-8">
+	<meta charset="UTF-8">  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?php echo $row["CName"]." List" ?></title>
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput-typeahead.css" />
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" crossorigin="anonymous"></script>		
 	<link rel="icon" type="image/x-icon" href="images/icons/d.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -55,6 +61,9 @@ $row=mysqli_fetch_assoc($result);}
 		<!-- https://getbootstrap.com/ -->
 		<link rel="stylesheet" href="css/tooplate.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		
+ 
+ 
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -92,6 +101,14 @@ label {
 	color:black;
 }
 </style>
+  <style>
+  .bootstrap-tagsinput {
+   width: 99%;
+   font-size: 20px;
+   text-align: center;
+   
+  }
+  </style>
 		</head>
 	
 	<body>
@@ -102,10 +119,10 @@ label {
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="dashboard.php" class="simple-text logo-mini">
+        <a href="dashboard.php" class="simple-text logo-mini" style="font-size:15px;">
           JMM
         </a>
-        <a href="dashboard.php" class="simple-text logo-normal">
+        <a href="dashboard.php" class="simple-text logo-normal" style="font-size:15px;">
           RECORD SYSTEM
         </a>
       </div>
@@ -113,14 +130,14 @@ label {
         <ul class="nav">
           <li>
             <a href="dashboard.php">
-              <i class="now-ui-icons education_paper"></i>
-              <p>Dashboard</p>
+              <i class="now-ui-icons education_paper "></i>
+              <p style="font-size:15px;">Dashboard</p>
             </a>
           </li>
           <li>
             <a>
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <h3 class="dropdown-header" style="color:white;">Category</h3>
+              <h3 class="dropdown-header" style="color:white;font-size:15px">Category</h3>
 			</a>
 			<?php 
 			
@@ -135,7 +152,7 @@ label {
 			while($row3 = $result3->fetch_assoc()) {
 				
 			echo "<ul class='nav' style='padding'>";
-			echo "<li><a class='dropdown-item' style='width:80%;margin-left:13%;margin-top:-7%;' href='list.php?details&id=". $row3["CID"]."'><i class='now-ui-icons design_palette'></i>". $row3["CName"]. "</a></li></ul> </li>";
+			echo "<li><a class='dropdown-item' style='width:80%;margin-left:13%;margin-top:-5%;font-size:11px;' href='list.php?details&id=". $row3["CID"]."'><i class='now-ui-icons design_palette'></i>". $row3["CName"]. "</a></li></ul> </li>";
 			
 			}
 			} 
@@ -143,20 +160,20 @@ label {
 			<li>
 				<a href="history.php">
 				  <i class="now-ui-icons files_paper"></i>
-				  <p>History</p>
+				  <p style="font-size:15px;">History</p>
 				</a>
 			</li>
           </li>
 		   <li>
             <a href="admin_list.php">
               <i class="now-ui-icons users_circle-08"></i>
-              <p>Admin List</p>
+              <p style="font-size:15px;">Admin List</p>
             </a>
           </li>
           <li>
             <a href="manage.php">
               <i class="now-ui-icons loader_gear"></i>
-              <p>Manage</p>
+              <p style="font-size:15px;">Manage</p>
             </a>
           </li>
         </ul>
@@ -207,143 +224,49 @@ label {
         </nav>
 		<div><br><br><br></div>
 			<!-- row -->
-		<div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;margin: auto;" >
-            <div class="tm-col tm-col-big" style="padding-top:1%;padding-bottom:1%;margin: auto; width:300px;">
-                <div class="tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
-                    <div class="row" style="margin: auto;">
-                        <div class="col-12">
-                            <form name = "updatAdmin" method="get" class="tm-signup-form" enctype="multipart/form-data">
-							<div class="form-group" style="display:inline;">
-							<label style="font-size:14px;margin-top:10%;">Start: &nbsp;</label>
-							<input type="date" name="start" class="datepicker" style="border-radius:10px;width:200px; ">
-							</div>
-							<br>
-							<div class="form-group" style="display:inline;">
-							<label style="font-size:14px;margin-top:1%;">End: &nbsp;</label>
-							<input type="date" name="end" class="datepicker" style="border-radius:10px;width:207px; ">
-							</div>
-							<br>
-							<div class="form-group" style="display:inline;">
-							<label style="font-size:14px;margin-top:1%;">Category: &nbsp; </label>
-							<select type="text" autocomplete="off"  list="code" style="border-radius:10px;width:169px;" placeholder="Select Category" name="cat">
-							<option value="">Select Category</option>
-							<option value="1">New Year Cookies</option>
-							<option value="2">Raya Cookies</option>
-							<option value="3">Mooncakes</option>
-							<option value="4">Raw Material</option>
-							<option value="5">Packing Material</option>
-							<option value="6">General Use</option>
-							</select>
-							</div>
-							<div class="button-group">
-							<button type="submit" name="searchbtn"  class="btn btn-secondary" style="width:240px;height:50px;"> Search </button>
-							</div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-			</div>
-			
+
             <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
                 <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col" style="padding-top:auto%;margin: auto; margin-bottom:2%;">
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
-							<?php
-							if(isset($_GET["searchbtn"])){
-										
-										$start = $_GET["start"];
-										$end = $_GET["end"];
-										$cat = $_GET["cat"];
-							}
-							?>
-							<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;">History</h2>
-							<button class="btn btn-info" style="margin-right:3%;margin-top:3%;width:200px;float:right;">
-							<a class="text-white text-capitalize" style="width:20%;margin:auto;"href="exportReport.php?print&start=<?php echo $start;?>&end=<?php echo $end;?>&cat=<?php echo $cat;?>">Download Report</a></button>
+							
+							<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;font-size:40px;">History</h2>
+						
                             </div>
-							<div>
+							
 							<hr>
+<div class="form-group">
+    <div class="row">
+     <div class="col-md-12">
+<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input  autocomplete=off id="tags" type="text" data-role="tagsinput" placeholder="&nbsp; &nbsp; &nbsp;Enter Keywords Here" ></h6>
+<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><button type="button" style="width:99%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;text-align:center;font-size:30px;height:55px;"name="search" class="btn btn-primary" id="search" style="float:right">Search</button></h6>
 
-<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:99%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" autocomplete=off id="myInput" type="text" name="searchname" placeholder="Search" ></h6>
-<hr>
 </div>
+</div>
+</div>
+
                         </div>
+						<hr>
                         <div class="table-responsive">
                             <table class="table table-hover table-striped tm-table-striped-even mt-3">
                                 <thead>
                                     <tr class="tm-bg-gray">
-                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Image</th>
-                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Name</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Category</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Added On</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Added By</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Remarks</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Status</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Code</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Image</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Name</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Category</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Quantity</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Added On</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Added By</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Remarks</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Status</th>
+										
 										
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
-                                	<?php
-									$conn = $connect;
-									
-
-										
-									if ($conn->connect_error) {
-									die("Connection failed: " . $conn->connect_error);
-									}
-									$sql = "SELECT stock.PCode,product.PName,product.PImage,product.QType,product.CID,category.CName,SUM(stock.Qty) AS total_qty,Stock.AID,admin.AName,stock.DateAdded,stock.Remarks,stock.Status
-									FROM (((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN category ON product.CID = category.CID)INNER JOIN admin ON stock.AID= admin.AID)
-									WHERE product.CID = '$cat' AND DATE(DateAdded) BETWEEN '$start' AND '$end' group BY PCode,Status,AID ORDER BY DateAdded";
-									$result = $conn->query($sql);
-									if ($result->num_rows > 0) {
-
-									while($row = $result->fetch_assoc()) {
-									echo "<tr><td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
-									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["CName"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["total_qty"]."&nbsp;&nbsp;". $row["QType"] ."</td>" ; 
-									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Remarks"].  "</td>" ; 
-									if($row["Status"] == 'Stock In'){
-									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
-									}else{
-										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
-									}
-									echo "</tr>" ;
-									}
-									echo "</table>";
-									} else { 
-									$sql = "SELECT stock.PCode,product.PName,product.PImage,product.QType,product.CID,category.CName,SUM(stock.Qty) AS total_qty,Stock.AID,admin.AName,stock.DateAdded,stock.Remarks,stock.Status
-									FROM (((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN category ON product.CID = category.CID)INNER JOIN admin ON stock.AID= admin.AID)
-									WHERE DATE(DateAdded) BETWEEN '$start' AND '$end' group BY PCode,Status,AID ORDER BY DateAdded";
-									$result = $conn->query($sql);
-									if ($result->num_rows > 0) {
-
-									while($row = $result->fetch_assoc()) {
-									echo "<tr><td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
-									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["CName"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["total_qty"]."&nbsp;&nbsp;". $row["QType"] ."</td>" ; 
-									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Remarks"].  "</td>" ; 
-									if($row["Status"] == 'Stock In'){
-									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
-									}else{
-										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
-									}
-									echo "</tr>" ;
-									}
-									echo "</table>";
-									} else { echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results Found !"; }
-									}
-									?>    
+    
                                 </tbody>
                             </table>
                         </div>
@@ -360,3 +283,57 @@ label {
 	<script src="assets/js/now-ui-dashboard.min.js" type="text/javascript"></script>
 	</body>
 </html>
+<script>
+$(document).ready(function(){
+ 
+ load_data();
+
+ function load_data(query)
+ {
+  $.ajax({
+   url:"fetch.php",
+   method:"POST",
+   data:{query:query},
+   dataType:"json",
+   success:function(data)
+   {
+    $('#total_records').text(data.length);
+    var html = '';
+    if(data.length > 0)
+    {
+     for(var count = 0; count < data.length; count++)
+     {
+      html += '<tr>';
+      html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].PCode+'</td>';
+	  html += '<td  style="text-align:center;color:black;font-weight:bold;font-size:18px;"><img width="125px" src="images/'+data[count].PImage+'"></td>';
+      html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].PName+'</td>';
+      html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].CName+'</td>';
+      html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].total_qty+'</td>';
+	  html += '<td style="text-align:center;color:forestgreen;font-weight:bold;font-size:18px;">'+data[count].DateAdded+'</td>';
+	  html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].AName+'</td>';
+	  html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].Remarks+'</td>';
+	  if(data[count].Status =='Stock In'){
+      html += '<td class="align-middle text-center text-sm" style="width:10%;"> <span class="badge badge-sm bg-gradient-success" style="font-size:10px;">'+data[count].Status+'</span></td></tr>';
+      }else{
+		html += '<td class="align-middle text-center text-sm " style="width:10%;"> <span class="badge badge-sm bg-gradient-danger" style="font-size:10px;">'+data[count].Status+'</span></td></tr>';
+		  
+	  }
+     }
+    }
+    else
+    {
+     html = '<tr><td colspan="5">No Data Found</td></tr>';
+    }
+    $('tbody').html(html);
+   }
+  })
+ }
+
+ $('#search').click(function(){
+  var query = $('#tags').val();
+  load_data(query);
+ });
+
+});
+</script>
+	
