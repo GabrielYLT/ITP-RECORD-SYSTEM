@@ -277,10 +277,12 @@ label {
 		
 
   </div>
-	<script src="assets/js/core/jquery.min.js"></script>
-	<script src="assets/js/core/bootstrap.min.js"></script>
-	<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-	<script src="assets/js/now-ui-dashboard.min.js" type="text/javascript"></script>
+   <div style="clear:both"></div>
+  <br />
+  
+  <br />
+  <br />
+  <br />
 	</body>
 </html>
 <script>
