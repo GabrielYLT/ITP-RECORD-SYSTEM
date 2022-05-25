@@ -44,3 +44,6 @@ while($row = $statement->fetch(PDO::FETCH_ASSOC))
 echo json_encode($data);
 
 ?>
+<!--SELECT stock.PCode,product.PName,product.PImage,product.QType,product.CID,category.CName,SUM(stock.Qty) AS total_qty,Stock.AID,admin.AName,stock.DateAdded,stock.Remarks,stock.Status
+									FROM (((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN category ON product.CID = category.CID)INNER JOIN admin ON stock.AID= admin.AID)
+									group BY PCode,AID,Status ORDER BY DateAdded DESC -->
