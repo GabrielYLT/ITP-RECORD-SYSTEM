@@ -94,7 +94,7 @@ label {
 </style>
   <style>
   .bootstrap-tagsinput {
-   width: 99%;
+   width: 97%;
    font-size: 20px;
    text-align: center;
    
@@ -230,7 +230,7 @@ label {
     <div class="row">
      <div class="col-md-12">
 <h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input  autocomplete=off id="tags" type="text" data-role="tagsinput" placeholder="&nbsp; &nbsp; &nbsp;Enter Keywords Here" ></h6>
-<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><button type="button" style="width:99%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;text-align:center;font-size:30px;height:55px;"name="search" class="btn btn-primary" id="search" style="float:right">Search</button></h6>
+<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><button type="button" style="width:97%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;text-align:center;font-size:30px;height:55px;"name="search" class="btn btn-primary" id="search" style="float:right">Search</button></h6>
 
 </div>
 </div>
