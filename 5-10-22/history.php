@@ -128,7 +128,7 @@ label {
           <li>
             <a>
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <h3 class="dropdown-header" style="color:white;font-size:15px">Category</h3>
+              <h3 class="dropdown-header" style="color:white;font-size:15px;margin-top:2px;">Category</h3>
 			</a>
 			<?php 
 			
