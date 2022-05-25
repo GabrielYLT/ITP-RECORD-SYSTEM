@@ -544,7 +544,7 @@ document.getElementById("current_date").innerHTML = month + "-" + day + "-" + ye
 							<div>
 							<hr>
 
-<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:99%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" name="searchname" placeholder="Search" ></h6>
+<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:99%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" autocomplete="off" name="searchname" placeholder="Search" ></h6>
 <hr>
 </div>
                         </div>
@@ -615,8 +615,17 @@ document.getElementById("current_date").innerHTML = month + "-" + day + "-" + ye
                             </div>
 							<div>
 							<hr>
-
-<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:99%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" name="searchname" placeholder="Search" ></h6>
+<script>
+$(document).ready(function(){
+  $("#myInput1").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable1 tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:99%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput1" type="text" autocomplete=off name="searchname" placeholder="Search" ></h6>
 <hr>
 </div>
                         </div>
@@ -632,7 +641,7 @@ document.getElementById("current_date").innerHTML = month + "-" + day + "-" + ye
 										<th scope="col">&nbsp;</th>	
                                     </tr>
                                 </thead>
-                                <tbody id="myTable">
+                                <tbody id="myTable1">
                                 	<?php
 									$conn = $connect;
 									
