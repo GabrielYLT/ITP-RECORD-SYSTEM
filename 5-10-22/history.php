@@ -268,11 +268,6 @@ label {
 
   </div>
    <div style="clear:both"></div>
-  <br />
-  
-  <br />
-  <br />
-  <br />
   
   	<script src="assets/js/core/jquery.min.js"></script>
 	<script src="assets/js/core/bootstrap.min.js"></script>
