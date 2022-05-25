@@ -367,8 +367,16 @@ canvas{
 
 									while($row = $result->fetch_assoc()) {
 									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
-									echo $row["PName"] ."</h5><span class='badge badge-info' style='float:right;'>";
+									echo $row["PName"] ."</h5>";
+									if($row["PQty"] == '0'){
+									echo "<span class='badge badge-danger' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
+									echo "<span class='badge badge-warning' style='float:right;'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;
+									}else{
+									echo "<span class='badge badge-info' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;										
+									}
 									echo "</ul>" ;
 									}
 									} else { echo "0 results"; }
@@ -396,8 +404,16 @@ canvas{
 
 									while($row = $result->fetch_assoc()) {
 									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
-									echo $row["PName"] ."</h5><span class='badge badge-info' style='float:right;'>";
+									echo $row["PName"] ."</h5>";
+									if($row["PQty"] == '0'){
+									echo "<span class='badge badge-danger' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
+									echo "<span class='badge badge-warning' style='float:right;'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;
+									}else{
+									echo "<span class='badge badge-info' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;										
+									}
 									echo "</ul>" ;
 									}
 									} else { echo "0 results"; }
@@ -425,8 +441,16 @@ canvas{
 
 									while($row = $result->fetch_assoc()) {
 									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
-									echo $row["PName"] ."</h5><span class='badge badge-info' style='float:right;'>";
+									echo $row["PName"] ."</h5>";
+									if($row["PQty"] == '0'){
+									echo "<span class='badge badge-danger' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
+									echo "<span class='badge badge-warning' style='float:right;'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;
+									}else{
+									echo "<span class='badge badge-info' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;										
+									}
 									echo "</ul>" ;
 									}
 									} else { echo "0 results"; }
@@ -456,8 +480,16 @@ canvas{
 
 									while($row = $result->fetch_assoc()) {
 									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
-									echo $row["PName"] ."</h5><span class='badge badge-info' style='float:right;'>";
+									echo $row["PName"] ."</h5>";
+									if($row["PQty"] == '0'){
+									echo "<span class='badge badge-danger' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
+									echo "<span class='badge badge-warning' style='float:right;'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;
+									}else{
+									echo "<span class='badge badge-info' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;										
+									}
 									echo "</ul>" ;
 									}
 									} else { echo "0 results"; }
@@ -485,8 +517,16 @@ canvas{
 
 									while($row = $result->fetch_assoc()) {
 									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
-									echo $row["PName"] ."</h5><span class='badge badge-info' style='float:right;'>";
+									echo $row["PName"] ."</h5>";
+									if($row["PQty"] == '0'){
+									echo "<span class='badge badge-danger' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
+									echo "<span class='badge badge-warning' style='float:right;'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;
+									}else{
+									echo "<span class='badge badge-info' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;										
+									}
 									echo "</ul>" ;
 									}
 									} else { echo "0 results"; }
@@ -514,8 +554,16 @@ canvas{
 
 									while($row = $result->fetch_assoc()) {
 									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
-									echo $row["PName"] ."</h5><span class='badge badge-info' style='float:right;'>";
+									echo $row["PName"] ."</h5>";
+									if($row["PQty"] == '0'){
+									echo "<span class='badge badge-danger' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
+									echo "<span class='badge badge-warning' style='float:right;'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;
+									}else{
+									echo "<span class='badge badge-info' style='float:right;'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;										
+									}
 									echo "</ul>" ;
 									}
 									} else { echo "0 results"; }
