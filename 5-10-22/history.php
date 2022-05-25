@@ -174,7 +174,7 @@ label {
 		<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute" style="opacity:1;">
 			<div class="container-fluid">
 			    <div class="navbar-wrapper">
-					<div class="navbar-toggle">
+					<div class="navbar-toggle" style="float:left">
 					    <button type="button" class="navbar-toggler">
 							<span class="navbar-toggler-bar bar1"></span>
 							<span class="navbar-toggler-bar bar2"></span>
@@ -182,13 +182,13 @@ label {
 					    </button>
 					</div>
 			    </div>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+				<button style="float:right" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-bar navbar-kebab"></span>
 					<span class="navbar-toggler-bar navbar-kebab"></span>
 					<span class="navbar-toggler-bar navbar-kebab"></span>
 				</button>
 				<div class="collapse navbar-collapse justify-content-end" id="navigation">
-					<ul class="navbar-nav">
+					<ul class="navbar-nav" style="float:right">
 					    <li class="nav-item">
 						  <Tooltip title="Profile">
 							<a class="nav-link" href="viewProfile.php">
