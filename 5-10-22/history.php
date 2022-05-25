@@ -40,29 +40,29 @@ $row=mysqli_fetch_assoc($result);}
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="UTF-8">  
-	<title><?php echo $row["CName"]." List" ?></title>
-	 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" >
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput-typeahead.css" />
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>		
+	<meta charset="UTF-8">
+	<title>Edit Admin Account</title>
 	<link rel="icon" type="image/x-icon" href="images/icons/d.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 		<!-- CSS Files -->
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="assets/css/now-ui-dashboard.css" rel="stylesheet" />
+		<link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
 		<!-- CSS Files -->
   <link id="pagestyle" href="assets/css/argon-dashboard.css" rel="stylesheet" />
 		<!-- https://fontawesome.com/ -->
 		<link rel="stylesheet" href="assets/css/bootstrap.css">
 		<!-- https://getbootstrap.com/ -->
 		<link rel="stylesheet" href="css/tooplate.css">
-
-		
- 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Live Data Search using Multiple Tag in PHP with Ajax</title>  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput-typeahead.css" />
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" crossorigin="anonymous"></script>
  
 
 <style>
@@ -273,7 +273,13 @@ label {
   <br />
   <br />
   <br />
+  
+  	<script src="assets/js/core/jquery.min.js"></script>
+	<script src="assets/js/core/bootstrap.min.js"></script>
+	<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+	<script src="assets/js/now-ui-dashboard.min.js" type="text/javascript"></script>
 	</body>
+	
 </html>
 <script>
 $(document).ready(function(){
