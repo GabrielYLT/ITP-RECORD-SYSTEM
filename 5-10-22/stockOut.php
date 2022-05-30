@@ -59,8 +59,10 @@ if(isset($_POST["sbtn"]))
 	VALUES('$productname','$productprice','$_SESSION[id]','$currentDate','$productstock','$productStatus')");
 	header("refresh:0.001;url=stockOut.php");
 	
-
-		if($row1["PQty"] <= '6'){
+	$resultx=mysqli_query($connect,"SELECT * FROM product WHERE PCode='$_POST[pcode]'");
+	$rowx = mysqli_fetch_assoc($resultx);
+	
+	if($rowx["PQty"] <= '6'){
 		
 	$conn=$connect;
 
