@@ -45,7 +45,8 @@ if(isset($_GET["details"])){
 	<title><?php echo $row["PName"]. " Record" ?></title>
 	<link rel="icon" type="image/x-icon" href="images/icons/d.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 		<!-- CSS Files -->
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
@@ -158,7 +159,7 @@ function topFunction() {
           <li>
             <a>
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <h3 class="dropdown-header" style="color:white;">Category</h3>
+              <h3 href="#demo" data-bs-toggle="collapse" class="dropdown-header" style="color:white;">Category</h3>
 			</a>
 			<?php 
 			
@@ -172,7 +173,7 @@ function topFunction() {
 			if ($result3->num_rows > 0) {
 			while($row3 = $result3->fetch_assoc()) {
 				
-			echo "<ul class='nav' style='padding'>";
+			echo "<ul id='demo' class='nav collapse' style='padding'>";
 			echo "<li><a class='dropdown-item' style='width:80%;margin-left:13%;margin-top:-7%;' href='list.php?details&id=". $row3["CID"]."'><i class='now-ui-icons design_palette'></i>". $row3["CName"]. "</a></li></ul> </li>";
 			
 			}
@@ -304,7 +305,7 @@ function topFunction() {
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. "</td>" ; 
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"].  "</td>" ; 
 									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Remarks"].  "</td>" ; 
+									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["Remarks"].  "</td>" ; 
 									if($row["Status"] == 'Stock In'){
 									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
 									}else{

@@ -76,7 +76,8 @@ if(isset($_POST["sbtn"]))
 	<title>Edit Admin Account</title>
 	<link rel="icon" type="image/x-icon" href="images/icons/d.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 		<!-- CSS Files -->
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
@@ -115,7 +116,7 @@ if(isset($_POST["sbtn"]))
 	
 	<body>
 	
-	<div class="wrapper" >
+	<div class="wrapper" style="height:100%">
 		<div class="sidebar" data-color="pink">
 	
       <!--
@@ -140,7 +141,7 @@ if(isset($_POST["sbtn"]))
           <li>
             <a>
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <h3 class="dropdown-header" style="color:white;">Category</h3>
+              <h3 href="#demo" data-bs-toggle="collapse" class="dropdown-header" style="color:white;">Category</h3>
 			</a>
 			<?php 
 			
@@ -154,7 +155,7 @@ if(isset($_POST["sbtn"]))
 			if ($result3->num_rows > 0) {
 			while($row3 = $result3->fetch_assoc()) {
 				
-			echo "<ul class='nav' style='padding'>";
+			echo "<ul id='demo' class='nav collapse' style='padding'>";
 			echo "<li><a class='dropdown-item' style='width:80%;margin-left:13%;margin-top:-7%;' href='list.php?details&id=". $row3["CID"]."'><i class='now-ui-icons design_palette'></i>". $row3["CName"]. "</a></li></ul> </li>";
 			
 			}
@@ -227,6 +228,7 @@ if(isset($_POST["sbtn"]))
         </nav>
 					  <div style="height:5%;">
       </div>
+	  <br><br>
 	       <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;" >
             <div class="tm-col tm-col-big" style="padding-top:1%;margin: auto; margin-top:auto%;margin-bottom:2%;">
                 <div class="tm-block" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
@@ -314,7 +316,7 @@ if(isset($_POST["sbtn"]))
                 </div>
             </div>
 			</div>
-			</div> 
+			</div> <br><br>
 		<!-- row -->
  
   </div>

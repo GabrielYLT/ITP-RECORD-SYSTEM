@@ -130,7 +130,67 @@ $(document).ready(function(){
 			<!-- row -->
         <a href="addStock.php"><button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;background-color:#ff280061;display:inline;"><h1 style="color:white;"><b>Stock In</b></h3></button></a>
 		<a href="stockOut.php"><button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;float:right;background-color:#ff280061;display:inline;"><h1 style="color:white;"><b>Stock Out</b></h3></button></a>
-  </div>
+	</div>
+	<div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
+                <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col">
+                    <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12">
+								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;">Product</h2>
+
+                            </div>
+							<div>
+							<hr>
+
+<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:99%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" autocomplete=off id="myInput" type="text" name="searchname" placeholder="Search" ></h6>
+<hr>
+</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped tm-table-striped-even mt-3">
+                                <thead>
+                                    <tr class="tm-bg-gray">
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Code</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Image</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Total Quantity</th>
+                                        
+										<th scope="col">&nbsp;</th>	
+                                    </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                	<?php
+									$conn = $connect;
+
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									$sql = "SELECT stock.SID,stock.PCode,product.PName,product.PImage,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.AID = '$_SESSION[id]' ORDER BY DateAdded DESC ";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]."</td>" ; 
+                                    ?> 	
+                                    <td>
+									<div class="btn-group"> 
+									<a href="hstoryEdit.php?details&id=<?php echo $row['SID'];?>" class="btn btn-secondary">Details</a>
+									</div>
+                                    <?php
+									echo "</tr>" ;
+									}
+									echo "</table>";
+									} else { echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results"; }
+									?>    
+                                </tbody>
+                            </table>
+                        </div>
+            </div>
+        </div>
+    </div>
 </div>
 	</div>
 <script src="assets/js/core/jquery.min.js"></script>
