@@ -299,6 +299,11 @@ $(document).ready(function(){
                                     <input value="<?php echo $row['PName'] ?>" placeholder="Please Enter Product Name" id="email" name="pname" type="text" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
+								<div class="form-group">
+                                    <label for="stor">Stor </label>
+                                    <input value="<?php echo $row['Stor'] ?>" placeholder="Please Enter Product Stor"  name="stor" type="text" class="form-control validate" required>
+									<span id="erroremail"></span>	
+                                </div>
 								<div class="select">
 									<label for="gender"> Quantity Type &nbsp; </label>
 									<select  class="form-control selectList" style="width:100%;Height:50%;" name="type" id="gender" required>
