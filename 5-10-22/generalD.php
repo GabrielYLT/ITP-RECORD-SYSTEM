@@ -32,41 +32,45 @@ $row = mysqli_fetch_assoc($result);
   font-size: 14px;
   border: none;
   cursor: pointer;
-  width:105%;
-  opacity:50%;
+  width:100%;
+  opacity:100%;
+  border-radius:10px;
+
+
 
   
 }
 
 .dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
+  background-color: 	#282828;
 }
 
-.dropdown {
+.dropdown1 {
   position: relative;
   display: inline-block;
   width:100%;
-  margin-top:15.5%;
+
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
+  background-color: #181818;
+  min-width: 100%;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  border-radius:10px;
 }
 
 .dropdown-content a {
-  color: black;
+  color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.dropdown a:hover {background-color: #ddd;}
+.dropdown a:hover {background-color:#282828; color: white;}
 
 .show {display: block;}
 </style>
@@ -175,22 +179,41 @@ $(document).ready(function(){
 			<!-- row -->
         <a href="addStock.php"><button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;background-color:#ff280061;display:inline;"><h1 style="color:white;"><b>Stock In</b></h3></button></a>
 		<a href="stockOut.php"><button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;float:right;background-color:#ff280061;display:inline;"><h1 style="color:white;"><b>Stock Out</b></h3></button></a>
-	</div><br><br><br><br><br><br><br><br><br><br><br>
+	</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><hr>
 	<div class="row" style="height:100%">
 			  <div style="padding:2%;">
 				<div class="card card-chart" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;height:100%;">
 				  <div class="card-header">
-					<h5 class="card-category">Category</h5>
-					<h4 class="card-title">New Year Cookies</h4>
+					<h5 class="card-category">Product Quantity</h5>
+					<h4 class="card-title"><?php 
+					if(($row['Department'] === "Product")){
+						
+						echo "Cookies";
+						
+					}elseif(($row['Department'] === "General Use")){
+						
+						echo "General Use";
+						
+					}elseif(($row['Department'] === "Raw Material")){
+						
+						echo "Raw Material";
+						
+					}elseif(($row['Department'] === "Packing Material")){
+						
+						echo "Packing Material";
+						
+					}	
+					?></h4>
 					<br>
-					<div style="width: auto%; height: 100%; overflow-x:hidden;">
+					<div style="width: auto%; height:600px; overflow-x:hidden;">
 									<?php
 									$conn = $connect;
 
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT * FROM product WHERE CID = '1'";
+									if(($row['Department'] === "Product")){
+									$sql = "SELECT * FROM product WHERE CID = '1' OR CID ='2' OR CID = '3'";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
@@ -206,17 +229,186 @@ $(document).ready(function(){
 									echo "<span class='badge badge-info' style='float:right'>";
 									echo $row["PQty"]."</span>" ;"</li>" ;										
 									}
-									?> <br><br><hr><div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+									?><br><hr><div class="dropdown1">
+  <button onclick="myFunction()" class="dropbtn">Details</button>
   <div id="myDropdown" class="dropdown-content">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <a  style="color: white;">New	</a>
+    <a  style="color: white;">About</a>
+    <a style="color: white;" >Contact</a>
   </div>
-</div><?php
+</div>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script><?php
 									echo " </ul>" ;
 									}
 									} else { echo "0 results"; }
+									}elseif(($row['Department'] === "General Use")){
+									$sql = "SELECT * FROM product WHERE CID = '6'";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo $row["PName"] ."</h5>";
+									if($row["PQty"] == '0'){
+									echo "<span class='badge badge-danger' style='float:right'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
+									echo "<span class='badge badge-warning' style='float:right'>";
+									echo $row["PQty"]."</span>" ;"</li>" ;
+									}else{
+									echo "<span class='badge badge-info' style='float:right'>";
+									echo $row["PQty"]."</span>" ;"</li>" ;										
+									}
+									?><br><hr><div class="dropdown1">
+  <button onclick="myFunction()" class="dropbtn">Details</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a  style="color: white;">New	</a>
+    <a  style="color: white;">About</a>
+    <a style="color: white;" >Contact</a>
+  </div>
+</div>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script><?php
+									echo " </ul>" ;
+									}
+									} else { echo "0 results"; }
+									}elseif(($row['Department'] === "Packing Material")){
+									$sql = "SELECT * FROM product WHERE CID = '5'";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo $row["PName"] ."</h5>";
+									if($row["PQty"] == '0'){
+									echo "<span class='badge badge-danger' style='float:right'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
+									echo "<span class='badge badge-warning' style='float:right'>";
+									echo $row["PQty"]."</span>" ;"</li>" ;
+									}else{
+									echo "<span class='badge badge-info' style='float:right'>";
+									echo $row["PQty"]."</span>" ;"</li>" ;										
+									}
+									?><br><hr><div class="dropdown1">
+  <button onclick="myFunction()" class="dropbtn">Details</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a  style="color: white;">New	</a>
+    <a  style="color: white;">About</a>
+    <a style="color: white;" >Contact</a>
+  </div>
+</div>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script><?php
+									echo " </ul>" ;
+									}
+									} else { echo "0 results"; }
+									}elseif(($row['Department'] === "Raw Material")){
+									$sql = "SELECT * FROM product WHERE CID = '4'";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo $row["PName"] ."</h5>";
+									if($row["PQty"] == '0'){
+									echo "<span class='badge badge-danger' style='float:right'>";
+									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
+									echo "<span class='badge badge-warning' style='float:right'>";
+									echo $row["PQty"]."</span>" ;"</li>" ;
+									}else{
+									echo "<span class='badge badge-info' style='float:right'>";
+									echo $row["PQty"]."</span>" ;"</li>" ;										
+									}
+									?><br><hr><div class="dropdown1">
+  <button onclick="myFunction()" class="dropbtn">Details</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a  style="color: white;">New	</a>
+    <a  style="color: white;">About</a>
+    <a style="color: white;" >Contact</a>
+  </div>
+</div>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script><?php
+									echo " </ul>" ;
+									}
+									} else { echo "0 results"; }
+									}
 									?>									
 						</div>
 				  </div>
