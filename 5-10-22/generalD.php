@@ -25,6 +25,51 @@ $row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html>
+<style>
+.dropbtn {
+  background-color: gray;
+  color: white;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  width:105%;
+  opacity:50%;
+
+  
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width:100%;
+  margin-top:15.5%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
 	<head>
 	<meta charset="UTF-8">
 	<title>Home</title>
@@ -138,7 +183,7 @@ $(document).ready(function(){
 					<h5 class="card-category">Category</h5>
 					<h4 class="card-title">New Year Cookies</h4>
 					<br>
-					<div style="width: auto%; height: 400px; overflow-x:hidden;">
+					<div style="width: auto%; height: 100%; overflow-x:hidden;">
 									<?php
 									$conn = $connect;
 
@@ -153,15 +198,23 @@ $(document).ready(function(){
 									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
 									echo $row["PName"] ."</h5>";
 									if($row["PQty"] == '0'){
-									echo "<span class='badge badge-danger' style='float:right;'>";
+									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
-									echo "<span class='badge badge-warning' style='float:right;'>";
-									echo $row["PQty"]."</span>" ;" </li>" ;
+									echo "<span class='badge badge-warning' style='float:right'>";
+									echo $row["PQty"]."</span>" ;"</li>" ;
 									}else{
-									echo "<span class='badge badge-info' style='float:right;'>";
-									echo $row["PQty"]."</span>" ;" </li>" ;										
+									echo "<span class='badge badge-info' style='float:right'>";
+									echo $row["PQty"]."</span>" ;"</li>" ;										
 									}
-									echo "</ul>" ;
+									?> <br><br><hr><div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div><?php
+									echo " </ul>" ;
 									}
 									} else { echo "0 results"; }
 									?>									
