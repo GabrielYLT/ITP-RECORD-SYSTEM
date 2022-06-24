@@ -303,6 +303,11 @@ $(document).ready(function(){
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="form-group" style="margin-bottom:0%;">
+                                    <label for="Date" style="color:black;">Expire </label>
+                                    <input value="" placeholder="Please Select Product Expire" id="date" name="exp" type="date" class="form-control validate" required>
+									<span id="erroremail"></span>	
+                                </div>
+								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="email" style="color:black;">Remarks </label>
                                     <textarea style="border-radius:10px;border: 1px solid #00000030;" value="" rows="4" cols="50" placeholder="Remarks" id="email" name="remark" type="text" class="form-control validate"></textarea>
 									<span id="erroremail"></span>	
