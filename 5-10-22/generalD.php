@@ -126,11 +126,11 @@ $(document).ready(function(){
       <!-- End Navbar -->
 	  <div style="height:10%;">
       </div>
-    <div class="content" style="margin-left:11%;margin-top:11%;margin-right:11%">
+    <div class="content" style="margin-left:11%;margin-top:11%;margin-right:11%;">
 			<!-- row -->
         <a href="addStock.php"><button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;background-color:#ff280061;display:inline;"><h1 style="color:white;"><b>Stock In</b></h3></button></a>
 		<a href="stockOut.php"><button type="button" class="btn btn-primary btn-lg" style="width: 400px;height: 250px;float:right;background-color:#ff280061;display:inline;"><h1 style="color:white;"><b>Stock Out</b></h3></button></a>
-	</div>
+	</div><br><br><br><br><br><br><br><br><br><br><br>
 	<div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
                 <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col">
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
