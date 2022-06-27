@@ -28,6 +28,7 @@ if(isset($_POST["sbtn"]))
 	$product_image = $_FILES['profileImage']['name'];
 	$productcode = $_POST["pcode"];
 	$type = $_POST["type"];
+	$stor = $_POST["stor"];
 	$productstock = $_POST["category"];
 
 	$select = mysqli_query($connect, "SELECT * FROM product WHERE PCode = '".$_POST['pcode']."'");
@@ -42,7 +43,7 @@ if(isset($_POST["sbtn"]))
 	<?php 
 	header("refresh:0.001;url=DaddNewProduct.php");
 }else{
-	$sql=mysqli_query($connect,"INSERT INTO product(PCode,PName,QType,CID,PImage,AID)VALUES('$productcode','$productname','$type','$productstock','$product_image','$_SESSION[id]')");
+	$sql=mysqli_query($connect,"INSERT INTO product(PCode,PName,QType,CID,PImage,AID,Stor)VALUES('$productcode','$productname','$type','$productstock','$product_image','$_SESSION[id]','$stor')");
 
 	header("refresh:0.001;url=addProduct.php");
 	$target = 'images/' . $product_image;

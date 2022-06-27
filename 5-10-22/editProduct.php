@@ -36,7 +36,7 @@ $row = mysqli_fetch_assoc($result);
 								if(isset($_GET["details"]))
 								{
 								$ad_id=$_GET['id'];
-								$result=mysqli_query($connect,"SELECT product.PCode,product.PName, product.PImage, product.PQty ,product.QType, product.CID, category.CName
+								$result=mysqli_query($connect,"SELECT product.PCode,product.PName, product.PImage, product.PQty ,product.QType, product.CID,product.Stor, category.CName
 								FROM product INNER JOIN category ON product.CID= category.CID WHERE PCode='$ad_id'");
 								$row=mysqli_fetch_assoc($result);
 								$CID = $row['CID'];
