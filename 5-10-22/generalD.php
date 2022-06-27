@@ -209,7 +209,7 @@ $(document).ready(function(){
 					<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:99%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" autocomplete="off" name="searchname" placeholder="Search" onkeyup="myFunction()"></h6>
 					<hr>
 					<br>
-					<div style="width: auto%; height:600px; overflow-x:hidden;" >
+					<div style="width: auto%; height:550px; overflow-x:hidden;" >
 									<?php
 									$conn = $connect;
 

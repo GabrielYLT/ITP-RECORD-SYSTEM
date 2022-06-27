@@ -272,7 +272,7 @@ function topFunction() {
 <hr>
 </div>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive"  style="width: auto%; height:700px; ">
                             <table class="table table-hover table-striped tm-table-striped-even mt-3">
                                 <thead>
                                     <tr class="tm-bg-gray">
@@ -323,6 +323,7 @@ function topFunction() {
 									?>    
                                 </tbody>
                             </table>
+
                         </div>
             </div>
         </div>
