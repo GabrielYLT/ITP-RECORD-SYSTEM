@@ -48,6 +48,7 @@ if(isset($_POST["sbtn"]))
 	$product_image = $_FILES['profileImage']['name'];
 	$productcode = $_POST["pcode"];
 	$type = $_POST["type"];
+	$stor = $_POST["stor"];
 	$productstock = $_POST["category"];
 	
 	$Image= $row['PImage'];
@@ -56,7 +57,8 @@ if(isset($_POST["sbtn"]))
 		
 		$sql=mysqli_query($connect,"Update product SET PName = '$productname',
 												   QType = '$type',
-												   CID = '$productstock'
+												   CID = '$productstock',
+												   Stor = '$stor'
 												   WHERE PCode = '$ad_id'");
 		header("refresh:0.001;url=list.php?details&id=$CID");
 	}else{
@@ -65,6 +67,7 @@ if(isset($_POST["sbtn"]))
 	$sql=mysqli_query($connect,"Update product SET PName = '$productname',
 												   QType = '$type',
 												   CID = '$productstock',
+												   Stor = '$stor',
 												   PImage = '$product_image'
 												   WHERE PCode = '$ad_id'");
 
