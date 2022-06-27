@@ -395,7 +395,7 @@ function topFunction() {
 					<h5 class="card-category">Category</h5>
 					<h4 class="card-title">New Year Cookies</h4>
 					<br>
-					<div style="width: auto%; height: 400px; overflow-x:hidden;">
+					<div style="width: 100%; height: 400px; overflow-x:hidden;">
 									<?php
 									$conn = $connect;
 
@@ -637,7 +637,7 @@ document.getElementById("current_date").innerHTML = month + "-" + day + "-" + ye
 <hr>
 </div>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="width: auto%; height:500px; ">
                             <table class="table table-hover table-striped tm-table-striped-even mt-3">
                                 <thead>
                                     <tr class="tm-bg-gray">
@@ -645,6 +645,7 @@ document.getElementById("current_date").innerHTML = month + "-" + day + "-" + ye
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Image</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Stor</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Admin Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;width:15%">Remarks</th>
@@ -659,7 +660,7 @@ document.getElementById("current_date").innerHTML = month + "-" + day + "-" + ye
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT stock.PCode, product.PName,product.PImage, stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status
+									$sql = "SELECT stock.PCode, product.PName,product.PImage,product.Stor,product.QType,stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status
 									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) 
 									WHERE DATE(DateAdded) = '$currentDate' ORDER BY DateAdded DESC";
 									$result = $conn->query($sql);
@@ -669,7 +670,8 @@ document.getElementById("current_date").innerHTML = month + "-" + day + "-" + ye
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
 									echo "<td style='text-align:center;color:black;font-weight:bold;'><img width='125px' src='images/" . $row["PImage"]. "'></td>" ;
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"] . "</td>" ;
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. "&nbsp;".$row["QType"]."</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Stor"]. "</td>" ; 
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"].  "</td>" ; 
 									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"].  "</td>" ; 
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Remarks"].  "</td>" ; 
@@ -718,7 +720,7 @@ $(document).ready(function(){
 <hr>
 </div>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="width: auto%; height:550px; ">
                             <table class="table table-hover table-striped tm-table-striped-even mt-3">
                                 <thead>
                                     <tr class="tm-bg-gray">
@@ -726,8 +728,10 @@ $(document).ready(function(){
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Image</th>
 									    <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Stor</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;width:20%;">Category</th>
 										<th scope="col">&nbsp;</th>	
+
                                     </tr>
                                 </thead>
                                 <tbody id="myTable1">
@@ -737,7 +741,7 @@ $(document).ready(function(){
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT product.PCode,product.PName,product.PImage,product.PQty,product.QType,product.CID,category.CName FROM product INNER JOIN category ON product.CID = category.CID WHERE PQty <= 5";
+									$sql = "SELECT product.PCode,product.PName,product.PImage,product.PQty,product.QType,product.Stor,product.CID,category.CName FROM product INNER JOIN category ON product.CID = category.CID WHERE PQty <= 5";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
@@ -746,6 +750,7 @@ $(document).ready(function(){
 									echo "<td style='text-align:center;color:black;font-weight:bold;'><img width='125px' src='images/" . $row["PImage"]. "'></td>" ;
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"] . "</td>" ;
 									echo "<td class='align-middle text-center text-sm' style='text-align:center;color:black;font-weight:bold;'> <span class='badge badge-sm bg-gradient-danger'>" . $row["PQty"]."</span> &nbsp;" . $row["QType"] ."</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Stor"].  "</td>" ; 
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["CName"].  "</td>" ; 
                                     ?>  
 									<td>
