@@ -49,7 +49,14 @@ if(isset($_POST["sbtn"]))
 												   CID = '$productstock',
 												   Stor = '$stor'
 												   WHERE PCode = '$ad_id'");
-		header("refresh:0.001;url=list.php?details&id=$CID");
+		header("refresh:0.001;url=generalD.php");
+		?>
+		<script type="text/javascript">
+		alert("Updated Successfully!");
+		
+		</script>
+		
+	<?php 
 	}else{
 
 
@@ -60,7 +67,7 @@ if(isset($_POST["sbtn"]))
 												   PImage = '$product_image'
 												   WHERE PCode = '$ad_id'");
 
-	header("refresh:0.001;url=list.php?details&id=$CID");
+	header("refresh:0.001;url=generalD.php");
 	$target = 'images/' . $product_image;
         if(move_uploaded_file($_FILES['profileImage']['tmp_name'],$target))
         {
