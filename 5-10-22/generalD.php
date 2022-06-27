@@ -225,6 +225,7 @@ $(document).ready(function(){
 									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
 									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
+									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
@@ -282,6 +283,7 @@ $(document).ready(function(){
 									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
 									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
+									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
@@ -338,6 +340,7 @@ $(document).ready(function(){
 									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
 									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
+									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
@@ -394,6 +397,7 @@ $(document).ready(function(){
 									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
 									echo $row["PName"] ."</h5>";
 									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
+									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
@@ -403,6 +407,7 @@ $(document).ready(function(){
 									echo "<span class='badge badge-info' style='float:right'>";
 									echo $row["PQty"]."</span>" ;"</li>" ;										
 									}
+									
 									$pname = $row["PName"] ; 
 									$pcode = $row["PCode"] ;	
 									?><br><hr><select class="dropdown1" style="background-color:#282828;color:white;opacity:100%;">
