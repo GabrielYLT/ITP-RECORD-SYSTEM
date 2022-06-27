@@ -31,6 +31,7 @@ if(isset($_POST["sbtn"]))
 	$productname = $_POST["pcode"];
 	$productprice = $_POST["qty"];
 	$productstock = $_POST["remark"];
+	$exp = $_POST["exp"];
 	$productStatus = "Stock Out";
 	
 	$select = mysqli_query($connect, "SELECT * FROM product WHERE PCode = '".$_POST['pcode']."'");
@@ -55,8 +56,8 @@ if(isset($_POST["sbtn"]))
                                                WHERE PCode= '$productname'");
 	
 	
- 	$sql=mysqli_query($connect,"INSERT INTO stock(PCode,Qty,AID,DateAdded,Remarks,Status) 
-	VALUES('$productname','$productprice','$_SESSION[id]','$currentDate','$productstock','$productStatus')");
+ 	$sql=mysqli_query($connect,"INSERT INTO stock(PCode,Qty,AID,DateAdded,Remarks,Status,exp) 
+	VALUES('$productname','$productprice','$_SESSION[id]','$currentDate','$productstock','$productStatus','$exp')");
 	header("refresh:0.001;url=stockOut.php");
 	
 	$resultx=mysqli_query($connect,"SELECT * FROM product WHERE PCode='$_POST[pcode]'");
