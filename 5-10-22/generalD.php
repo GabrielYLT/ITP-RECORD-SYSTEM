@@ -225,7 +225,7 @@ $(document).ready(function(){
 									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
 									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
-									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
+									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id=".$row["PCode"]."' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
@@ -242,7 +242,7 @@ $(document).ready(function(){
 									
 									<option selected disabled><h1>Specific Expire Quantity <h1></option>
 <?php
-									$sql1 = "SELECT stock.Pcode,product.PName,product.QType,Qty,exp, DateAdded FROM stock INNER JOIN product ON stock.PCode = product.PCode WHERE product.PName = '$pname' AND Qty >='1'  group BY exp,'$pname' ORDER BY exp DESC";
+									$sql1 = "SELECT stock.Pcode,product.PName,product.QType,Qty,exp, DateAdded FROM stock INNER JOIN product ON stock.PCode = product.PCode WHERE product.PCode = '$pcode' AND Qty >='1'  group BY exp,'$pname' ORDER BY exp DESC";
 									$result1 = $conn->query($sql1);
 									if ($result1->num_rows > 0) {
 					
@@ -283,7 +283,7 @@ $(document).ready(function(){
 									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
 									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
-									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
+									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id=".$row["PCode"]."' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
@@ -299,7 +299,7 @@ $(document).ready(function(){
 									
 									<option selected disabled><h1>Specific Expire Quantity <h1></option>
 <?php
-									$sql1 = "SELECT stock.Pcode,product.PName,produtc.QType,Qty,exp, DateAdded FROM stock INNER JOIN product ON stock.PCode = product.PCode WHERE product.PName = '$pname' AND Qty >='1'  group BY exp,'$pname' ORDER BY exp DESC";
+									$sql1 = "SELECT stock.Pcode,product.PName,produtc.QType,Qty,exp, DateAdded FROM stock INNER JOIN product ON stock.PCode = product.PCode WHERE product.PCode = '$pcode' AND Qty >='1'  group BY exp,'$pname' ORDER BY exp DESC";
 									$result1 = $conn->query($sql1);
 									if ($result1->num_rows > 0) {
 					
@@ -340,7 +340,7 @@ $(document).ready(function(){
 									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
 									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
-									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
+									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id=".$row["PCode"]."' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
@@ -356,7 +356,7 @@ $(document).ready(function(){
 									
 									<option selected disabled><h1>Specific Expire Quantity <h1></option>
 <?php
-									$sql1 = "SELECT stock.Pcode,product.PName,product.QType,Qty,exp, DateAdded FROM stock INNER JOIN product ON stock.PCode = product.PCode WHERE product.PName = '$pname' AND Qty >='1'  group BY exp,'$pname' ORDER BY exp DESC";
+									$sql1 = "SELECT stock.Pcode,product.PName,product.QType,Qty,exp, DateAdded FROM stock INNER JOIN product ON stock.PCode = product.PCode WHERE product.PCode = '$pcode' AND Qty >='1'  group BY exp,'$pname' ORDER BY exp DESC";
 									$result1 = $conn->query($sql1);
 									if ($result1->num_rows > 0) {
 					
@@ -397,7 +397,7 @@ $(document).ready(function(){
 									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
 									echo $row["PName"] ."</h5>";
 									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
-									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
+									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id=".$row["PCode"]."' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
@@ -414,7 +414,7 @@ $(document).ready(function(){
 									
 									<option selected disabled><h1>Specific Expire Quantity <h1></option>
 <?php
-									$sql1 = "SELECT stock.Pcode,product.PName,product.QType,Qty,exp, DateAdded FROM stock INNER JOIN product ON stock.PCode = product.PCode WHERE product.PName = '$pname' AND Qty >='1'  group BY exp,'$pname' ORDER BY exp DESC";
+									$sql1 = "SELECT stock.Pcode,product.PName,product.QType,Qty,exp, DateAdded FROM stock INNER JOIN product ON stock.PCode = product.PCode WHERE product.PCode = '$pcode' AND Qty >='1'  group BY exp,'$pname' ORDER BY exp DESC";
 									$result1 = $conn->query($sql1);
 									if ($result1->num_rows > 0) {
 					
