@@ -190,6 +190,7 @@ function backToTop() {
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Image</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Stor</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Status</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Remarks</th>
@@ -205,7 +206,7 @@ function backToTop() {
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT stock.SID,stock.PCode,product.PName,product.PImage,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.AID = '$_SESSION[id]' ORDER BY DateAdded DESC ";
+									$sql = "SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.QType,product.Stor,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.AID = '$_SESSION[id]' ORDER BY DateAdded DESC ";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
@@ -213,7 +214,8 @@ function backToTop() {
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
 									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]."</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. "&nbsp; ".$row["QType"]."</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Stor"].  "</td>" ; 
 									if($row["Status"] == 'Stock In'){
 									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
 									}else{

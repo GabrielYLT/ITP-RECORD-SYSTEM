@@ -25,7 +25,7 @@ $row = mysqli_fetch_assoc($result);
 if(isset($_GET["details"])){
 								
 $ad_id=$_GET['id'];	
-$result=mysqli_query($connect,"SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.PQty,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.SID = '$ad_id'");
+$result=mysqli_query($connect,"SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.PQty,product.Stor,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.SID = '$ad_id'");
 $row=mysqli_fetch_assoc($result);
 }
 
@@ -34,6 +34,7 @@ if(isset($_POST["sbtn"]))
 	$productname = $_POST["pcode"];
 	$productprice = $_POST["qty"];
 	$productstock = $_POST["remark"];	
+	$stor = $_POST["stor"];
 	$productStatus = "Stock In";
 	
 	$total = $row['Qty'];
@@ -41,7 +42,9 @@ if(isset($_POST["sbtn"]))
 	mysqli_query($connect,"UPDATE stock SET Qty = '$productprice',
 											Remarks = '$productstock'
                                                WHERE SID= '$ad_id'");
-											   
+										
+	mysqli_query($connect,"UPDATE product SET Stor = '$stor'
+                                               WHERE PCode = '$productname'");
 
 	if($row['Status'] == 'Stock In'){
 	mysqli_query($connect,"UPDATE product SET PQty = (PQty - '$total') + $productprice
@@ -276,6 +279,11 @@ $(document).ready(function(){
 								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="Qty">Quantity </label>
                                     <input value="<?php echo $row['Qty']?>" placeholder="Please Enter Product Name" id="number" min="0" name="qty" type="number" class="form-control validate" required>
+									<span id="erroremail"></span>	
+                                </div>
+								<div class="form-group">
+                                    <label for="stor">Stor </label>
+                                    <input value="<?php echo $row['Stor'] ?>" placeholder="Please Enter Product Stor"  name="stor" type="text" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="form-group">
