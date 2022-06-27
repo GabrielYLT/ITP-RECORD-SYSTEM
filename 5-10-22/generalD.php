@@ -224,6 +224,7 @@ $(document).ready(function(){
 									while($row = $result->fetch_assoc()) {
 									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
+									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
@@ -280,6 +281,7 @@ $(document).ready(function(){
 									while($row = $result->fetch_assoc()) {
 									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
+									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
@@ -335,6 +337,7 @@ $(document).ready(function(){
 									while($row = $result->fetch_assoc()) {
 									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
+									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
@@ -390,6 +393,7 @@ $(document).ready(function(){
 									while($row = $result->fetch_assoc()) {
 									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
 									echo $row["PName"] ."</h5>";
+									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
 									echo $row["PQty"]."</span>" ;" </li>" ;}elseif($row["PQty"] <= '5'){
