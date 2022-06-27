@@ -255,7 +255,7 @@ function myFunction() {
 									while($row = $result->fetch_assoc()) {
 									echo "<li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
-									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
+									echo "<span> Stor : ".$row["Stor"]."</span>";
 									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id=".$row["PCode"]."' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
@@ -314,7 +314,7 @@ function myFunction() {
 									while($row = $result->fetch_assoc()) {
 									echo " <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
-									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
+									echo "<span> Stor : ".$row["Stor"]."</span>";
 									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id=".$row["PCode"]."' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
@@ -371,7 +371,7 @@ function myFunction() {
 									while($row = $result->fetch_assoc()) {
 									echo "<li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
-									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
+									echo "<span> Stor : ".$row["Stor"]."</span>";
 									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id=".$row["PCode"]."' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
@@ -428,7 +428,7 @@ function myFunction() {
 									while($row = $result->fetch_assoc()) {
 									echo "<li class='list-group-item'><h5>";
 									echo $row["PName"] ."</h5>";
-									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
+									echo "<span> Stor : ".$row["Stor"]."</span>";
 									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id=".$row["PCode"]."' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
