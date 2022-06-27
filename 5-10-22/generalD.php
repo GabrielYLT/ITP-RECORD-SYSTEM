@@ -25,6 +25,7 @@ $row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html>
+
 <style>
 .dropbtn {
   background-color: gray;
@@ -204,8 +205,11 @@ $(document).ready(function(){
 						
 					}	
 					?></h4>
+					<hr>
+					<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:99%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" autocomplete="off" name="searchname" placeholder="Search" onkeyup="myFunction()"></h6>
+					<hr>
 					<br>
-					<div style="width: auto%; height:600px; overflow-x:hidden;">
+					<div style="width: auto%; height:600px; overflow-x:hidden;" >
 									<?php
 									$conn = $connect;
 
@@ -213,12 +217,12 @@ $(document).ready(function(){
 									die("Connection failed: " . $conn->connect_error);
 									}
 									if(($row['Department'] === "Product")){
-									$sql = "SELECT * FROM product WHERE CID = '1' OR CID ='2' OR CID = '3'";
+									$sql = "SELECT * FROM product WHERE CID = '1' OR CID ='2' OR CID = '3' ";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
@@ -229,35 +233,42 @@ $(document).ready(function(){
 									echo "<span class='badge badge-info' style='float:right'>";
 									echo $row["PQty"]."</span>" ;"</li>" ;										
 									}
-									?><br><hr><div class="dropdown1">
-  <button onclick="myFunction()" class="dropbtn">Details</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a  style="color: white;">New	</a>
-    <a  style="color: white;">About</a>
-    <a style="color: white;" >Contact</a>
-  </div>
-</div>
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+									$pname = $row["PName"] ; 
+									$pcode = $row["PCode"] ;	
+								
+									?><br><hr><select class="dropdown1" style="background-color:#282828;color:white;opacity:100%;">
+									
+									<option selected disabled><h1>Specific Expire Quantity <h1></option>
+<?php
+									$sql1 = "SELECT stock.Pcode,product.PName,product.QType,Qty,exp, DateAdded FROM stock INNER JOIN product ON stock.PCode = product.PCode WHERE product.PName = '$pname' AND Qty >='1'  group BY exp,'$pname' ORDER BY exp DESC";
+									$result1 = $conn->query($sql1);
+									if ($result1->num_rows > 0) {
+					
+									while($row1 = $result1->fetch_assoc() ) {
+									$exp = $row1["exp"];
+									 
+									 
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script><?php
+									$RexpIn=mysqli_query($connect,"SELECT SUM(Qty) AS inStock FROM stock WHERE Status = 'Stock In' AND PCode = '$pcode' AND exp = '$exp' group BY exp,'$pname'");
+									$expIn = mysqli_fetch_assoc($RexpIn);
+									
+									$RexpOut=mysqli_query($connect,"SELECT SUM(Qty) AS outStock FROM stock WHERE Status = 'Stock Out' AND PCode = '$pcode' AND exp = '$exp' group By exp,'$pname'");
+									$expOut = mysqli_fetch_assoc($RexpOut);
+									
+									$in = $expIn["inStock"] ;
+									$out = $expOut["outStock"];
+									
+									$subtotal = $in - $out ;
+								
+									 
+									echo "<option ><a>" .$row1["exp"]."&nbsp; = &nbsp;".$subtotal. $row1["QType"] ."</a></option>";
+									
+									}
+									} else { echo "0 results"; }
+									?>
+
+</select>
+<?php
 									echo " </ul>" ;
 									}
 									} else { echo "0 results"; }
@@ -267,7 +278,7 @@ window.onclick = function(event) {
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
@@ -278,35 +289,41 @@ window.onclick = function(event) {
 									echo "<span class='badge badge-info' style='float:right'>";
 									echo $row["PQty"]."</span>" ;"</li>" ;										
 									}
-									?><br><hr><div class="dropdown1">
-  <button onclick="myFunction()" class="dropbtn">Details</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a  style="color: white;">New	</a>
-    <a  style="color: white;">About</a>
-    <a style="color: white;" >Contact</a>
-  </div>
-</div>
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+									$pname = $row["PName"] ; 
+									$pcode = $row["PCode"] ;	
+									?><br><hr><select class="dropdown1" style="background-color:#282828;color:white;opacity:100%;">
+									
+									<option selected disabled><h1>Specific Expire Quantity <h1></option>
+<?php
+									$sql1 = "SELECT stock.Pcode,product.PName,produtc.QType,Qty,exp, DateAdded FROM stock INNER JOIN product ON stock.PCode = product.PCode WHERE product.PName = '$pname' AND Qty >='1'  group BY exp,'$pname' ORDER BY exp DESC";
+									$result1 = $conn->query($sql1);
+									if ($result1->num_rows > 0) {
+					
+									while($row1 = $result1->fetch_assoc() ) {
+									$exp = $row1["exp"];
+									 
+									 
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script><?php
+									$RexpIn=mysqli_query($connect,"SELECT SUM(Qty) AS inStock FROM stock WHERE Status = 'Stock In' AND PCode = '$pcode' AND exp = '$exp' group BY exp,'$pname'");
+									$expIn = mysqli_fetch_assoc($RexpIn);
+									
+									$RexpOut=mysqli_query($connect,"SELECT SUM(Qty) AS outStock FROM stock WHERE Status = 'Stock Out' AND PCode = '$pcode' AND exp = '$exp' group By exp,'$pname'");
+									$expOut = mysqli_fetch_assoc($RexpOut);
+									
+									$in = $expIn["inStock"] ;
+									$out = $expOut["outStock"];
+									
+									$subtotal = $in - $out ;
+								
+									 
+									echo "<option ><a>" .$row1["exp"]."&nbsp; = &nbsp;".$subtotal. $row1["QType"] ."</a></option>";
+									
+									}
+									} else { echo "0 results"; }
+									?>
+
+</select>
+<?php
 									echo " </ul>" ;
 									}
 									} else { echo "0 results"; }
@@ -316,7 +333,7 @@ window.onclick = function(event) {
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
 									if($row["PQty"] == '0'){
 									echo "<span class='badge badge-danger' style='float:right'>";
@@ -327,35 +344,41 @@ window.onclick = function(event) {
 									echo "<span class='badge badge-info' style='float:right'>";
 									echo $row["PQty"]."</span>" ;"</li>" ;										
 									}
-									?><br><hr><div class="dropdown1">
-  <button onclick="myFunction()" class="dropbtn">Details</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a  style="color: white;">New	</a>
-    <a  style="color: white;">About</a>
-    <a style="color: white;" >Contact</a>
-  </div>
-</div>
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+									$pname = $row["PName"] ; 
+									$pcode = $row["PCode"] ;	 
+									?><br><hr><select class="dropdown1" style="background-color:#282828;color:white;opacity:100%;">
+									
+									<option selected disabled><h1>Specific Expire Quantity <h1></option>
+<?php
+									$sql1 = "SELECT stock.Pcode,product.PName,product.QType,Qty,exp, DateAdded FROM stock INNER JOIN product ON stock.PCode = product.PCode WHERE product.PName = '$pname' AND Qty >='1'  group BY exp,'$pname' ORDER BY exp DESC";
+									$result1 = $conn->query($sql1);
+									if ($result1->num_rows > 0) {
+					
+									while($row1 = $result1->fetch_assoc() ) {
+									$exp = $row1["exp"];
+									 
+									 
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script><?php
+									$RexpIn=mysqli_query($connect,"SELECT SUM(Qty) AS inStock FROM stock WHERE Status = 'Stock In' AND PCode = '$pcode' AND exp = '$exp' group BY exp,'$pname'");
+									$expIn = mysqli_fetch_assoc($RexpIn);
+									
+									$RexpOut=mysqli_query($connect,"SELECT SUM(Qty) AS outStock FROM stock WHERE Status = 'Stock Out' AND PCode = '$pcode' AND exp = '$exp' group By exp,'$pname'");
+									$expOut = mysqli_fetch_assoc($RexpOut);
+									
+									$in = $expIn["inStock"] ;
+									$out = $expOut["outStock"];
+									
+									$subtotal = $in - $out ;
+								
+									 
+									echo "<option ><a>" .$row1["exp"]."&nbsp; = &nbsp;".$subtotal. $row1["QType"] ."</a></option>";
+									
+									}
+									} else { echo "0 results"; }
+									?>
+
+</select>
+<?php
 									echo " </ul>" ;
 									}
 									} else { echo "0 results"; }
@@ -376,35 +399,41 @@ window.onclick = function(event) {
 									echo "<span class='badge badge-info' style='float:right'>";
 									echo $row["PQty"]."</span>" ;"</li>" ;										
 									}
-									?><br><hr><div class="dropdown1">
-  <button onclick="myFunction()" class="dropbtn">Details</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a  style="color: white;">New	</a>
-    <a  style="color: white;">About</a>
-    <a style="color: white;" >Contact</a>
-  </div>
-</div>
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+									$pname = $row["PName"] ; 
+									$pcode = $row["PCode"] ;	
+									?><br><hr><select class="dropdown1" style="background-color:#282828;color:white;opacity:100%;">
+									
+									<option selected disabled><h1>Specific Expire Quantity <h1></option>
+<?php
+									$sql1 = "SELECT stock.Pcode,product.PName,product.QType,Qty,exp, DateAdded FROM stock INNER JOIN product ON stock.PCode = product.PCode WHERE product.PName = '$pname' AND Qty >='1'  group BY exp,'$pname' ORDER BY exp DESC";
+									$result1 = $conn->query($sql1);
+									if ($result1->num_rows > 0) {
+					
+									while($row1 = $result1->fetch_assoc() ) {
+									$exp = $row1["exp"];
+									 
+									 
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script><?php
+									$RexpIn=mysqli_query($connect,"SELECT SUM(Qty) AS inStock FROM stock WHERE Status = 'Stock In' AND PCode = '$pcode' AND exp = '$exp' group BY exp,'$pname'");
+									$expIn = mysqli_fetch_assoc($RexpIn);
+									
+									$RexpOut=mysqli_query($connect,"SELECT SUM(Qty) AS outStock FROM stock WHERE Status = 'Stock Out' AND PCode = '$pcode' AND exp = '$exp' group By exp,'$pname'");
+									$expOut = mysqli_fetch_assoc($RexpOut);
+									
+									$in = $expIn["inStock"] ;
+									$out = $expOut["outStock"];
+									
+									$subtotal = $in - $out ;
+								
+									 
+									echo "<option ><a>" .$row1["exp"]."&nbsp; = &nbsp;".$subtotal. $row1["QType"] ."</a></option>";
+									
+									}
+									} else { echo "0 results"; }
+									?>
+
+</select>
+<?php
 									echo " </ul>" ;
 									}
 									} else { echo "0 results"; }
