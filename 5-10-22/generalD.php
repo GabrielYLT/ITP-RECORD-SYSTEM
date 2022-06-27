@@ -205,11 +205,42 @@ $(document).ready(function(){
 						
 					}	
 					?></h4>
+					
+
+					<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue, txtValue1;
+  input = document.getElementById('myInput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myUL");
+  li = ul.getElementsByTagName('li');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a =  li[i].getElementsByTagName("h5")[0];
+    txtValue = a.textContent || a.innerText ;
+	
+	span =  li[i].getElementsByTagName("span")[0];
+    txtValue1 = span.textContent || span.innerText ;
+	
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else if (txtValue1.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+  
+}
+</script>
 					<hr>
 					<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:99%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" id="myInput" type="text" autocomplete="off" name="searchname" placeholder="Search" onkeyup="myFunction()"></h6>
 					<hr>
-					<br>
 					<div style="width: auto%; height:550px; overflow-x:hidden;" >
+					<ul class="list-group" id="myUL">
+
 									<?php
 									$conn = $connect;
 
@@ -222,7 +253,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
+									echo "<li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
 									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
 									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id=".$row["PCode"]."' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
@@ -270,8 +301,9 @@ $(document).ready(function(){
 									?>
 
 </select>
+
 <?php
-									echo " </ul>" ;
+							
 									}
 									} else { echo "0 results"; }
 									}elseif(($row['Department'] === "General Use")){
@@ -280,7 +312,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
+									echo " <li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
 									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
 									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id=".$row["PCode"]."' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
@@ -328,7 +360,7 @@ $(document).ready(function(){
 
 </select>
 <?php
-									echo " </ul>" ;
+								
 									}
 									} else { echo "0 results"; }
 									}elseif(($row['Department'] === "Packing Material")){
@@ -337,7 +369,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<ul class='list-group'> <li class='list-group-item' ><h5>";
+									echo "<li class='list-group-item' ><h5>";
 									echo $row["PName"] ."</h5>";
 									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
 									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id=".$row["PCode"]."' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
@@ -385,7 +417,7 @@ $(document).ready(function(){
 
 </select>
 <?php
-									echo " </ul>" ;
+									
 									}
 									} else { echo "0 results"; }
 									}elseif(($row['Department'] === "Raw Material")){
@@ -394,7 +426,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<ul class='list-group'> <li class='list-group-item'><h5>";
+									echo "<li class='list-group-item'><h5>";
 									echo $row["PName"] ."</h5>";
 									echo "<span> Stor : &nbsp;".$row["Stor"]."</span>";
 									echo "<span class='badge ' style='float:right'><a href='DeditProduct.php?edit&id=".$row["PCode"]."' style='color:SteelBlue;opacity:100%;'>Edit</a></span>";
@@ -442,12 +474,14 @@ $(document).ready(function(){
 									?>
 
 </select>
+
 <?php
-									echo " </ul>" ;
+					
 									}
 									} else { echo "0 results"; }
 									}
-									?>									
+									?>		
+						</ul>
 						</div>
 				  </div>
 				</div>
