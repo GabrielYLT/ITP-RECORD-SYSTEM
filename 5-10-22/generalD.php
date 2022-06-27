@@ -174,6 +174,27 @@ $(document).ready(function(){
         </div>
       </nav></div>
       <!-- End Navbar -->
+	  <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 	  <div style="height:10%;">
       </div>
     <div class="content" style="margin-left:11%;margin-top:11%;margin-right:11%;">
@@ -268,6 +289,14 @@ $(document).ready(function(){
 									?>
 
 </select>
+									?><br><hr><div class="dropdown1">
+  <button onclick="myFunction()" class="dropbtn">Details</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a  style="color: white;">New	</a>
+    <a  style="color: white;">About</a>
+    <a style="color: white;" >Contact</a>
+  </div>
+</div>
 <?php
 									echo " </ul>" ;
 									}
