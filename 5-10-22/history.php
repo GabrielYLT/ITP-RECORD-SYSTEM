@@ -348,7 +348,7 @@ $(document).ready(function(){
 	  html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].Stor+'</td>';
 	  html += '<td style="text-align:center;color:forestgreen;font-weight:bold;font-size:18px;">'+data[count].DateAdded+'</td>';
 	  html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].AName+'</td>';
-	  html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].Remarks+'</td>';
+	  html += '<td style="text-align:center;color:red;font-weight:bold;font-size:18px;">'+data[count].Remarks+'</td>';
 	  if(data[count].Status =='Stock In'){
       html += '<td class="align-middle text-center text-sm" style="width:10%;"> <span class="badge badge-sm bg-gradient-success" style="font-size:10px;">'+data[count].Status+'</span></td></tr>';
       }else{

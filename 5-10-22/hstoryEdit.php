@@ -25,7 +25,7 @@ $row = mysqli_fetch_assoc($result);
 if(isset($_GET["details"])){
 								
 $ad_id=$_GET['id'];	
-$result=mysqli_query($connect,"SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.PQty,product.Stor,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.SID = '$ad_id'");
+$result=mysqli_query($connect,"SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.PQty,product.Stor,stock.Qty,stock.DateAdded,stock.Remarks,stock.exp,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.SID = '$ad_id'");
 $row=mysqli_fetch_assoc($result);
 }
 
@@ -281,6 +281,11 @@ $(document).ready(function(){
                                     <input value="<?php echo $row['Qty']?>" placeholder="Please Enter Product Name" id="number" min="0" name="qty" type="number" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
+								<div class="form-group" style="margin-bottom:0%;">
+                                    <label for="Qty">Expire </label>
+                                    <input value="<?php echo $row['exp']?>" placeholder="Please Enter Product Name" id="number" min="0" name="qty" type="date" class="form-control validate" required>
+									<span id="erroremail"></span>	
+                                </div>
 								<div class="form-group">
                                     <label for="stor">Stor </label>
                                     <input value="<?php echo $row['Stor'] ?>" placeholder="Please Enter Product Stor"  name="stor" type="text" class="form-control validate" required>
@@ -297,7 +302,7 @@ $(document).ready(function(){
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="form-group" >
-									<label for="gender">Product Code &nbsp; </label>
+									<label for="gender">Admin Name &nbsp; </label>
 									<input value="<?php echo $row['AName']?>" type="text" class="form-control selectList"  autocomplete="off"  list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="" id="gender" readonly>
                                 </div>
 								<hr>
