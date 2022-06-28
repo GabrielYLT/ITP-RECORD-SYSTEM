@@ -284,6 +284,7 @@ function topFunction() {
                             <table class="table table-hover table-striped tm-table-striped-even mt-3">
                                 <thead>
                                     <tr class="tm-bg-gray">
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Code</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Image</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Category</th>
@@ -338,7 +339,8 @@ $(document).ready(function(){
     {
      for(var count = 0; count < data.length; count++)
      {
-      html += '<tr>';	
+      html += '<tr>';
+      html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].PCode+'</td>';
 	  html += '<td  style="text-align:center;color:black;font-weight:bold;font-size:18px;"><img width="125px" src="images/'+data[count].PImage+'"></td>';
       html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].PName+'</td>';
       html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].CName+'</td>';
