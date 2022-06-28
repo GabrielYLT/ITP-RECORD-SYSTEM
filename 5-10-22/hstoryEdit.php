@@ -27,6 +27,7 @@ if(isset($_GET["details"])){
 $ad_id=$_GET['id'];	
 $result=mysqli_query($connect,"SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.PQty,product.Stor,stock.Qty,stock.DateAdded,stock.Remarks,stock.exp,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.SID = '$ad_id'");
 $row=mysqli_fetch_assoc($result);
+
 }
 
 if(isset($_POST["sbtn"]))
@@ -35,11 +36,13 @@ if(isset($_POST["sbtn"]))
 	$productprice = $_POST["qty"];
 	$productstock = $_POST["remark"];	
 	$stor = $_POST["stor"];
+	$exp= $_POST["exp"];
 	$productStatus = "Stock In";
 	
 	$total = $row['Qty'];
 	
 	mysqli_query($connect,"UPDATE stock SET Qty = '$productprice',
+											exp = '$exp',
 											Remarks = '$productstock'
                                                WHERE SID= '$ad_id'");
 										
@@ -281,11 +284,46 @@ $(document).ready(function(){
                                     <input value="<?php echo $row['Qty']?>" placeholder="Please Enter Product Name" id="number" min="0" name="qty" type="number" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
-								<div class="form-group" style="margin-bottom:0%;">
-                                    <label for="Qty">Expire </label>
-                                    <input value="<?php echo $row['exp']?>" placeholder="Please Enter Product Name" id="number" min="0" name="qty" type="date" class="form-control validate" required>
-									<span id="erroremail"></span>	
-                                </div>
+								<div style="margin-bottom:0%;">
+                                    <label>Expire </label>
+									<input  type="text" class="form-control selectList" autocomplete="off" list="code" value="<?php echo $row['exp'] ?>" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="exp" id="exp" required>
+									<datalist id="code">
+									<?php 
+									$conn = $connect;
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+
+									$sqlexp = "SELECT * FROM stock WHERE PCode = '$row[PCode]' AND Qty >='1' group BY exp ORDER BY exp DESC";
+									$resultexp = $conn->query($sqlexp);
+									if ($resultexp->num_rows > 0) {
+
+									while($rowexp = $resultexp->fetch_assoc()) {
+									$exp = $rowexp["exp"];
+									
+									$RexpIn=mysqli_query($connect,"SELECT SUM(Qty) AS inStock FROM stock WHERE Status = 'Stock In' AND PCode = '$row[PCode]' AND exp = '$exp' group BY exp,'$row[PCode]'");
+									$expIn = mysqli_fetch_assoc($RexpIn);
+									
+									$RexpOut=mysqli_query($connect,"SELECT SUM(Qty) AS outStock FROM stock WHERE Status = 'Stock Out' AND PCode = '$row[PCode]' AND exp = '$exp' group By exp,'$row[PCode]'");
+									$expOut = mysqli_fetch_assoc($RexpOut);
+									
+									$in = $expIn["inStock"] ;
+									$out = $expOut["outStock"];
+									
+									
+									$subtotal = $in - $out ;
+
+									
+									if($subtotal != '0'){
+									echo "<option value='" . $rowexp["exp"]. "'>Qty : ".$subtotal ."</option> ";
+									}
+									
+									}
+									}else {echo "0 results found " ;}
+								
+								?>
+								</datalist>
+								</div>
 								<div class="form-group">
                                     <label for="stor">Stor </label>
                                     <input value="<?php echo $row['Stor'] ?>" placeholder="Please Enter Product Stor"  name="stor" type="text" class="form-control validate" required>
