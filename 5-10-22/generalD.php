@@ -174,7 +174,7 @@ $(document).ready(function(){
         </div>
       </nav></div>
       <!-- End Navbar -->
-	  <div style="height:10%;">
+	  <div style="height:13%;">
       </div>
     <div class="content" style="margin-left:11%;margin-top:11%;margin-right:11%;">
 			<!-- row -->
