@@ -55,7 +55,7 @@ echo "<div class='form-group' style='margin-bottom:0%;'>
 
 									
 									if($subtotal != '0'){
-									echo "<option value='" . $row["exp"]. "'>Qty : ".$subtotal ."</option> ";
+									echo "<option value='" . $row["exp"]. "'>Current Qty : ".$subtotal ."</option> ";
 									}
 									
 									}

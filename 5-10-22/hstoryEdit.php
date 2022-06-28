@@ -315,7 +315,7 @@ $(document).ready(function(){
 
 									
 									if($subtotal != '0'){
-									echo "<option value='" . $rowexp["exp"]. "'>Qty : ".$subtotal ."</option> ";
+									echo "<option value='" . $rowexp["exp"]. "'>Current Qty : ".$subtotal ."</option> ";
 									}
 									
 									}
