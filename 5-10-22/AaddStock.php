@@ -293,7 +293,7 @@ $(document).ready(function(){
     xhttp.onload = function() {
       document.getElementById("txtHint").innerHTML = this.responseText;
     }
-    xhttp.open("GET", "productName.php?q="+str);
+    xhttp.open("GET", "StockInName.php?q="+str);
     xhttp.send();
   }
   </script>

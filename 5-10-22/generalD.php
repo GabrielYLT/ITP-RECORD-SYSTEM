@@ -293,8 +293,9 @@ function myFunction() {
 									
 									$subtotal = $in - $out ;
 								
-									 
+									if($subtotal != '0'){
 									echo "<option ><a>" .$row1["exp"]."&nbsp; = &nbsp;".$subtotal. $row1["QType"] ."</a></option>";
+									}
 									
 									}
 									} else { echo "0 results"; }
@@ -352,7 +353,9 @@ function myFunction() {
 									$subtotal = $in - $out ;
 								
 									 
+									if($subtotal != '0'){
 									echo "<option ><a>" .$row1["exp"]."&nbsp; = &nbsp;".$subtotal. $row1["QType"] ."</a></option>";
+									}
 									
 									}
 									} else { echo "0 results"; }
@@ -408,8 +411,9 @@ function myFunction() {
 									
 									$subtotal = $in - $out ;
 								
-									 
+									if($subtotal != '0'){
 									echo "<option ><a>" .$row1["exp"]."&nbsp; = &nbsp;".$subtotal. $row1["QType"] ."</a></option>";
+									}
 									
 									}
 									} else { echo "0 results"; }
@@ -466,8 +470,9 @@ function myFunction() {
 									
 									$subtotal = $in - $out ;
 								
-									 
+									if($subtotal != '0'){
 									echo "<option ><a>" .$row1["exp"]."&nbsp; = &nbsp;".$subtotal. $row1["QType"] ."</a></option>";
+									}
 									
 									}
 									} else { echo "0 results"; }
