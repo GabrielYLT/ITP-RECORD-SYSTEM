@@ -190,11 +190,10 @@ function backToTop() {
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Image</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Stor</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Expire</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Status</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Remarks</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Admin Name</th>
                                         
 										<th scope="col">&nbsp;</th>	
                                     </tr>
@@ -206,7 +205,7 @@ function backToTop() {
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.QType,product.Stor,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.AID = '$_SESSION[id]' ORDER BY DateAdded DESC ";
+									$sql = "SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.QType,product.Stor,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,stock.exp,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.AID = '$_SESSION[id]' ORDER BY DateAdded DESC ";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
@@ -215,7 +214,7 @@ function backToTop() {
 									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. "&nbsp; ".$row["QType"]."</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Stor"].  "</td>" ; 
+									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["exp"]."</td>" ; 
 									if($row["Status"] == 'Stock In'){
 									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
 									}else{
@@ -223,7 +222,6 @@ function backToTop() {
 									}
 									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"]."</td>" ; 
 									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["Remarks"]."</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"]."</td>" ; 
                                     ?> 	
                                     <td>
 									<div class="btn-group"> 
