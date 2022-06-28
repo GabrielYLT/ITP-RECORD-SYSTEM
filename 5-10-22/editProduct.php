@@ -61,6 +61,13 @@ if(isset($_POST["sbtn"]))
 												   Stor = '$stor'
 												   WHERE PCode = '$ad_id'");
 		header("refresh:0.001;url=list.php?details&id=$CID");
+		?>
+		<script type="text/javascript">
+		alert("Updated Successfully!");
+		
+		</script>
+		
+	<?php 
 	}else{
 
 
