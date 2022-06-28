@@ -641,11 +641,10 @@ document.getElementById("current_date").innerHTML = month + "-" + day + "-" + ye
                             <table class="table table-hover table-striped tm-table-striped-even mt-3">
                                 <thead>
                                     <tr class="tm-bg-gray">
-                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Image</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Stor</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Expire</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Admin Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;width:15%">Remarks</th>
@@ -660,21 +659,20 @@ document.getElementById("current_date").innerHTML = month + "-" + day + "-" + ye
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT stock.PCode, product.PName,product.PImage,product.Stor,product.QType,stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status
+									$sql = "SELECT stock.PCode, product.PName,product.PImage,product.Stor,product.QType,stock.Qty , stock.AID, admin.AName,stock.DateAdded,stock.exp , stock.Remarks, stock.Status
 									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) 
 									WHERE DATE(DateAdded) = '$currentDate' ORDER BY DateAdded DESC";
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
 									echo "<td style='text-align:center;color:black;font-weight:bold;'><img width='125px' src='images/" . $row["PImage"]. "'></td>" ;
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"] . "</td>" ;
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. "&nbsp;".$row["QType"]."</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Stor"]. "</td>" ; 
+									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["exp"]. "</td>" ; 
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"].  "</td>" ; 
 									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Remarks"].  "</td>" ; 
+									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["Remarks"].  "</td>" ; 
 									if($row["Status"] == 'Stock In'){
 									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
 									}else{

@@ -28,7 +28,7 @@ echo "<div class='form-group' style='margin-bottom:0%;'>
                                 </div>";
 								
 echo "<div class='form-group' style='margin-bottom:0%;'>
-                                   <label for='expire'>Product Code &nbsp; </label>
+                                   <label for='expire'>Product Expire &nbsp; </label>
 									<input  type='text' class='form-control selectList' autocomplete='off' list='exp1' placeholder='Please Choose The Correct Expiry Date' style='width:100%;Height:50%;' name='exp' id='exp' required>
 									<datalist id='exp1'>" ;
 									
