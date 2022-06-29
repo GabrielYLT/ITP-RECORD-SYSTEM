@@ -46,7 +46,7 @@
 				
 				<form action="#" method="POST" name="recover_psw" class="login100-form validate-form p-b-33 p-t-5">
                             <div class="wrap-input100 validate-input">
-									<input class="input100" type="text" id="email_address" class="form-control" name="email" placeholder=" Enter Your Email" required autofocus>
+									<input class="input100" type="text" id="email_address" class="form-control" name="email" placeholder=" Enter Your Email" autocomplete="off" required autofocus>
 									<span class="focus-input100" data-placeholder="&#xe82a;"></span>
                             </div>
 
@@ -114,8 +114,8 @@
             $mail->SMTPSecure='tls';
 
             // h-hotel account
-            $mail->Username='tes15895@gmail.com';
-            $mail->Password='Qwer@1234';
+            $mail->Username='jmmrecordsystem@gmail.com';
+            $mail->Password='teofcrdkmofzypjw';
 
             // send by h-hotel email
             $mail->setFrom('email', 'Password Reset');

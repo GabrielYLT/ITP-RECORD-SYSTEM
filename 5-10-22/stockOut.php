@@ -83,8 +83,8 @@ if(isset($_POST["sbtn"]))
             $mail->SMTPSecure='tls';
 
             // h-hotel account
-            $mail->Username='tes15895@gmail.com';
-            $mail->Password='Qwer@1234';
+            $mail->Username='jmmrecordsystem@gmail.com';
+            $mail->Password='teofcrdkmofzypjw';
 
             // send by h-hotel email
             $mail->setFrom('email', 'Password Reset');

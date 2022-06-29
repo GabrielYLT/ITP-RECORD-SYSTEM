@@ -206,7 +206,7 @@ $(document).ready(function(){
                                 </div>
 								<div class="form-group">
                                     <label for="stor">Stor </label>
-                                    <input value="" placeholder="Please Enter Product Stor"  name="stor" type="text" class="form-control validate" required>
+                                    <input value="" placeholder="Please Enter Product Stor"  name="stor" type="text" class="form-control validate" autocomplete="off" required>
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="select">

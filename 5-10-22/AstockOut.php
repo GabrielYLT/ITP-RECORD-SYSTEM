@@ -97,7 +97,7 @@ if(isset($_POST["sbtn"]))
 
             // h-hotel account
             $mail->Username='jmmrecordsystem@gmail.com';
-            $mail->Password='0175143933';
+            $mail->Password='teofcrdkmofzypjw';
 
             // send by h-hotel email
             $mail->setFrom('email', 'Password Reset');
