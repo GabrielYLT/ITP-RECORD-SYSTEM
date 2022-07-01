@@ -282,7 +282,7 @@ function topFunction() {
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;width:15%">Remarks</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Status</th>
-										<th scope="col" style="width:20%">&nbsp;</th>
+										
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
@@ -295,7 +295,7 @@ function topFunction() {
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT stock.PCode, product.PName,product.Stor,product.QType, stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status,stock.exp
+									$sql = "SELECT stock.SID,stock.PCode, product.PName,product.Stor,product.QType, stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status,stock.exp
 									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) 
 									WHERE stock.PCode ='$ad_id' ORDER BY DateAdded DESC";
 									$result = $conn->query($sql);
@@ -318,7 +318,7 @@ function topFunction() {
                                     ?>  
                                     <td>
 									<div class='btn-group'> 
-									<a href="edith.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary" >Edit</a></td>
+									<a href="edith.php?details&id=<?php echo $row['SID'];?>" class="btn btn-secondary" >Edit</a></td>
 									</div>
                                     <?php
 									echo "</tr>" ;

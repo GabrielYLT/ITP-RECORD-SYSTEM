@@ -49,6 +49,8 @@ $ad_id=$_GET['id'];
 $result=mysqli_query($connect,"SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.PQty,product.Stor,stock.Qty,stock.DateAdded,stock.Remarks,stock.exp,stock.Status,stock.AID,admin.AName FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) WHERE stock.SID = '$ad_id'");
 $row=mysqli_fetch_assoc($result);
 
+$pcode1=$row["PCode"];
+
 }
 
 if(isset($_POST["sbtn"]))
@@ -80,10 +82,10 @@ if(isset($_POST["sbtn"]))
 		</script>
 
 	<?php
-	header("refresh:0.001;url=hstory.php");
+	header("refresh:0.001;url=details.php?details&id=$pcode1");
 	}else{mysqli_query($connect,"UPDATE product SET PQty = (PQty + '$total') - $productprice
                                                WHERE PCode= '$productname'");
-	header("refresh:0.001;url=hstory.php");
+	header("refresh:0.001;url=details.php?details&id=$pcode1");
 												   
 	$result1=mysqli_query($connect,"SELECT * FROM product WHERE PCode='$_POST[pcode]'");
 	$row1 = mysqli_fetch_assoc($result1);
@@ -139,7 +141,7 @@ if($row1["PQty"] <= '6'){
                     </script>
                 <?php
             }else{
-                header("refresh:0.001;url=hstory.php");
+                header("refresh:0.001;url=details.php?details&id=$pcode1");
             }
 	}
 	
