@@ -289,7 +289,7 @@ function topFunction() {
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Category</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Quantity</th>
-										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Stor</th>
+										
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Added On</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Added By</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Remarks</th>
