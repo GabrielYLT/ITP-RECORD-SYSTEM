@@ -345,7 +345,6 @@ $(document).ready(function(){
       html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].PName+'</td>';
       html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].CName+'</td>';
       html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].total_qty+'</td>';
-	  html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].Stor+'</td>';
 	  html += '<td style="text-align:center;color:forestgreen;font-weight:bold;font-size:18px;">'+data[count].DateAdded+'</td>';
 	  html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].AName+'</td>';
 	  html += '<td style="text-align:center;color:red;font-weight:bold;font-size:18px;">'+data[count].Remarks+'</td>';
