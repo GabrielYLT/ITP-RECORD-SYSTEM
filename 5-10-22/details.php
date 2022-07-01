@@ -276,6 +276,7 @@ function topFunction() {
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Code</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Expire</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Stor</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Admin Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
@@ -294,7 +295,7 @@ function topFunction() {
 									if ($conn->connect_error) {
 									die("Connection failed: " . $conn->connect_error);
 									}
-									$sql = "SELECT stock.PCode, product.PName,product.Stor,product.QType, stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status
+									$sql = "SELECT stock.PCode, product.PName,product.Stor,product.QType, stock.Qty , stock.AID, admin.AName,stock.DateAdded, stock.Remarks, stock.Status,stock.exp
 									FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) 
 									WHERE stock.PCode ='$ad_id' ORDER BY DateAdded DESC";
 									$result = $conn->query($sql);
@@ -303,7 +304,8 @@ function topFunction() {
 									while($row = $result->fetch_assoc()) {
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"] . "</td>" ;
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]."&nbsp;".$row["QType"] . "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]." ".$row["QType"] . "</td>" ;
+									echo "<td style='text-align:center;color:maroon;font-weight:bold;'>" . $row["exp"]. "</td>" ;									
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Stor"]. "</td>" ; 
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["AName"].  "</td>" ; 
 									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"].  "</td>" ; 
