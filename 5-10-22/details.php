@@ -282,7 +282,7 @@ function topFunction() {
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;width:15%">Remarks</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;">Status</th>
-										<th scope="col">&nbsp;</th>	
+										<th scope="col" style="width:20%">&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
@@ -317,7 +317,9 @@ function topFunction() {
 									}
                                     ?>  
                                     <td>
-
+									<div class='btn-group'> 
+									<a href="edith.php?details&id=<?php echo $row['PCode'];?>" class="btn btn-secondary" >Edit</a></td>
+									</div>
                                     <?php
 									echo "</tr>" ;
 									}
