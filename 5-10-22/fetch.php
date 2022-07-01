@@ -17,7 +17,6 @@ $search = str_replace(",", "|", $_POST["query"]);
  WHERE stock.PCode REGEXP '".$search."'
  OR product.PName REGEXP '".$search."' 
  OR category.CName REGEXP '".$search."'  
- OR product.Stor REGEXP '".$search."' 
  OR stock.DateAdded REGEXP '".$search."' 
  OR admin.AName REGEXP '".$search."' 
 OR stock.Remarks REGEXP '".$search."' 
