@@ -102,9 +102,14 @@
         
         }else{
 
-            $_SESSION['email'] = $email;
-
+            
+			
             require "Mail/phpmailer/PHPMailerAutoload.php";
+			
+			
+			$code = uniqid(true);
+			$query = mysqli_query($connect, "INSERT INTO passCode(code,AEmail) VALUES ('$code','$email')");
+			
             $mail = new PHPMailer;
 
             $mail->isSMTP();
@@ -129,7 +134,7 @@
             $mail->Body="<b>Dear User</b>
             <h3>We received a request to reset your password.</h3>
             <p>Kindly click the below link to reset your password</p>
-            http://localhost/ITP-RECORD-SYSTEM/5-10-22/reset_psw.php
+            http://localhost/ITP-RECORD-SYSTEM/5-10-22/reset_psw.php?code=$code
             <br><br>
             <p>With regrads,</p>
             <b>Programming with Lam</b>";

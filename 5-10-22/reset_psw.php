@@ -1,44 +1,44 @@
 <?php session_start() ;
 include('Connection.php');
 ?>
-<?php
-if(!isset($_SESSION['email']))
-{
-?>
-    <script>
-    alert("You're Not Authorize !");
-    </script>
-    <?php
-    header("refresh:0.001;url=login.php");
-    //exit();
-	
-	
-}
 
-?>
 <?php
+	    if(!isset($_GET["code"])){
+		exit("Can't Find Page");}
+	
+	$code = $_GET["code"];
+	
+	
+        $sql1 = mysqli_query($connect, "SELECT AEmail FROM passcode WHERE code='$code'");
+		if(mysqli_num_rows($sql1)==0){
+		exit("Can't Find Page !");}
+		$rows = mysqli_fetch_assoc($sql1);
+		$Email = $rows["AEmail"];
+	
     if(isset($_POST["reset"])){
-        include('Connection.php');
-        $psw = $_POST["password"];
 
-        $Email = $_SESSION['email'];
+ 
 
-        $sql = mysqli_query($connect, "SELECT * FROM admin WHERE AEmail='$Email'");
-        $query = mysqli_num_rows($sql);
-  	    $fetch = mysqli_fetch_assoc($sql);
+		
+        if(isset($_POST["password"])){
+		
+		$psw = $_POST["password"];
+		
 
-        if($Email){
-            mysqli_query($connect, "UPDATE admin SET APassword='$psw' WHERE AEmail='$Email'");
+		
+            $q = mysqli_query($connect, "UPDATE admin SET APassword='$psw' WHERE AEmail='$Email'");
+			
+			if($q){
+				 $d = mysqli_query($connect, "DELETE FROM passcode WHERE code = '$code'");
+				
+			}
             ?>
             <script>
                 window.location.replace("login.php");
                 alert("<?php echo "your password has been succesful reset"?>");
             </script>
             <?php
-			
-			unset($_SESSION['email']);
 
-			session_destroy();
 			
         }else{
             ?>
@@ -112,7 +112,7 @@ if(!isset($_SESSION['email']))
 				<form action="#" method="POST" name="login"class="login100-form validate-form p-b-33 p-t-5">
 
                             <div class="wrap-input100 validate-input">
-                                <input class="input100" type="password" id="password" class="form-control" name="password" placeholder=" Enter New Password" required autofocus>
+                                <input class="input100" type="password" id="password" class="form-control" name="password" placeholder="Please Enter Your New Password" required autofocus>
                                 <span class="focus-input100" data-placeholder="&#xe80f;" ></span>
                             </div>
 
