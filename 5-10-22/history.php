@@ -288,6 +288,7 @@ function topFunction() {
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Image</th>
                                         <th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Name</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Category</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Expire</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Quantity</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Stor</th>
 										<th scope="col" style="text-align:center;color:black;font-weight:bold;font-size:25px;">Added On</th>
@@ -344,6 +345,7 @@ $(document).ready(function(){
 	  html += '<td  style="text-align:center;color:black;font-weight:bold;font-size:18px;"><img width="125px" src="images/'+data[count].PImage+'"></td>';
       html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].PName+'</td>';
       html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].CName+'</td>';
+	  html += '<td style="text-align:center;color:maroon;font-weight:bold;font-size:18px;">'+data[count].exp+'</td>';
       html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].total_qty+'</td>';
 	  html += '<td style="text-align:center;color:black;font-weight:bold;font-size:18px;">'+data[count].Stor+'</td>';
 	  html += '<td style="text-align:center;color:forestgreen;font-weight:bold;font-size:18px;">'+data[count].DateAdded+'</td>';

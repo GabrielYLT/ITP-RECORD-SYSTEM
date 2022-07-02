@@ -12,7 +12,7 @@ if(isset($_POST["query"]))
 {
 $search = str_replace(",", "|", $_POST["query"]);
  $query = "
- SELECT stock.PCode,product.PName,product.PImage,product.QType,product.CID,product.Stor,category.CName,SUM(stock.Qty) AS total_qty,stock.AID,admin.AName,stock.DateAdded,stock.Remarks,stock.Status
+ SELECT stock.PCode,product.PName,product.PImage,product.QType,product.CID,product.Stor,category.CName,SUM(stock.Qty) AS total_qty,stock.AID,admin.AName,stock.DateAdded,stock.Remarks,stock.Status,stock.exp
 									FROM (((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN category ON product.CID = category.CID)INNER JOIN admin ON stock.AID= admin.AID)
  WHERE stock.PCode REGEXP '".$search."'
  OR product.PName REGEXP '".$search."' 
@@ -22,14 +22,14 @@ $search = str_replace(",", "|", $_POST["query"]);
  OR admin.AName REGEXP '".$search."' 
 OR stock.Remarks REGEXP '".$search."' 
  OR stock.Status REGEXP '".$search."'
- group BY PCode,exp,AID,Status,DATE(DateAdded) ORDER BY DateAdded DESC
+ group BY PCode,AID,Status,DATE(DateAdded) ORDER BY DateAdded DESC
  ";
 }
 else
 {
- $query = "SELECT stock.PCode,product.PName,product.PImage,product.QType,product.CID,product.Stor,category.CName,SUM(stock.Qty) AS total_qty,stock.AID,admin.AName,stock.DateAdded,stock.Remarks,stock.Status
+ $query = "SELECT stock.PCode,product.PName,product.PImage,product.QType,product.CID,product.Stor,category.CName,SUM(stock.Qty) AS total_qty,stock.AID,admin.AName,stock.DateAdded,stock.Remarks,stock.Status,stock.exp
 									FROM (((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN category ON product.CID = category.CID)INNER JOIN admin ON stock.AID= admin.AID)
-									group BY PCode,exp,AID,Status,DATE(DateAdded) ORDER BY DateAdded DESC
+									group BY PCode,AID,Status,DATE(DateAdded) ORDER BY DateAdded DESC
 
  ";
 }
