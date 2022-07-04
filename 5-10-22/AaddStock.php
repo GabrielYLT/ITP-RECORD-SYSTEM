@@ -305,8 +305,14 @@ $(document).ready(function(){
                                 </div>
 								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="Date" style="color:black;">Expire </label>
-                                    <input value="" placeholder="Please Select Product Expire" id="date" name="exp" type="date" class="form-control validate" required>
+                                    <input value="" placeholder="Please Select Product Expire" id="minDate" name="exp" type="date" class="form-control validate" required>
 									<span id="erroremail"></span>	
+									<script>
+									$(document).ready(function () {
+										var today = new Date().toISOString().split('T')[0];
+										$("#minDate").attr('min', today);
+									});
+									</script>
                                 </div>
 								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="email" style="color:black;">Remarks </label>

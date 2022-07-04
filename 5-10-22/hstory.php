@@ -172,7 +172,7 @@ function backToTop() {
                     <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
                         <div class="row">
                             <div class="col-md-8 col-sm-12">
-								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;">History</h2>
+								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;">Your History</h2>
 
                             </div>
 							<div>
@@ -182,7 +182,7 @@ function backToTop() {
 <hr>
 </div>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="width: auto%; height:500px; ">
                             <table class="table table-hover table-striped tm-table-striped-even mt-3">
                                 <thead>
                                     <tr class="tm-bg-gray">
@@ -213,7 +213,7 @@ function backToTop() {
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
 									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
 									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
-									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. "&nbsp; ".$row["QType"]."</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. " ".$row["QType"]."</td>" ; 
 									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["exp"]."</td>" ; 
 									if($row["Status"] == 'Stock In'){
 									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
@@ -239,6 +239,189 @@ function backToTop() {
             </div>
         </div>
     </div>
+	
+	            <div class="row tm-content-row tm-mt-big" style="font-family: 'Lato', sans-serif;padding-left:1%;padding-top:3%;padding-right:1%;padding-bottom:1%;">
+                <div class="col-xl-20 col-lg-12 tm-md-12 tm-sm-12 tm-col">
+                    <div class="tm-block h-100" style="border-radius:10px;border-style: groove;background-color: #ffffff;opacity: 75%;">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12">
+								<h2 class="tm-block-title d-inline-block" style="margin-left:3%;margin-top:2%;color:black;font-weight:bold;"><?php 
+					$Admin_id=$_SESSION['id'];
+					$result=mysqli_query($connect,"SELECT *FROM admin WHERE AID = $Admin_id");
+					$row = mysqli_fetch_assoc($result);
+
+					if(($row['Department'] === "Product")){
+						
+						echo "Cookies Department History";
+						
+					}elseif(($row['Department'] === "General Use")){
+						
+						echo "General Use Department History";
+						
+					}elseif(($row['Department'] === "Raw Material")){
+						
+						echo "Raw Material Department History";
+						
+					}elseif(($row['Department'] === "Packing Material")){
+						
+						echo "Packing Material Department History";
+						
+					}	
+					?></h2>
+
+                            </div>
+							<div>
+							<hr>
+<script>
+$(document).ready(function(){
+  $("#myInput1").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable1 tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<h6 style="margin-left:auto%;margin-top:auto%;"class="text-white text-capitalize ps-3"><input style="width:99%;height:35px;margin-left:autos%;border-radius:10px;border-style: none;" autocomplete=off id="myInput1" type="text" name="searchname" placeholder="Search" ></h6>
+<hr>
+</div>
+                        </div>
+                        <div class="table-responsive" style="width: auto%; height:500px; ">
+                            <table class="table table-hover table-striped tm-table-striped-even mt-3">
+                                <thead>
+                                    <tr class="tm-bg-gray">
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Code</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Image</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Product Name</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Quantity</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Expire</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Status</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Admin Name</th>
+                                        <th scope="col" style="text-align:center;color:black;font-weight:bold;">Date</th>
+										<th scope="col" style="text-align:center;color:black;font-weight:bold;">Remarks</th>
+                                        
+										
+                                    </tr>
+                                </thead>
+                                <tbody id="myTable1">
+									<?php
+									$conn = $connect;
+
+									if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+									}
+									if(($row['Department'] === "Product")){
+									$sql = "SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.QType,product.Stor,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,stock.exp,admin.AName,admin.Department FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) 
+									WHERE CID ='1' OR CID ='2' OR CID = '3' ORDER BY DateAdded DESC";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. " ".$row["QType"]."</td>" ; 
+									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["exp"]."</td>" ; 
+									if($row["Status"] == 'Stock In'){
+									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
+									}else{
+										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
+									}
+									echo "<td style='text-align:center;color:#4169e1;font-weight:bold;'>" . $row["AName"]."</td>" ;
+									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"]."</td>" ; 
+									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["Remarks"]."</td>" ; 
+
+									echo "</tr>" ;
+									}
+									echo "</table>";
+									} else { echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results"; }
+									
+									}elseif(($row['Department'] === "General Use")){
+									$sql = "SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.QType,product.Stor,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,stock.exp,admin.AName,admin.Department FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) 
+									WHERE CID ='6' ORDER BY DateAdded DESC";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. " ".$row["QType"]."</td>" ; 
+									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["exp"]."</td>" ; 
+									if($row["Status"] == 'Stock In'){
+									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
+									}else{
+										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
+									}
+									echo "<td style='text-align:center;color:#4169e1;font-weight:bold;'>" . $row["AName"]."</td>" ;
+									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"]."</td>" ; 
+									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["Remarks"]."</td>" ; 
+
+									echo "</tr>" ;
+									}
+									echo "</table>";
+									} else { echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results"; }
+									
+									}elseif(($row['Department'] === "Packing Material")){
+									$sql = "SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.QType,product.Stor,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,stock.exp,admin.AName,admin.Department FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) 
+									WHERE CID ='5' ORDER BY DateAdded DESC";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. " ".$row["QType"]."</td>" ; 
+									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["exp"]."</td>" ; 
+									if($row["Status"] == 'Stock In'){
+									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
+									}else{
+										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
+									}
+									echo "<td style='text-align:center;color:#4169e1;font-weight:bold;'>" . $row["AName"]."</td>" ;
+									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"]."</td>" ; 
+									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["Remarks"]."</td>" ; 
+
+									echo "</tr>" ;
+									}
+									echo "</table>";
+									} else { echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results"; }
+
+									}elseif(($row['Department'] === "Raw Material")){
+									$sql = "SELECT stock.SID,stock.PCode,product.PName,product.PImage,product.QType,product.Stor,stock.Qty,stock.DateAdded,stock.Remarks,stock.Status,stock.AID,stock.exp,admin.AName,admin.Department FROM ((stock INNER JOIN product ON stock.PCode = product.PCode)INNER JOIN admin ON stock.AID = admin.AID) 
+									WHERE CID ='4' ORDER BY DateAdded DESC";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+
+									while($row = $result->fetch_assoc()) {
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PCode"] . "</td>" ;
+									echo "<td style='text-align:center;color:black;font-weight:bold;'> <img width='125px' src='images/" . $row["PImage"]. "'></td>" ; 	
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["PName"].  "</td>" ; 
+									echo "<td style='text-align:center;color:black;font-weight:bold;'>" . $row["Qty"]. " ".$row["QType"]."</td>" ; 
+									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["exp"]."</td>" ; 
+									if($row["Status"] == 'Stock In'){
+									echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-success'>" . $row["Status"].  "</span></td>" ; 
+									}else{
+										echo "<td class='align-middle text-center text-sm'> <span class='badge badge-sm bg-gradient-danger'>" . $row["Status"]. "</span></td>" ;
+									}
+									echo "<td style='text-align:center;color:#4169e1;font-weight:bold;'>" . $row["AName"]."</td>" ;
+									echo "<td style='text-align:center;color:forestgreen;font-weight:bold;'>" . $row["DateAdded"]."</td>" ; 
+									echo "<td style='text-align:center;color:red;font-weight:bold;'>" . $row["Remarks"]."</td>" ; 
+
+									echo "</tr>" ;
+									}
+									echo "</table>";
+									} else { echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results"; }
+									}
+									?>		   
+                                </tbody>
+                            </table>
+                        </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 	</div>
 <script src="assets/js/core/jquery.min.js"></script>
