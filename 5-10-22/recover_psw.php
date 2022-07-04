@@ -108,7 +108,7 @@
 			
 			
 			$code = uniqid(true);
-			$query = mysqli_query($connect, "INSERT INTO passCode(code,AEmail) VALUES ('$code','$email')");
+			$query = mysqli_query($connect, "INSERT INTO passcode(code,AEmail) VALUES ('$code','$email')");
 			
             $mail = new PHPMailer;
 
