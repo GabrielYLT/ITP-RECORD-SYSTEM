@@ -40,6 +40,24 @@ if(isset($_POST["sbtn"]))
 	$result1=mysqli_query($connect,"SELECT * FROM product WHERE PCode='$_POST[pcode]'");
 	$row1 = mysqli_fetch_assoc($result1);
 	
+	
+	
+	$RexpIn=mysqli_query($connect,"SELECT SUM(Qty) AS inStock FROM stock WHERE Status = 'Stock In' AND PCode = '$_POST[pcode]' AND exp = '$exp' ");
+	$expIn = mysqli_fetch_assoc($RexpIn);
+	
+	$RexpOut=mysqli_query($connect,"SELECT SUM(Qty) AS outStock FROM stock WHERE Status = 'Stock Out' AND PCode = '$_POST[pcode]' AND exp = '$exp' ");
+	$expOut = mysqli_fetch_assoc($RexpOut);
+
+	$in = $expIn["inStock"] ;
+	$out = $expOut["outStock"];
+
+	$subtotal = $in - $out ;	
+	
+	if($_POST["qty"] <= $subtotal ){
+	
+	
+	
+	
 	if($row1["PQty"] < $_POST["qty"])
 	{
 		$name = $row1["PName"];
@@ -131,6 +149,21 @@ if(isset($_POST["sbtn"]))
 		
 	<?php 
  }
+ 	}else{
+			 header("refresh:0.001;url=stockOut.php");
+	
+
+
+	?>
+		<script type="text/javascript">
+		alert("The Amount you Entered for This Expiry Date is Larger Than the Current Quantity It Has!");
+		
+		</script>
+		
+	<?php
+		
+	}
+	
  }else{
 	 header("refresh:0.001;url=stockOut.php");
 	
