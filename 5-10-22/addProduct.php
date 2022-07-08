@@ -44,7 +44,7 @@ if(isset($_POST["sbtn"]))
 
 	$select = mysqli_query($connect, "SELECT * FROM product WHERE PCode = '".$_POST['pcode']."'");
 	if(mysqli_num_rows($select)) {
-		$error="This Product Code is Already In Use !";
+		$error="This Product Code is Already In Use !"; 
 	?>
 		<script type="text/javascript">
 		alert("Product Code Already in Use!");
@@ -75,7 +75,7 @@ if(isset($_POST["sbtn"]))
 		</script>
 		
 	<?php 
- header("refresh:0.001;url=manage.php");
+ header("refresh:0.001;url=addProduct.php");
 }
 }
 ?>

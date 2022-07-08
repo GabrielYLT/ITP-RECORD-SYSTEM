@@ -350,8 +350,8 @@ $(document).ready(function(){
                             <form name = "updatAdmin" method="post" class="tm-signup-form" enctype="multipart/form-data">
 
 								<div >
-									<label for="gender">Product Code &nbsp; </label>
-									<input  type="text" class="form-control selectList" autocomplete="off" list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode" id="gender" required>
+									<label for="gender">Product Name &nbsp; </label>
+									<input  type="text" class="form-control selectList" autocomplete="off" list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode1" id="gender" required>
 									<datalist id="code">
 									<?php
 									$conn = $connect;
@@ -364,7 +364,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PName"]."</option>";
+									echo "<option value='" . $row["PName"] . "'>". $row["PCode"]."</option>";
 									}
 									} else { echo "0 results"; }
 									?>    

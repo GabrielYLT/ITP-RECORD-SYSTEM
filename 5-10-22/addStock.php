@@ -99,6 +99,7 @@ $(document).ready(function(){
 </script>
 		</head>
 	
+	
 	<body>
 <div class="wrapper"  style="overflow-x:hidden;background-image: url('images/dbg.jpg');background-size: cover;"" >
     
@@ -187,9 +188,10 @@ $(document).ready(function(){
                             <form name = "updatAdmin" method="post" class="tm-signup-form" enctype="multipart/form-data">
 
 								<div >
-									<label for="gender">Product Code &nbsp; </label>
-									<input  type="text" class="form-control selectList"  autocomplete="off"  list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode" id="gender" required>
+									<label for="gender">Product Name&nbsp; </label>
+									<input  type="text" class="form-control selectList"  autocomplete="off"  list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode1" id="gender" required>
 									<datalist id="code">
+									<select>
 									<?php
 									$conn = $connect;
 									$Admin_id=$_SESSION['id'];
@@ -205,7 +207,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PName"]."</option>";
+									echo "<option value='" . $row["PName"] . "'>". $row["PCode"]."</option>";
 									}
 									} else { echo "0 results"; }}
 									elseif($row["Department"]=='Raw Material'){
@@ -214,7 +216,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PName"] ."</option>";
+									echo "<option value='" . $row["PName"] . "'>". $row["PCode"]."</option>";
 									}
 									} else { echo "0 results"; }}
 									elseif($row["Department"]=='Packing Material'){
@@ -223,7 +225,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PName"] ."</option>";
+									echo "<option value='" . $row["PName"] . "'>". $row["PCode"]."</option>";
 									}
 									} else { echo "0 results"; }}
 									elseif($row["Department"]=='General Use'){
@@ -232,10 +234,11 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PName"] ."</option>";
+									echo "<option value='" . $row["PName"] . "'>". $row["PCode"]."</option>";
 									}
 									} else { echo "0 results"; }}
 									?>    
+									</select>
 									</datalist>
                                 </div>
 								
@@ -262,7 +265,7 @@ $(document).ready(function(){
                                 </div>
 								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="Date" style="color:black;">Expire </label>
-                                    <input value="" placeholder="Please Select Product Expire" id="minDate" name="exp" type="date" class="form-control validate" required>
+                                    <input value="" placeholder="Please Select Product Expire" id="minDate" name="exp" type="date" class="form-control validate" >
 									<span id="erroremail"></span>	
 									<script>
 									$(document).ready(function () {

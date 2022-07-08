@@ -22,6 +22,7 @@ if(!isset($_SESSION['id']))
 $Admin_id=$_SESSION['id'];
 $result=mysqli_query($connect,"SELECT *FROM admin WHERE AID = $Admin_id");
 $row = mysqli_fetch_assoc($result);
+$dept = $row["Department"];
 ?>
 <?php	
 if(isset($_POST["sbtn"]))
@@ -107,7 +108,7 @@ if(isset($_POST["sbtn"]))
             // send by h-hotel email
             $mail->setFrom('email', 'Password Reset');
             // get email from input
-            $sql = "SELECT * FROM admin WHERE Department = 'All Department'";
+            $sql = "SELECT * FROM admin WHERE Department = 'All Department' OR Department = '$dept'";
 	$res = mysqli_query($conn, $sql);
 	if(mysqli_num_rows($res) > 0) {
     while($x = mysqli_fetch_assoc($res)) {
@@ -299,8 +300,8 @@ $(document).ready(function(){
                             <form name = "updatAdmin" method="post" class="tm-signup-form" enctype="multipart/form-data">
 
 								<div >
-									<label for="gender">Product Code &nbsp; </label>
-									<input  type="text" class="form-control selectList" autocomplete="off" list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode" id="gender" required>
+									<label for="gender">Product Name &nbsp; </label>
+									<input  type="text" class="form-control selectList" autocomplete="off" list="code" placeholder="Please Enter Product Code" onchange="showCustomer(this.value)" style="width:100%;Height:50%;" name="pcode1" id="gender" required>
 									<datalist id="code">
 									<?php
 									$conn = $connect;
@@ -317,7 +318,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PName"]."</option>";
+									echo "<option value='" . $row["PName"] . "'>". $row["PCode"]."</option>";
 									}
 									} else { echo "0 results"; }}
 									elseif($row["Department"]=='Raw Material'){
@@ -326,7 +327,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PName"]."</option>";
+									echo "<option value='" . $row["PName"] . "'>". $row["PCode"]."</option>";
 									}
 									} else { echo "0 results"; }}
 									elseif($row["Department"]=='Packing Material'){
@@ -335,7 +336,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PName"]."</option>";
+									echo "<option value='" . $row["PName"] . "'>". $row["PCode"]."</option>";
 									}
 									} else { echo "0 results"; }}
 									elseif($row["Department"]=='General Use'){
@@ -344,7 +345,7 @@ $(document).ready(function(){
 									if ($result->num_rows > 0) {
 
 									while($row = $result->fetch_assoc()) {
-									echo "<option value='" . $row["PCode"] . "'>". $row["PName"]."</option>";
+									echo "<option value='" . $row["PName"] . "'>". $row["PCode"]."</option>";
 									}
 									} else { echo "0 results"; }}
 									?>    
@@ -369,7 +370,7 @@ $(document).ready(function(){
   <hr>
 								<div class="form-group" style="margin-bottom:0%;">
                                     <label for="Qty">Quantity </label>
-                                    <input value="" placeholder="Please Enter Product Name" min="0" id="number" name="qty" type="number" class="form-control validate" required>
+                                    <input value="" placeholder="Please Enter Product Quantity" min="0" id="number" name="qty" type="number" class="form-control validate" required>
 									<span id="erroremail"></span>	
                                 </div>
 								<div class="form-group" style="margin-bottom:0%;">

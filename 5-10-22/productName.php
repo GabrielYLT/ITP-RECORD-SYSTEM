@@ -7,7 +7,7 @@ if($conn->connect_error) {
 
 
 $sql = "SELECT Pcode,PName
-FROM product WHERE PCode = ?";
+FROM product WHERE PName = ?";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $_GET['q']);
@@ -22,14 +22,14 @@ $stmt->close();
 
 
 echo "<div class='form-group' style='margin-bottom:0%;'>
-                                    <label for='email'>Product Name </label>
-                                    <input value='".$PName."' id='name' name='SubCategory' type'text' class='form-control validate' readonly>
+                                    <label for='email'>Product Code</label>
+                                    <input value='".$PCode."' id='name'  type'text' class='form-control validate' name='pcode' readonly>
 										
                                 </div>";
 								
 echo "<div class='form-group' style='margin-bottom:0%;'>
                                    <label for='expire'>Product Expire &nbsp; </label>
-									<input  type='text' class='form-control selectList' autocomplete='off' list='exp1' placeholder='Please Choose The Correct Expiry Date' style='width:100%;Height:50%;' name='exp' id='exp' required>
+									<input  type='text' class='form-control selectList' autocomplete='off' list='exp1' placeholder='Please Choose The Correct Expiry Date' style='width:100%;Height:50%;' name='exp' id='exp' >
 									<datalist id='exp1'>" ;
 									
 									
